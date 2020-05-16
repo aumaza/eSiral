@@ -1,0 +1,138 @@
+<html style="height: 100%"><head>
+	<meta charset="utf-8">
+	<title>Sirhal - Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="img/img-favicon32x32.png" />
+	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
+	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
+	<link rel="stylesheet" href="/sirhal-web/skeleton/css/fontawesome.css">
+	<link rel="stylesheet" href="/sirhal-web/skeleton/css/fontawesome.min.css" >
+	<link rel="stylesheet" href="/sirhal-web/skeleton/css/jquery.dataTables.min.css" >
+
+	<script src="/sirhal-web/skeleton/js/jquery-3.4.1.min.js"></script>
+	<script src="/sirhal-web/skeleton/js/bootstrap.min.js"></script>
+
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />
+	
+	<style>
+.avatar {
+  vertical-align: middle;
+  horizontal-align: right;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+</style>
+	
+</head>
+<body  background="img/background.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+
+      <div class="cover">
+	<div class="container-fluid"> 
+		<div class="background-image-fixed cover-image" style="background-image no-repeat; background-position: auto">
+			</div><br>
+			
+			<div class="container-fluid"> 
+				<div class="row">
+					<div class="col-md-12 text-center">
+					 <nav class="navbar navbar-inverse">
+  
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <ul class="nav navbar-nav navbar-left">
+       <img src="img/escudo32x32.png" alt="Avatar" class="avatar" />
+       </ul>
+       <a class="navbar-brand" ><strong> Ministerio de Economía de la Nación</strong></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <!-- Trigger the modal button Noticias-->
+	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-bullhorn"></span> Noticias</button>
+      <!-- End Trigger the modal with a button -->
+      <!-- Trigger the modal button LogIn-->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Ingresar</button>
+     <!-- End Trigger the modal with a button -->
+     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/sirhal-web/signin/reset_pass.html"><span class="glyphicon glyphicon-exclamation-sign"></span> Olvidé mi Password</a></li>
+      <li><a href="/sirhal-web/signin/signin.php"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+    <div class="container-fluid">
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><strong>Ingresá tus Datos</strong></h4>
+        </div>
+        <div class="modal-body">
+        <div class="loginmodal-container">
+        <form action="formLogin.php" method="POST">
+		<input type="text" name="user" style="text-align: center" placeholder="User Name">
+		<input type="password" name="pass"  style="text-align: center" placeholder="Password">
+		<br><br>
+		<button type="submit" class="btn btn-success" data-submit="modal"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+		<button type="reset" class="btn btn-success" data-submit="modal"><span class="glyphicon glyphicon-erase"></span> Limpiar</button>
+		
+		
+	</form>
+        </div>
+        </div>
+        <div class="modal-footer">
+        
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- End Modal -->
+  
+  
+  <!-- Modal2 -->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><strong>Noticias</strong></h4>
+      </div>
+      <div class="modal-body">
+        <p>Realice el análisis de lotes cada mes de manera de estar al día.</p>
+        <p>Si se encuentra con errores de procesamiento, preste atención a los mensajes monstrados.</p>
+        <p><strong>Ante cualquier consulta comuniquese con la Dirección de Presupuesto y Gastos en Personal</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal2 -->
+  
+  
+  
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+</body>
+</html>
