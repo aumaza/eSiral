@@ -90,7 +90,7 @@ else{
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
 
-<div class="container">
+<div class="container-fluid"><br>
       <div class="row">
       <div class="col-md-12 text-center">
 	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
@@ -101,23 +101,13 @@ else{
 	</div>
 	</div>
 	</div>
-	<br>
+	<br><hr>
 
-<div class="section">
-            <div class="container-fluid">
+
+            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Liquidadores</h1>
-                            </div>
-                            <div class="panel-body">
-                                <p><strong>Nuevo Registro</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        
 
 <?php
 
@@ -129,6 +119,7 @@ if(!$q)
   echo '<div class="alert alert-danger" role="alert">';
   echo 'Could not enter data: ' . mysql_error();
   echo "</div>";
+  echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
  
 }
 
@@ -138,8 +129,7 @@ else
     echo '<div class="alert alert-success" role="alert">';
     echo "Registro Guardado Exitosamente!!";
     echo "</div>";
-    echo "<br><br><br><br>";
-    echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Habitantes" class="btn btn-primary"></a>';
+    echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
 }
 
 
@@ -150,6 +140,10 @@ else
 
     
 ?>
+</div>
+</div>
+</div>
+
 
 
 

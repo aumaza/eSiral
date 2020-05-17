@@ -63,7 +63,7 @@
   </script>
 	
 </head>
-<body background="../../img/main-img.pngg" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
 
 <div class="container-fluid">
       <div class="row">

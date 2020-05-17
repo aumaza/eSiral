@@ -15,7 +15,7 @@ session_start();
 
       if($conn){
       $id = $_GET['id'];
-      $sql = "SELECT * FROM organismos WHERE id = '$id'";
+      $sql = "SELECT * FROM liquidadores WHERE id = '$id'";
       mysql_select_db('sirhal_web');
       $resultado = mysql_query($sql,$conn);
       $fila = mysql_fetch_assoc($resultado);
@@ -30,7 +30,7 @@ session_start();
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Organismo Actualizado</title>
+	<title>Liquidador Actualizado</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -67,22 +67,25 @@ session_start();
 	</div>
 	</div>
 	</div>
-	<br>
+	<br><hr>
 
-    <div class="container-fluid">
+    <div class="container">
     <div class="main">
-    <h2>Edición Organismo</h2>
+    
     
     <?php
     
     if($conn){
       
 		$id = mysql_real_escape_string($_POST["id"], $conn);
-		$cod = mysql_real_escape_string($_POST["cod"], $conn);
-		$saf = mysql_real_escape_string($_POST["saf"], $conn);
+		$nombre = mysql_real_escape_string($_POST["nombre"], $conn);
+		$sexo = mysql_real_escape_string($_POST["sexo"], $conn);
+		$dni = mysql_real_escape_string($_POST["dni"], $conn);
+		$email = mysql_real_escape_string($_POST["email"], $conn);
+		$telefono = mysql_real_escape_string($_POST["telefono"], $conn);
 		$organismo = mysql_real_escape_string($_POST["organismo"], $conn);
 			
-		$sqlInsert = "UPDATE organismos SET cod_org='$cod', saf='$saf', descripcion='$organismo' WHERE id = '$id'";
+		$sqlInsert = "UPDATE liquidadores SET nombreApellido='$nombre', sexo='$sexo', dni='$dni', email='$email', telefono='$telefono', organismo='$organismo' WHERE id = '$id'";
 		
   			
 mysql_select_db('sirhal_web');
@@ -100,7 +103,7 @@ else
     echo '<div class="alert alert-success" role="alert">';
     echo "Registro Actualizado Exitosamente!!";
     echo "</div>";
-    echo '<hr> <a href="organismos.php"><input type="button" value="Volver a Organismos" class="btn btn-primary"></a>';
+    echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
 }
 }
 
