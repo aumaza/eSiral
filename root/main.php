@@ -96,12 +96,10 @@
 
    <div class="btn-group btn-group-justified">
     <a href="organismos/organismos.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> Cargar Organismos</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-expenses-categories.png"  class="img-reponsive img-rounded"> Total Gastos</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-loan.png"  class="img-reponsive img-rounded"> Cargar Cobros</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-expenses-categories.png"  class="img-reponsive img-rounded"> Total Cobros</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-financial-transfer.png"  class="img-reponsive img-rounded"> Saldo de Caja</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-time-schedule.png"  class="img-reponsive img-rounded"> Cobros Futuros</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Datos Usuarios</a>
+    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-expenses-categories.png"  class="img-reponsive img-rounded"> Sumarias</a>
+    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-commit.png"  class="img-reponsive img-rounded"> Cargar Lote</a>
+    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote</a>
+    <a href="liquidadores/liquidadores.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Datos Liquidadores</a>
     <a href="users/users.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Usuarios</a>
     
   
