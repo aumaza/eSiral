@@ -1,8 +1,9 @@
-<?php  include "../functions/functions.php";
-       include "../connection/connection.php";
+<?php include "../../connection/connection.php";
+      
 
 	session_start();
 	$varsession = $_SESSION['user'];
+	
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysql_select_db('sirhal_web');
@@ -20,22 +21,28 @@
 	  $avatar = $row['avatar'];
 	}
 	
+		
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
 	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
 	echo '<br>';
 	echo "O no tiene permisos o no ha iniciado sesion...";
 	echo "</div>";
-	echo '<a href="../logout.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
+	echo '<a href="../../index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 	die();
 	}
+	
+	
+	
+	
+	
 ?>
 
-<html style="height: 100%" lang="es"><head>
+<html style="height: 100%"><head>
 	<meta charset="utf-8">
-	<title>Sirhal - Panel Usuario</title>
+	<title>Subir Lote</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../img/img-favicon32x32.png" />
+	<link rel="icon" type="image/png" href="../../../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
@@ -46,17 +53,16 @@
 	<script src="/sirhal-web/skeleton/js/jquery-3.4.1.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/bootstrap.min.js"></script>
 	
+	
 	<script src="/sirhal-web/skeleton/js/jquery.dataTables.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.editor.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.select.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.buttons.min.js"></script>
-
+	
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />
 	
-	
-	<!-- Data Table Script -->
-<script>
+	<script>
 
       $(document).ready(function(){
       $('#myTable').DataTable({
@@ -80,55 +86,78 @@
   });
 
   </script>
-  <!-- END Data Table Script -->
+  
+  <style>
+.avatar {
+  vertical-align: middle;
+  horizontal-align: right;
+  width: 60px;
+  height: 60px;
+  border-radius: 60%;
+}
+</style>
 	
 </head>
-<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
-<br>
-<!--User and System Information -->
-<div class="container-fluid">
+<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+
+  <!-- User Info -->
+      <div class="container-fluid">
       <div class="row">
       <div class="col-md-12 text-center">
-	<a href="../logout.php"><button><span class="glyphicon glyphicon-log-out"></span> Salir</button></a>
+      <br>
+	
 	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %b de %Y"); ?> </button>
+	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %B del %Y"); ?> </button>
 	</div>
 	</div>
-	</div><hr>
-<!-- end user and system information -->
-
-
-<div class="container-fluid">
-
-<div class="row">
-<div class="col-sm-12"><br>
-
-<!-- Dashboard buttons -->
-<div class="panel panel-primary">
-  <div class="panel-body">
-
-   <div class="btn-group btn-group-justified">
-    <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
-    <a href="datos_personales/datos_personales.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Mis Datos</a>
-   
-  
-  </div>
-  </div>
-  </div><hr>
-<!-- end dashboard buttons -->
-
+	</div>
+	<br><hr>
+	<!-- End User Info -->
+	
+	
+<body >
+<div class="section"><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    
+                    <div class="alert alert-success" role="alert">
+                     <h1><strong><u>Importante</u>: </strong></h1>
+                     <h3>Solo suba archivos con extensión SIR/CSV/TXT.</h3><hr>
+                     <a href="lotes.php"><input type="button" value="Volver a Lotes" class="btn btn-primary"></a>
+                    </div>
+                    <hr>
+                          
+<form action="form_upload_lote.php" method="post" enctype="multipart/form-data">
+	  <div class="row">
+	    <div class="col-sm-12">
+	      <div class="panel panel-default">
+		<div class='panel-heading'>
+		<strong>Seleccione los Archivos a Subir:</strong>
+		<br>
+	      <input type="file" name="files[]" multiple="" class="btn btn-default"><br>
+	      <button type="submit" class="btn btn-warning navbar-btn" name="submit"><span class="glyphicon glyphicon-cloud-upload"></span> Subir</button>
+	      
+	    </form>
+	  
+	   </div>
+	   
+	    
+     </div>
+   </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
 
-</div>
-
-</div>
 
 
 </body>
 </html>
+
