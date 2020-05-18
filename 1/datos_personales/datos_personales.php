@@ -3,6 +3,22 @@
         session_start();
 	$varsession = $_SESSION['user'];
 	
+	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
+	mysql_select_db('sirhal_web');
+        $retval = mysql_query($sql);
+        
+        while($fila = mysql_fetch_array($retval)){
+	  $nombre = $fila['nombre'];
+	  
+	  }
+	  
+	$sqla = "SELECT nombreApellido FROM liquidadores where nombreApellido = '$nombre'";
+	mysql_select_db('sirhal_web');
+	$valor = mysql_query($sqla);
+	while($row = mysql_fetch_array($valor)){
+	  $avatar = $row['avatar'];
+	}
+	
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
 	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
@@ -17,7 +33,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Liquidadores</title>
+	<title>Mis Datos</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -68,7 +84,7 @@
 <div class="container-fluid">
       <div class="row">
       <div class="col-md-12 text-center"><br>
-	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
+	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
@@ -100,15 +116,14 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"><strong> Liquidadores </strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> Mis Datos </strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->
 <div class="collapse navbar-collapse" id="alignment-example">
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
-      <li class="active" ><a href="nuevoRegistro.php">Ingresar Liquidador <span class="pull-center "><img src="../../icons/actions/list-add.png"  class="img-reponsive img-rounded"></a></li>
-    </ul>
+      </ul>
 <!-- Search -->
 </div>
 </div>
@@ -119,7 +134,7 @@
 
 if($conn)
 {
-	$sql = "SELECT * FROM liquidadores";
+	$sql = "SELECT * FROM liquidadores where nombreApellido = '$nombre'";
     	mysql_select_db('sirhal_web');
     	$resultado = mysql_query($sql,$conn);
 	//mostramos fila x fila
@@ -157,7 +172,6 @@ if($conn)
 			 echo "<td align=center>".$fila['organismo']."</td>";
 			 echo "<td class='text-nowrap'>";
 			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="#" data-href="eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;

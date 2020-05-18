@@ -1,8 +1,24 @@
 <?php include "../../connection/connection.php"; 
-      
 
         session_start();
 	$varsession = $_SESSION['user'];
+	
+	
+	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
+	mysql_select_db('sirhal_web');
+        $retval = mysql_query($sql);
+        
+        while($fila = mysql_fetch_array($retval)){
+	  $nombre = $fila['nombre'];
+	  
+	  }
+	  
+	$sqla = "SELECT nombreApellido FROM liquidadores where nombreApellido = '$nombre'";
+	mysql_select_db('sirhal_web');
+	$valor = mysql_query($sqla);
+	while($row = mysql_fetch_array($valor)){
+	  $avatar = $row['avatar'];
+	}
 	
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
@@ -14,11 +30,17 @@
 	die();
 	}
 	
+	$id = $_GET['id'];
+      $sql = "SELECT * FROM liquidadores WHERE id = '$id'";
+      mysql_select_db('sirhal_web');
+      $resultado = mysql_query($sql,$conn);
+      $fila = mysql_fetch_assoc($resultado);
+
 ?>
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Usuarios - Nuevo Registro</title>
+	<title>Liquidadores - Editar Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -70,7 +92,7 @@
 <div class="container-fluid">
       <div class="row">
       <div class="col-md-12 text-center"><br>
-	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
+	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
@@ -88,53 +110,84 @@
 
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> Nuevo Usuario</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> Liquidadores - Editar Registro</h2>
   </div>
     <div class="panel-body">
     
     
-     <form action="formNuevoRegistro.php" method="post">
-     
-    
+     <form action="formUpdate.php" method="post">
+     <input type="hidden" id="id" name="id" value="<?php echo $fila['id']; ?>" />
          
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido">
+    <input id="text" type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido" value="<?php echo $fila['nombreApellido']; ?>" readonly>
   </div>
- 
+  
   <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="user" placeholder="User Name">
-  </div>
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <select class="browser-default custom-select" name="sexo">
+  <option value="" disabled selected>Sexo</option>
+  <option value="Femenino" <?php if($fila['sexo'] == "Femenino") echo "Selected"; ?>>Femenino</option>
+  <option value="Masculino"<?php if($fila['sexo'] == "Masculino") echo "Selected"; ?>>Masculino</option>
+  </select>
+</div>
+
+  
   <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input id="password" type="password" class="form-control" name="pass1" placeholder="Password" >
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input  type="password" class="form-control" name="pass2" placeholder="Repita Password">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    <input id="text" type="text" class="form-control" name="dni" placeholder="Nro. DNI" value="<?php echo $fila['dni']; ?>" readonly>
   </div>
   
    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
-  <select class="browser-default custom-select" name="permisos">
-  <option value="" disabled selected>Permisos</option>
-  <option value="1" >Administrador</option>
-  <option value="0" >Usuario</option>
-  </select>
-</div>
- 
- 
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input  type="email" class="form-control" name="email" placeholder="E-Mail" value="<?php echo $fila['email']; ?>">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+    <input  type="text" class="form-control" name="telefono" placeholder="1144444444" value="<?php echo $fila['telefono']; ?>">
+  </div>
+  
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+              <select class="browser-default custom-select" name="organismo">
+              <option value="" disabled selected>Organismo</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM organismos order by descripcion ASC";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[descripcion].'" '.(($fila['organismo']== $valores[descripcion])?'selected="selected"':"").'>'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                mysql_close($conn);
+
+                ?>
+                </select>
+                </div>
   <br>
- 
- <div class="form-group">
+  
+  <div class="form-group">
    <div class="col-sm-offset-2 col-sm-12" align="left">
-   <button type="submit" class="btn btn-success" name="A"><span class="glyphicon glyphicon-ok"></span>  Agregar</button>
-   <a href="users.php"><input type="button" value="Volver" class="btn btn-primary"></a>
+   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span>  Editar</button>
+   <a href="datos_personales.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
   </div>
   </div>
 </form> 
+
+    
     </div>
     <br>
     

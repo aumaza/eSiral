@@ -66,7 +66,7 @@
 				echo "<br>";
 				echo "Presione -Aceptar- para continuar";
   				echo "</div>";
-				echo '<a href="0/users/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
+				echo '<a href="0/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
 			}
 
 			else if($user = mysql_fetch_assoc($q)){
@@ -89,7 +89,7 @@
 				echo "<br>";
 				echo "Presione -Aceptar- para continuar";
   				echo "</div>";
-				echo '<a href="1/users/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
+				echo '<a href="1/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
 			}
 			} 
 

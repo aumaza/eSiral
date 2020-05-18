@@ -35,6 +35,34 @@ function createTable(){
 }
 
 
+function create_table_files(){
+
+
+$sql = "CREATE TABLE files (".
+      "id INT AUTO_INCREMENT,".
+      "file_name VARCHAR(255),".
+      "user_name VARCHAR(60),".
+      "path_folder VARCHAR(60),".
+      "upload_on datetime NOT NULL,".
+      "status enum('1','0') NOT NULL DEFAULT 1,".
+      "PRIMARY KEY (id)); ";
+
+	mysql_select_db('sirhal_web');
+	$retval = mysql_query($sql);
+	
+	if(!$retval)
+	{
+		mysql_error(); 	
+	}
+	
+	else
+	 {	
+		echo 'Table create Succesfully\n';
+	 }
+   
+}
+
+
 function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 
 		

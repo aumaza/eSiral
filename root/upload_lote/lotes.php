@@ -17,7 +17,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Liquidadores</title>
+	<title>Lotes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -72,7 +72,7 @@
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %B del %Y"); ?> </button>
+	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %b de %Y"); ?> </button>
 	</div>
 	</div>
 	</div>
@@ -100,14 +100,14 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"><strong> Liquidadores </strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/places/server-database.png"  class="img-reponsive img-rounded"><strong> Lotes </strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->
 <div class="collapse navbar-collapse" id="alignment-example">
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
-      <li class="active" ><a href="nuevoRegistro.php">Ingresar Liquidador <span class="pull-center "><img src="../../icons/actions/list-add.png"  class="img-reponsive img-rounded"></a></li>
+      <li class="active" ><a href="upload_lote.php">Subir Lotes <span class="pull-center "><img src="../../icons/actions/svn-commit.png"  class="img-reponsive img-rounded"></a></li>
     </ul>
 <!-- Search -->
 </div>
@@ -119,7 +119,7 @@
 
 if($conn)
 {
-	$sql = "SELECT * FROM liquidadores";
+	$sql = "SELECT * FROM files";
     	mysql_select_db('sirhal_web');
     	$resultado = mysql_query($sql,$conn);
 	//mostramos fila x fila
@@ -132,12 +132,9 @@ if($conn)
               echo "<thead>
 
                     <th class='text-nowrap text-center'>ID</th>
-                    <th class='text-nowrap text-center'>Nombre y Apellido</th>
-                    <th class='text-nowrap text-center'>Sexo</th>
-                    <th class='text-nowrap text-center'>DNI</th>
-                    <th class='text-nowrap text-center'>E-mail</th>
-                    <th class='text-nowrap text-center'>Teléfono</th>
-                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th class='text-nowrap text-center'>Archivo</th>
+                    <th class='text-nowrap text-center'>Usuario</th>
+                    <th class='text-nowrap text-center'>Subido</th>
                     <th>&nbsp;</th>
                     </thead>";
 
@@ -149,15 +146,10 @@ if($conn)
 			 // Listado normal
 			 echo "<tr>";
 			 echo "<td align=center>".$fila['id']."</td>";
-			 echo "<td align=center>".$fila['nombreApellido']."</td>";
-			 echo "<td align=center>".$fila['sexo']."</td>";
-			 echo "<td align=center>".$fila['dni']."</td>";
-			 echo "<td align=center>".$fila['email']."</td>";
-			 echo "<td align=center>".$fila['telefono']."</td>";
-			 echo "<td align=center>".$fila['organismo']."</td>";
+			 echo "<td align=center>".$fila['file_name']."</td>";
+			 echo "<td align=center>".$fila['user_name']."</td>";
+			 echo "<td align=center>".$fila['upload_on']."</td>";
 			 echo "<td class='text-nowrap'>";
-			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="#" data-href="eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;

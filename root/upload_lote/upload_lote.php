@@ -1,9 +1,10 @@
-<?php include "../../connection/connection.php"; 
+<?php include "../../connection/connection.php";
       
 
-        session_start();
+	session_start();
 	$varsession = $_SESSION['user'];
 	
+		
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
 	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
@@ -14,13 +15,17 @@
 	die();
 	}
 	
+	
+	
+	
+	
 ?>
 
-<html><head>
+<html style="height: 100%"><head>
 	<meta charset="utf-8">
-	<title>Usuarios - Nuevo Registro</title>
+	<title>Subir Lote</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
+	<link rel="icon" type="image/png" href="../../../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
@@ -36,7 +41,9 @@
 	<script src="/sirhal-web/skeleton/js/dataTables.editor.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.select.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.buttons.min.js"></script>
-
+	
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />
 	
 	<script>
 
@@ -62,14 +69,26 @@
   });
 
   </script>
+  
+  <style>
+.avatar {
+  vertical-align: middle;
+  horizontal-align: right;
+  width: 60px;
+  height: 60px;
+  border-radius: 60%;
+}
+</style>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
 
-<!-- User and system info -->
-<div class="container-fluid">
+  <!-- User Info -->
+      <div class="container-fluid">
       <div class="row">
-      <div class="col-md-12 text-center"><br>
+      <div class="col-md-12 text-center">
+      <br>
+	
 	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
@@ -78,76 +97,50 @@
 	</div>
 	</div>
 	</div>
-<!-- end user and system info -->
-	<hr>
+	<br><hr>
+	<!-- End User Info -->
 	
-<!-- main body -->
-<div class="container"><br>
-<div class="row">
-<div class="col-sm-10">
+	
+<body >
+<div class="section"><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    
+                    <div class="alert alert-success" role="alert">
+                     <h1><strong><u>Importante</u>: </strong></h1>
+                     <h3>Solo suba archivos con extensión SIR/CSV/TXT.</h3><hr>
+                     <a href="lotes.php"><input type="button" value="Volver a Lotes" class="btn btn-primary"></a>
+                    </div>
+                    <hr>
+                          
+<form action="form_upload_lote.php" method="post" enctype="multipart/form-data">
+	  <div class="row">
+	    <div class="col-sm-12">
+	      <div class="panel panel-default">
+		<div class='panel-heading'>
+		<strong>Seleccione los Archivos a Subir:</strong>
+		<br>
+	      <input type="file" name="files[]" multiple="" class="btn btn-default"><br>
+	      <button type="submit" class="btn btn-warning navbar-btn" name="submit"><span class="glyphicon glyphicon-cloud-upload"></span> Subir</button>
+	      
+	    </form>
+	  
+	   </div>
+	   
+	    
+     </div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-<div class="panel panel-info" >
-  <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> Nuevo Usuario</h2>
-  </div>
-    <div class="panel-body">
-    
-    
-     <form action="formNuevoRegistro.php" method="post">
-     
-    
-         
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido">
-  </div>
- 
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="user" placeholder="User Name">
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input id="password" type="password" class="form-control" name="pass1" placeholder="Password" >
-  </div>
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input  type="password" class="form-control" name="pass2" placeholder="Repita Password">
-  </div>
-  
-   <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
-  <select class="browser-default custom-select" name="permisos">
-  <option value="" disabled selected>Permisos</option>
-  <option value="1" >Administrador</option>
-  <option value="0" >Usuario</option>
-  </select>
-</div>
- 
- 
-  <br>
- 
- <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-12" align="left">
-   <button type="submit" class="btn btn-success" name="A"><span class="glyphicon glyphicon-ok"></span>  Agregar</button>
-   <a href="users.php"><input type="button" value="Volver" class="btn btn-primary"></a>
-   <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
-  </div>
-  </div>
-</form> 
-    </div>
-    <br>
-    
-    
-    
-    
-    
 
-</div>
-</div>
-</div>
-</div>
+
 
 
 </body>
 </html>
+

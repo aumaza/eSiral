@@ -1,23 +1,12 @@
-<?php include "../../connection/connection.php"; 
+<?php include "../connection/connection.php"; 
 
-        session_start();
-	$varsession = $_SESSION['user'];
-	
-	if($varsession == null || $varsession = ''){
-	echo '<div class="alert alert-danger" role="alert">';
-	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
-	echo '<br>';
-	echo "O no tiene permisos o no ha iniciado sesion...";
-	echo "</div>";
-	echo '<a href="../../index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
-	die();
-	}
+        
 
 ?>
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Liquidadores - Nuevo Registro</title>
+	<title>Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -63,13 +52,13 @@
   </script>
 	
 </head>
-<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+<body background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
 
 <!-- User and system info -->
 <div class="container-fluid">
       <div class="row">
       <div class="col-md-12 text-center"><br>
-	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
+	
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
@@ -85,14 +74,21 @@
 <div class="row">
 <div class="col-sm-10">
 
+		    <div class="alert alert-success" role="alert">
+                     <h1><strong><u>Importante</u>: </strong></h1>
+                     <p>Preste atención al ingresar sus datos, ya que algunos de estos serán utilizados para generar su Usuario y Contraseña de manera automática</p>
+                     <hr>
+                     </div>
+                    <hr>
+
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> Liquidadores - Nuevo Registro</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> Registro</h2>
   </div>
     <div class="panel-body">
     
     
-     <form action="formNuevoRegistro.php" method="post">
+     <form action="formSignin.php" method="post">
          
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -156,10 +152,8 @@
   
   <div class="form-group">
    <div class="col-sm-offset-2 col-sm-12" align="left">
-   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
-   <a href="liquidadores.php"><input type="button" value="Volver" class="btn btn-primary"></a>
-   <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
-  </div>
+   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span>  Continuar</button>
+   </div>
   </div>
 </form> 
 

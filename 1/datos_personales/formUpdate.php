@@ -3,6 +3,22 @@
 session_start();
 	$varsession = $_SESSION['user'];
 	
+	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
+	mysql_select_db('sirhal_web');
+        $retval = mysql_query($sql);
+        
+        while($fila = mysql_fetch_array($retval)){
+	  $nombre = $fila['nombre'];
+	  
+	  }
+	  
+	$sqla = "SELECT nombreApellido FROM liquidadores where nombreApellido = '$nombre'";
+	mysql_select_db('sirhal_web');
+	$valor = mysql_query($sqla);
+	while($row = mysql_fetch_array($valor)){
+	  $avatar = $row['avatar'];
+	}
+	
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
 	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
@@ -30,7 +46,7 @@ session_start();
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Liquidador Actualizado</title>
+	<title>Datos Actualizados</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -56,10 +72,10 @@ session_start();
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
 
-<div class="container-fluid">
+<div class="container-fluid"><br>
       <div class="row">
       <div class="col-md-12 text-center">
-	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
+	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
@@ -103,7 +119,7 @@ else
     echo '<div class="alert alert-success" role="alert">';
     echo "Registro Actualizado Exitosamente!!";
     echo "</div>";
-    echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
+    echo '<hr> <a href="datos_personales.php"><input type="button" value="Volver a Mis Datos" class="btn btn-primary"></a>';
 }
 }
 

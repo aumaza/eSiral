@@ -1,6 +1,7 @@
-<?php include "../../connection/connection.php"; 
+<?php  include "../functions/functions.php";
+       include "../connection/connection.php";
 
-        session_start();
+	session_start();
 	$varsession = $_SESSION['user'];
 	
 	if($varsession == null || $varsession = ''){
@@ -9,17 +10,16 @@
 	echo '<br>';
 	echo "O no tiene permisos o no ha iniciado sesion...";
 	echo "</div>";
-	echo '<a href="../../index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
+	echo '<a href="../logout.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 	die();
 	}
-
 ?>
 
-<html><head>
+<html style="height: 100%" lang="es"><head>
 	<meta charset="utf-8">
-	<title>Organismos - Nuevo Registro</title>
+	<title>Sirhal - Panel Usuario</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
+	<link rel="icon" type="image/png" href="../img/img-favicon32x32.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
@@ -30,14 +30,17 @@
 	<script src="/sirhal-web/skeleton/js/jquery-3.4.1.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/bootstrap.min.js"></script>
 	
-	
 	<script src="/sirhal-web/skeleton/js/jquery.dataTables.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.editor.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.select.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.buttons.min.js"></script>
 
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />
 	
-	<script>
+	
+	<!-- Data Table Script -->
+<script>
 
       $(document).ready(function(){
       $('#myTable').DataTable({
@@ -61,14 +64,16 @@
   });
 
   </script>
+  <!-- END Data Table Script -->
 	
 </head>
-<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
-
-<!-- User and system info -->
+<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+<br>
+<!--User and System Information -->
 <div class="container-fluid">
       <div class="row">
-      <div class="col-md-12 text-center"><br>
+      <div class="col-md-12 text-center">
+	<a href="../logout.php"><button><span class="glyphicon glyphicon-log-out"></span> Salir</button></a>
 	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['user'] ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
@@ -76,61 +81,36 @@
 	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %b de %Y"); ?> </button>
 	</div>
 	</div>
-	</div>
-<!-- end user and system info -->
-	<hr>
-	
-<!-- main body -->
-<div class="container"><br>
+	</div><hr>
+<!-- end user and system information -->
+
+
+<div class="container-fluid">
+
 <div class="row">
-<div class="col-sm-10">
+<div class="col-sm-12"><br>
 
-<div class="panel panel-info" >
-  <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Organismos - Nuevo Registro</h2>
-  </div>
-    <div class="panel-body">
-    
-    
-     <form action="formNuevoRegistro.php" method="post">
-         
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
-    <input id="text" type="text" class="form-control" name="cod" placeholder="Codigo de Organismo" required>
-  </div>
-  
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-    <input id="text" type="text" class="form-control" name="saf" placeholder="Ingrese nro de SAF" required>
-  </div>
-  
-  
-  <div class="input-group">
-    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-    <input  type="text" class="form-control" name="organismo" placeholder="Descripción Organismo" required>
-  </div>
-  <br>
-  <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-12" align="left">
-   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
-   <a href="organismos.php"><input type="button" value="Volver" class="btn btn-primary"></a>
-   <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
-  </div>
-  </div>
-</form> 
+<!-- Dashboard buttons -->
+<div class="panel panel-primary">
+  <div class="panel-body">
 
-    
-    </div>
-    <br>
-    
-    
-    
-    
-    
+   <div class="btn-group btn-group-justified">
+    <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes</a>
+    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
+    <a href="datos_personales/datos_personales.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Mis Datos</a>
+   
+  
+  </div>
+  </div>
+  </div><hr>
+<!-- end dashboard buttons -->
 
 </div>
+
+
+
 </div>
-</div>
+
 </div>
 
 
