@@ -12,11 +12,11 @@
 	  
 	  }
 	  
-	$sqla = "SELECT nombreApellido FROM liquidadores where nombreApellido = '$nombre'";
+	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
 	mysql_select_db('sirhal_web');
 	$valor = mysql_query($sqla);
 	while($row = mysql_fetch_array($valor)){
-	  $avatar = $row['avatar'];
+	  $organismo = $row['organismo'];
 	}
 	
 	if($varsession == null || $varsession = ''){
@@ -85,6 +85,7 @@
       <div class="row">
       <div class="col-md-12 text-center"><br>
 	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
+	<button><span class="glyphicon glyphicon-user"></span> Organismo: <?php echo $organismo ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>

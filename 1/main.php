@@ -13,11 +13,11 @@
 	  
 	  }
 	  
-	$sqla = "SELECT nombreApellido FROM liquidadores where nombreApellido = '$nombre'";
+	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
 	mysql_select_db('sirhal_web');
 	$valor = mysql_query($sqla);
 	while($row = mysql_fetch_array($valor)){
-	  $avatar = $row['avatar'];
+	  $organismo = $row['organismo'];
 	}
 	
 	if($varsession == null || $varsession = ''){
@@ -91,6 +91,7 @@
       <div class="col-md-12 text-center">
 	<a href="../logout.php"><button><span class="glyphicon glyphicon-log-out"></span> Salir</button></a>
 	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
+	<button><span class="glyphicon glyphicon-user"></span> Organismo: <?php echo $organismo ?></button>
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
@@ -113,7 +114,7 @@
    <div class="btn-group btn-group-justified">
     <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes</a>
     <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
-    <a href="datos_personales/datos_personales.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Mis Datos</a>
+    <a href="datos_personales/datos_personales.php" class="btn btn-default"><span class="pull-center "><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</a>
    
   
   </div>
