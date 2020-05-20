@@ -19,7 +19,7 @@
 	<meta charset="utf-8">
 	<title>Sirhal - Panel Administrador</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../img/img-favicon32x32.png" />
+	<link rel="icon" type="image/png" href="../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
@@ -98,7 +98,7 @@
     <a href="organismos/organismos.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> Cargar Organismos</a>
     <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-expenses-categories.png"  class="img-reponsive img-rounded"> Sumarias</a>
     <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
+    <a href="procesar_lotes/procesar_lote.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
     <a href="liquidadores/liquidadores.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Datos Liquidadores</a>
     <a href="users/users.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Usuarios</a>
     

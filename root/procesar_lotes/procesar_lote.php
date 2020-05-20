@@ -17,7 +17,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Lotes</title>
+	<title>Procesar Lotes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -100,14 +100,14 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/places/server-database.png"  class="img-reponsive img-rounded"><strong> Lotes </strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/places/server-database.png"  class="img-reponsive img-rounded"><strong> Lotes a Controlar</strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->
 <div class="collapse navbar-collapse" id="alignment-example">
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
-      <li class="active" ><a href="upload_lote.php">Subir Lotes <span class="pull-center "><img src="../../icons/actions/svn-commit.png"  class="img-reponsive img-rounded"></a></li>
+      <li class="active" ><a href="lote_success.php"><img src="../../icons/status/task-complete.png"  class="img-reponsive img-rounded"> Lotes Controlados<span class="pull-center "></a></li>
     </ul>
 <!-- Search -->
 </div>
@@ -150,6 +150,8 @@ if($conn)
 			 echo "<td align=center>".$fila['user_name']."</td>";
 			 echo "<td align=center>".$fila['upload_on']."</td>";
 			 echo "<td class='text-nowrap'>";
+			 echo '<a href="controlar.php?file_name='.$fila['file_name'].'" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-refresh"></span> Controlar</a>';
+			 
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;

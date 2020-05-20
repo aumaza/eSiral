@@ -62,6 +62,33 @@ $sql = "CREATE TABLE files (".
    
 }
 
+function create_table_files_ok(){
+
+
+$sql = "CREATE TABLE files_ok (".
+      "id INT AUTO_INCREMENT,".
+      "file_name VARCHAR(255),".
+      "user_name VARCHAR(60),".
+      "path_folder VARCHAR(60),".
+      "upload_on datetime NOT NULL,".
+      "status enum('1','0') NOT NULL DEFAULT 1,".
+      "PRIMARY KEY (id)); ";
+
+	mysql_select_db('sirhal_web');
+	$retval = mysql_query($sql);
+	
+	if(!$retval)
+	{
+		mysql_error(); 	
+	}
+	
+	else
+	 {	
+		echo 'Table create Succesfully\n';
+	 }
+   
+}
+
 
 function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 
@@ -341,7 +368,39 @@ function resetPass($nombre,$email){
 }
 
 
+function openFile($file){
+  
+   $fp = fopen("../../uploads/files/".$file, "r");
+   $count = 0;
+   $chars = 0;
+   
+      
+    while(!feof($fp)) {
+     
+	if($linea = fgets($fp)){
+	
+	 $Col1 = substr($linea,0,2); // Codigo de Organismo
+	 $Col2 = substr($linea,2,10); // Codigo de Concepto
+	 $Col3 = substr($linea,12,40); // Descripcion de Concepto
+	 $Col4 = substr($linea,52); // Codigo ?
+	 
+	}
+	$count++;
+      }
+      
+      fclose($fp);
+  
+      echo "Cantidad de Lineas del Archivo: " .$count;
+      echo "<br>";
+      
+      
+      
+     
+      
+      
 
+  
+}
 
 
 ?>

@@ -60,7 +60,7 @@ else{
 	<meta charset="utf-8">
 	<title>Organismo Guardado</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
+	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.pngg" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >

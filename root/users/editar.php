@@ -26,7 +26,7 @@
 	<meta charset="utf-8">
 	<title>Usuarios - Editar Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../img/img-favicon32x32.png" />
+	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
@@ -70,7 +70,7 @@
   </script>
 	
 </head>
-<body background="../../img/background.jpg" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
 
 <!-- User and system info -->
 <div class="container-fluid">
