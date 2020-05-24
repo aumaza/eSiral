@@ -370,19 +370,46 @@ function resetPass($nombre,$email){
 
 function openFile($file){
   
-   $fp = fopen("../../uploads/files/".$file, "r");
-   $count = 0;
-   $chars = 0;
+   $archivo = substr($file,2,2); // se obtiene el codigo de archivo (CH, DP, LH1, LH2)
    
+     
+   $fp = fopen("../../uploads/files/".$file, "r"); // se procede a abrir el archivo correspondiente
       
-    while(!feof($fp)) {
+    
+    switch($archivo){
+      
+      case "CH": processCH($fp); break; //funcion para procesar los archivos CH
+      
+      case "DP": processDP($fp); break; // funcion para procesar los archivos DP
+      
+      case "LH": echo "Es un archivo LH"; break; // funcion para procesar archivos LH
+      
+      
+    }
+    
+         
+      fclose($fp); // cerramos el archivos cargado
+ 
+}
+
+
+function processCH($fp){
+  
+  $count = 0;
+  
+  while(!feof($fp)) {
      
 	if($linea = fgets($fp)){
 	
 	 $Col1 = substr($linea,0,2); // Codigo de Organismo
-	 $Col2 = substr($linea,2,10); // Codigo de Concepto
-	 $Col3 = substr($linea,12,40); // Descripcion de Concepto
-	 $Col4 = substr($linea,52); // Codigo ?
+	 $Col2 = substr($linea,2,4); // Codigo de Escalafón
+	 $Col3 = substr($linea,6,6); // Codigo de Concepto
+	 $Col4 = substr($linea,12,40); // Descripcion del Concepto
+	 $Col5 = substr($linea,52,1); // Remunerativo/Bonificable
+	 $Col6 = substr($linea,53,1); // Tipo de Concepto
+	 
+	 echo $Col1.','.$Col2.','.$Col3.','.$Col4.','.$Col5.','.$Col6;
+	 echo "<br>";
 	 
 	}
 	$count++;
@@ -391,14 +418,45 @@ function openFile($file){
       fclose($fp);
   
       echo "Cantidad de Lineas del Archivo: " .$count;
+  
+  
+}
+
+
+function processDP($fp){
+  
+  $count = 0;
+  
+  while(!feof($fp)){
+    
+    if($linea = fgets($fp)){
+      
+      $col1 = substr($linea,0,3);      // tipo de documento
+      $col2 = substr($linea,4,16);     // numero de documento
+      $col3 = substr($linea,20,39);    // nombre y apellido
+      $col4 = substr($linea,60,8);    // fecha de nacimiento
+      $col5 = substr($linea,68,4);     // sexo
+      $col6 = substr($linea,72,3);     // estado civil
+      $col7 = substr($linea,77,2);     // codigo organismo
+      $col8 = substr($linea,81,7);     // fecha ingreso
+      $col9 = substr($linea,87,2);     // codigo nacionalidad
+      $col10 = substr($linea,89,2);    // codigo nivel estudios
+      $col11 = substr($linea,91,30);   // titulo obtenido
+      $col12 = substr($linea,121,11);  // cuil/cuit
+      $col13 = substr($linea,132,1);   // sistema previsional (R=reparto C=capitalizacion)
+      $col14 = substr($linea,133,1);   // codigo de sistema previsional
+      $col15 = substr($linea,137,6);   // codigo de obra social
+      $col16 = substr($linea,162,1);   // tipo de horario
+      
+      echo $col1.','.$col2.','.$col3.','.$col4.','.$col5.','.$col6.','.$col7.','.$col8.','.$col9.','.$col10.','.$col11.','.$col12.','.$col13.','.$col14.','.$col15.','.$col16;
       echo "<br>";
       
-      
-      
-     
-      
-      
-
+    }
+    $count++;  
+  }
+      fclose($fp);
+  
+      echo "Cantidad de Lineas del Archivo: " .$count;
   
 }
 

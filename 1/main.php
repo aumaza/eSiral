@@ -113,6 +113,7 @@
 
    <div class="btn-group btn-group-justified">
     <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes</a>
+    <a href="cargar_dp/cargar_dp.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar DP</a>
     <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
     <a href="datos_personales/datos_personales.php" class="btn btn-default"><span class="pull-center "><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</a>
    
