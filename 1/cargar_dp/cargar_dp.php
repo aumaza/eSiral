@@ -190,9 +190,9 @@ if($conn)
 			 echo "<td align=center>".$fila['id']."</td>";
 			 echo "<td align=center>".$fila['cod_arch']."</td>";
 			 echo "<td align=center>".$fila['nro_lote']."</td>";
-			 echo "<td align=center>".$fila['periodo']."</td>";
-			 echo "<td align=center>".$fila['tipo_doc']."</td>";
-			 echo "<td align=center>".$fila['num_dni']."</td>";
+			 echo "<td align=center>".$fila['per_lote']."</td>";
+			 echo "<td align=center>".$fila['tipo_dni']."</td>";
+			 echo "<td align=center>".$fila['nro_dni']."</td>";
 			 echo "<td align=center>".$fila['nombreApellido']."</td>";
 			 echo "<td align=center>".$fila['f_nac']."</td>";
 			 echo "<td align=center>".$fila['cod_sex']."</td>";
@@ -210,7 +210,7 @@ if($conn)
 			 echo "<td align=center>".$fila['tip_hor']."</td>";
 			 echo "<td class='text-nowrap'>";
 			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="eliminar.php?id='.$fila['id'].'" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-pencil"></span> Eliminar</a>';
+			 echo '<a href="#" data-href="eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;
