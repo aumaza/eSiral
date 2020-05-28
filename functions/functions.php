@@ -90,6 +90,38 @@ $sql = "CREATE TABLE files_ok (".
 }
 
 
+function createTableCH(){
+  
+  $sql = "CREATE TABLE tb_ch (".
+               "id INT AUTO_INCREMENT,".
+               "cod_arch VARCHAR(3) NOT NULL,".
+               "nro_lote int(3) ZEROFILL NOT NULL,".
+               "per_lote int(6) NOT NULL,".
+               "cod_inst varchar(2) NOT NULL,".
+               "cod_esc  int(4) ZEROFILL NOT NULL,".
+               "cod_concepto  int(6) NOT NULL,".
+               "desc_concepto varchar(40) NOT NULL,".
+               "rem_bon int(1) NOT NULL,".
+               "tip_concepto int(1) NOT NULL,".
+               "PRIMARY KEY (id)); ";
+
+	mysql_select_db('sirhal_web');
+	$retval = mysql_query($sql);
+	
+	if(!$retval){
+	  
+	echo '<div class="alert alert-danger" role="alert">';
+	mysql_error(); 
+	echo '</div>';
+	}else{
+	  echo '<div class="alert alert-success" role="alert">';
+	  echo 'Table create Succesfully';
+	  echo '</div>';
+	 }
+  
+}
+
+
 function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 
 		

@@ -123,7 +123,7 @@
   
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Código Archivo</span>
-    <input id="text" type="text" class="form-control" name="cod_arch" value="DP" readonly>
+    <input id="text" type="text" class="form-control" name="cod_arch" value="DP1" readonly>
   </div><br>
   
   <div class="input-group">

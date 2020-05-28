@@ -1,0 +1,2 @@
+# importar datos a tabla mysql
+load data local infile '/home/augusto/organismos.csv' into table organismos fields terminated by ',' enclosed by '"' lines terminated by '\r\n' (cod_org,saf,descripcion);
