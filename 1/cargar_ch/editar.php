@@ -149,8 +149,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                       // value="'.$valores[cod_escalafon].'" '.(($fila['cod_escalafon']== $valores[cod_escalafon])?'selected="selected"':"").'
-                        echo '<option value="'.$valores[cod_escalafon].'" '.(($fila['cod_escalafon']== $valores[cod_escalafon])?'selected="selected"':"").'>'.$valores[cod_escalafon].'-'.$valores[descripcion].'-'.$valores[grado].'-'.$valores[cod_apertura].'</option>';
+                       echo '<option value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'>'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }

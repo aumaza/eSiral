@@ -142,7 +142,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_escalafon].'">'.$valores[cod_escalafon].'-'.$valores[descripcion].'-'.$valores[grado].'-'.$valores[cod_apertura].'</option>';
+                        echo '<option value="'.$valores[cod_esc].'">'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
