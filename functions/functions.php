@@ -121,6 +121,57 @@ function createTableCH(){
   
 }
 
+function createTableLH1(){
+  
+  $sql = "CREATE TABLE tb_lh1 (".
+               "id INT AUTO_INCREMENT,".
+               "cod_inst VARCHAR(2) NOT NULL,".
+               "cod_arch VARCHAR(3) NOT NULL,".
+               "nro_lote int(3) ZEROFILL NOT NULL,".
+               "per_lote int(6) NOT NULL,".
+               "tipo_doc VARCHAR(3) NOT NULL,".
+               "nro_doc  int(16) ZEROFILL NOT NULL,".
+               "cod_esc  int(4) ZEROFILL NOT NULL,".
+               "cod_agrup  VARCHAR(4) NOT NULL,".
+               "cod_nivel  VARCHAR(3) NOT NULL,".
+               "cod_grado VARCHAR(3) NOT NULL,".
+               "cod_uni   VARCHAR(13) NOT NULL,".
+               "cod_jur   VARCHAR(2) NOT NULL,".
+               "cod_subjur  VARCHAR(2) NOT NULL,".
+               "cod_entidad  VARCHAR(2) NOT NULL,".
+               "cod_prog   VARCHAR(1) NOT NULL,".
+               "cod_subprog  VARCHAR(1) NOT NULL,".
+               "cod_proy  VARCHAR(1) NOT NULL,".
+               "cod_act  VARCHAR(2) NOT NULL,".
+               "cod_geo  VARCHAR(2) NOT NULL,".
+               "periodo  int(4) ZEROFILL NOT NULL,".
+               "tipo_planta  VARCHAR(1) NOT NULL,".
+               "f_ing  date NOT NULL,".
+               "cod_fin  int(3) ZEROFILL NOT NULL,".
+               "marca_estado  VARCHAR(1) NOT NULL,".
+               "PRIMARY KEY (id)); ";
+
+	mysql_select_db('sirhal_web');
+	$retval = mysql_query($sql);
+	
+	if(!$retval){
+	  
+	echo '<div class="alert alert-danger" role="alert">';
+	mysql_error(); 
+	echo '</div>';
+	}else{
+	  echo '<div class="alert alert-success" role="alert">';
+	  echo 'Table create Succesfully';
+	  echo '</div>';
+	 }
+  
+}
+
+
+
+
+
+
 
 function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 

@@ -165,138 +165,506 @@
   </div><br>
   
    <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Apellido y Nombre</span>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NombreApellido"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nombre" placeholder="Apellido y Nombre" required>
-  </div><br>
-  
-  <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Fecha Nacimiento</span>
-    <input id="text" type="date" class="form-control" name="f_nac" required>
-  </div><br>
-  
-  <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Sexo</span>
-  <select class="browser-default custom-select" name="sexo">
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="FEM">Femenino</option>
-  <option value="MASC">Masculino</option>
-  </select>
-</div><br>
+  <span class="input-group-addon" style="color: blue">Escalafón</span>
+              <select class="browser-default custom-select" name="cod_esc">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
 
-<div class="input-group">
-  <span class="input-group-addon" style="color: blue">Estado Civil</span>
-  <select class="browser-default custom-select" name="cod_est_civ" required>
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="CAS">Casado/a</option>
-  <option value="SOL">Soltero/a</option>
-  <option value="DIV">Divorciado/a</option>
-  <option value="UHE">Unido/a de Hecho</option>
-  <option value="VIU">Viudo/a</option>
-  <option value="UCI">Unión Civil</option>
-  <option value="OTS">Otros</option>
-  </select>
-</div><br>
+              $query = "SELECT * FROM escalafones";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
 
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_esc].'">'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
 
+               
+
+                ?>
+                </select>
+                </div><br>
   
-  <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Fecha Ingreso</span>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#FI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="f_ing" placeholder="AAAAMM" required>
-  </div><br>
-  
-  <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Código Nacionalidad</span>
-  <select class="browser-default custom-select" name="cod_nac" required>
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="01">Argentino Nativo</option>
-  <option value="02">Argentino Naturalizado</option>
-  <option value="03">Extranjero</option>
-  <option value="04">Argentino por Opción</option>
-  <option value="90">Otra</option>
-  </select>
-</div><br>
-
-<div class="input-group">
-  <span class="input-group-addon" style="color: blue">Nivel Educativo</span>
-  <select class="browser-default custom-select" name="cod_niv_edu" required>
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="EP">Educación Primaria</option>
-  <option value="ES">Educación Secundaria</option>
-  <option value="ET">Educación Terciaria</option>
-  <option value="EU">Educación Universitaria y Superior</option>
-  <option value="OT">Otra Area Educativa</option>
-  </select>
-</div><br>
-
-  
-  <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Título Obtenido</span>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#TitObtenido"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="desc_tit" placeholder="Describa el Título Obtenido" required>
-  </div><br>
   
    <div class="input-group">
-     <span class="input-group-addon" style="color: blue">Cuit/Cuil</span>
-     <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CUIL"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input  type="text" class="form-control" name="cuit_cuil" placeholder="209996664440" required>
-  </div><br>
-  
-  
-  <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Sistema Previsional</span>
-  <select class="browser-default custom-select" name="sist_prev" required>
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="R">Reparto</option>
-  <option value="C">Capitalización</option>
-  </select>
-</div><br>
+  <span class="input-group-addon" style="color: blue">Agrupamiento</span>
+              <select class="browser-default custom-select" name="cod_agrup">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
 
-<div class="input-group">
-  <span class="input-group-addon" style="color: blue">Codigo Sistema Previsonal</span>
-  <select class="browser-default custom-select" name="cod_sist_prev" required>
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="20">AFJP - Consolidar</option>
-  <option value="21">AFJP - Siembra</option>
-  <option value="22">AFJP - Orígenes</option>
-  <option value="24">AFJP - Profsion + Auge</option>
-  <option value="26">AFJP - Máxima</option>
-  <option value="29">AFJP - Arauca Bit</option>
-  <option value="34">AFJP - Futura</option>
-  <option value="37">AFJP - Nación</option>
-  <option value="39">AFJP - Previsol</option>
-  <option value="40">AFJP - Pro-Renta</option>
-  <option value="41">AFJP - MET</option>
-  <option value="42">AFJP - Unidos</option>
-  <option value="90">Otra Caja o AFJP</option>
-  </select>
-</div><br>
+              $query = "SELECT * FROM agrupamiento";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
 
-  <div class="input-group">
-     <span class="input-group-addon" style="color: blue">Código Obra Social</span>
-    <input  type="text" class="form-control" name="cod_ob_soc" required>
-  </div><br>
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_agrup].'">'.$valores[cod_agrup].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                
+              <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Nivel</span>
+              <select class="browser-default custom-select" name="cod_nivel">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM niveles";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_nivel].'">'.$valores[cod_nivel].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                 <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Grado</span>
+              <select class="browser-default custom-select" name="cod_grado">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM grados";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_grado].'">'.$valores[cod_grado].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Unidad Organizativa</span>
+              <select class="browser-default custom-select" name="cod_uni">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM uni_org";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_uni].'">'.$valores[cod_uni].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Jurisdicción</span>
+              <select class="browser-default custom-select" name="cod_jur">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM jurisdicciones";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_jur].'">'.$valores[cod_jur].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Sub-Jurisdicción</span>
+              <select class="browser-default custom-select" name="cod_subjur">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM sub_jur";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_subjur].'">'.$valores[cod_subjur].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Entidades</span>
+              <select class="browser-default custom-select" name="cod_entidad">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM entidades";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_entidad].'">'.$valores[cod_entidad].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                
+                  
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Programas</span>
+              <select class="browser-default custom-select" name="cod_prog">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM programas";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_prog].'">'.$valores[cod_prog].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Sub-Programas</span>
+              <select class="browser-default custom-select" name="cod_suprog">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM subprogramas";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_subprog].'">'.$valores[cod_subprog].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                 <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Proyectos</span>
+              <select class="browser-default custom-select" name="cod_proy">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM proyectos";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_proy].'">'.$valores[cod_proy].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                
+                 <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Actividades</span>
+              <select class="browser-default custom-select" name="cod_act">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM actividades";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_act].'">'.$valores[cod_act].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Ubicación Geográfica</span>
+              <select class="browser-default custom-select" name="cod_geo">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM ubi_geo";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_geo].'">'.$valores[cod_geo].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                <div class="input-group">
+		<span class="input-group-addon" style="color: blue">Período</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Periodo"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" class="form-control" name="periodo" placeholder="AAAAMM" required>
+		</div><br>
+		
+		
+		 <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Tipo de Planta</span>
+              <select class="browser-default custom-select" name="cod_planta">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM tipo_planta";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_planta].'">'.$valores[cod_planta].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                 <div class="input-group">
+		  <span class="input-group-addon" style="color: blue">Fecha Ingreso</span>
+		    <input id="text" type="date" class="form-control" name="f_ing" required>
+		 </div><br>
+                
+              <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Fuente Financiamiento</span>
+              <select class="browser-default custom-select" name="cod_ff">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM fuente_financiamiento";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_ff].'">'.$valores[cod_ff].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                
+
+                ?>
+                </select>
+                </div><br>
+                
+                 <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Marca de Estado</span>
+              <select class="browser-default custom-select" name="cod_estado">
+              <option value="" disabled selected>Seleccionar</option>
+              
+             <?php
+             
+             
+               if($conn){
+
+              $query = "SELECT * FROM marca_estado";
+              mysql_select_db('sirhal_web');
+              $res = mysql_query($query);
+
+              if($res)
+              {
+                
+                  while ($valores = mysql_fetch_array($res))
+                    {
+                        echo '<option value="'.$valores[cod_estado].'">'.$valores[cod_estado].'-'.$valores[descripcion].'</option>';
+                    }
+                }
+                }
+
+                mysql_close($conn);
+
+                ?>
+                </select>
+                </div><br>
   
-  <div class="input-group">
-     <span class="input-group-addon" style="color: blue">Nro. Afiliado</span>
-    <input  type="text" class="form-control" name="nro_afi"  required>
-  </div>
-  <br>
   
-  <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Tipo Horario Laboral</span>
-  <select class="browser-default custom-select" name="tip_hor" required>
-  <option value="" disabled selected>Seleccionar</option>
-  <option value="1">Jornada Legal</option>
-  <option value="2">Horario Reducido</option>
-  <option value="3">Otros Horarios Especiales</option>
-  </select>
-</div><br><hr>
+ 
   
   <div class="form-group">
    <div class="col-sm-offset-2 col-sm-12" align="left">
@@ -323,7 +691,8 @@
       </div>
       <div class="modal-body">
         <p>El número de lote debe tener 3 dígitos.</p>
-	<p>Si es el primer lote que carga entonces deberá ingresarlo asi: 001.</p>
+	<p>Si es el primer lote que carga, entonces deberá ingresarlo asi: 1.</p>
+	<p>No se preocupe por los ceros faltantes delante de la unidad, se agregarán automáticamente.</p>
 	<p>Hasta llegar al número 999.</p>
       </div>
       <div class="modal-footer">
@@ -383,20 +752,19 @@
 </div>
 <!-- End Modal Nro. DNI-->
     
-    <!-- Modal Nombre y Apellido-->
-<div id="NombreApellido" class="modal fade" role="dialog">
+    <!-- Modal Período-->
+<div id="Periodo" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Nombre y Apellido</h4>
+        <h4 class="modal-title">Período Liquidado</h4>
       </div>
       <div class="modal-body" align="center">
-        <p>Deberá ingresar primero el Apellido y luego el Nombre.</p>
-	<p>No separe el Apellido del nombre por comas ni guiones, solo por espacios.</p>
-	<p>Ejemplo: Gonzalez Marcos</p>
+        <p>Deberá ingresar los datos con el mismo formato que para el período del lote.</p>
+	<p>Ejemplo: 202001</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -405,80 +773,12 @@
 
   </div>
 </div>
-<!-- End Modal Nombre y Apellido-->
+<!-- End Modal Periodo-->
     
-<!-- Modal Titulo Obtenido-->
-<div id="TitObtenido" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Título Obtenido</h4>
-      </div>
-      <div class="modal-body" align="center">
-        <p>Al igual que en Nombre y Apellido,</p>
-	<p>No separe por comas ni guiones, solo por espacios.</p>
-	<p>Ejemplo: Licenciatura en Psicología</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
 
-  </div>
-</div>
-<!-- End Modal Titulo Obtenido-->
 
-<!-- Modal Cuil-->
-<div id="CUIL" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">CUIL-CUIT</h4>
-      </div>
-      <div class="modal-body" align="center">
-        <p>Al igual que en el ingreso del DNI</p>
-	<p>No separe por comas ni guiones,ingrese los números sin espacios.</p>
-	<p>Ejemplo: 20996664440</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- End Modal Cuil-->
-
-<!-- Modal FI-->
-<div id="FI" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Fecha de Ingreso</h4>
-      </div>
-      <div class="modal-body" align="center">
-        <p>Al igual que en el ingreso del Período del Lote,</p>
-	<p>No separe por comas ni guiones,ingrese los números sin espacios, si desea ingresar Febrero de 1996</p>
-	<p>Ejemplo: 199602</p>
-	<p>En el caso que sea un contrato, se indicará la fecha de inicio del contrato vigente.-</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- End Modal FI-->
     
 
 </div>
