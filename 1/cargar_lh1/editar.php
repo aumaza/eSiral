@@ -36,6 +36,12 @@
 	echo '<a href="../../index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 	die();
 	}
+	
+	$id = $_GET['id'];
+      $sql = "SELECT * FROM tb_lh1 WHERE id = '$id'";
+      mysql_select_db('sirhal_web');
+      $resultado = mysql_query($sql,$conn);
+      $fila = mysql_fetch_assoc($resultado);
 
 ?>
 
@@ -119,7 +125,8 @@
    
 
     
-     <form action="formNuevoRegistro.php" method="post">
+     <form action="formUpdate.php" method="post">
+     <input type="hidden" id="id" name="id" value="<?php echo $fila['id']; ?>" />
   
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Código Archivo</span>
@@ -130,7 +137,7 @@
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" required>
+    <input id="text" type="text" class="form-control" name="nro_lote" value="<?php echo $fila['nro_lote']; ?>" required>
     </div>
     <br>
   
@@ -138,7 +145,7 @@
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="per_lote" placeholder="AAAAMM" required>
+    <input id="text" type="text" class="form-control" name="per_lote" value="<?php echo $fila['per_lote']; ?>" required>
   </div><br>
   
   <div class="input-group">
@@ -150,10 +157,10 @@
   <span class="input-group-addon" style="color: blue">Tipo Documento</span>
   <select class="browser-default custom-select" name="tip_doc" required>
   <option value="" disabled selected>Seleccionar</option>
-  <option value="LE">Libreta de Enrolamiento</option>
-  <option value="DNI">DNI</option>
-  <option value="LC">Libreta Cívica</option>
-  <option value="OTS">Otro Documento</option>
+  <option value="LE" <?php if($fila['tipo_doc'] == "LE") echo 'selected'; ?>>Libreta de Enrolamiento</option>
+  <option value="DNI" <?php if($fila['tipo_doc'] == "DNI") echo 'selected'; ?>>DNI</option>
+  <option value="LC" <?php if($fila['tipo_doc'] == "LC") echo 'selected'; ?>>Libreta Cívica</option>
+  <option value="OTS" <?php if($fila['tipo_doc'] == "OTS") echo 'selected'; ?>>Otro Documento</option>
   </select>
   </div><br>
   
@@ -161,7 +168,7 @@
     <span class="input-group-addon" style="color: blue">Nro. DNI</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_dni" placeholder="99666444" required>
+    <input id="text" type="text" class="form-control" name="nro_dni" value="<?php echo $fila['nro_doc']; ?>" required>
   </div><br>
   
    <div class="input-group">
@@ -183,7 +190,8 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_esc].'">'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
+                        //'<option value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'
+                        echo '<option value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'>'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -214,7 +222,8 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_agrup].'">'.$valores[cod_agrup].'-'.$valores[descripcion].'</option>';
+                        //value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'
+                        echo '<option value="'.$valores[cod_agrup].'" '.(($fila['cod_agrup']== $valores[cod_agrup])?'selected="selected"':"").'>'.$valores[cod_agrup].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -245,7 +254,8 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_nivel].'">'.$valores[cod_nivel].'-'.$valores[descripcion].'</option>';
+                        //value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'
+                        echo '<option value="'.$valores[cod_nivel].'" '.(($fila['cod_nivel']== $valores[cod_nivel])?'selected="selected"':"").'>'.$valores[cod_nivel].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -275,7 +285,8 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_grado].'">'.$valores[cod_grado].'-'.$valores[descripcion].'</option>';
+                        //value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'
+                        echo '<option value="'.$valores[cod_grado].'" '.(($fila['cod_grado']== $valores[cod_grado])?'selected="selected"':"").'>'.$valores[cod_grado].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -305,7 +316,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_uni].'">'.$valores[cod_uni].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_uni].'" '.(($fila['cod_uni']== $valores[cod_uni])?'selected="selected"':"").'>'.$valores[cod_uni].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -335,7 +346,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_jur].'">'.$valores[cod_jur].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_jur].'" '.(($fila['cod_jur']== $valores[cod_jur])?'selected="selected"':"").'>'.$valores[cod_jur].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -365,7 +376,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_subjur].'">'.$valores[cod_subjur].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_subjur].'" '.(($fila['cod_subjur']== $valores[cod_subjur])?'selected="selected"':"").'>'.$valores[cod_subjur].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -395,7 +406,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_entidad].'">'.$valores[cod_entidad].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_entidad].'" '.(($fila['cod_entidad']== $valores[cod_entidad])?'selected="selected"':"").'>'.$valores[cod_entidad].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -427,7 +438,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_prog].'">'.$valores[cod_prog].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_prog].'" '.(($fila['cod_prog']== $valores[cod_prog])?'selected="selected"':"").'>'.$valores[cod_prog].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -457,7 +468,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_subprog].'">'.$valores[cod_subprog].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_subprog].'" '.(($fila['cod_subprog']== $valores[cod_subprog])?'selected="selected"':"").'>'.$valores[cod_subprog].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -487,7 +498,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_proy].'">'.$valores[cod_proy].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_proy].'" '.(($fila['cod_proy']== $valores[cod_proy])?'selected="selected"':"").'>'.$valores[cod_proy].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -518,7 +529,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_act].'">'.$valores[cod_act].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_act].'" '.(($fila['cod_act']== $valores[cod_act])?'selected="selected"':"").'>'.$valores[cod_act].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -549,7 +560,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_geo].'">'.$valores[cod_geo].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_geo].'" '.(($fila['cod_geo']== $valores[cod_geo])?'selected="selected"':"").'>'.$valores[cod_geo].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -564,7 +575,7 @@
 		<span class="input-group-addon" style="color: blue">Período</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Periodo"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="periodo" placeholder="AAAAMM" required>
+		<input id="text" type="text" class="form-control" name="periodo" value="<?php echo $fila['periodo']; ?>" required>
 		</div><br>
 		
 		
@@ -587,7 +598,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_planta].'">'.$valores[cod_planta].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_planta].'" '.(($fila['tipo_planta']== $valores[cod_planta])?'selected="selected"':"").'>'.$valores[cod_planta].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -600,7 +611,7 @@
                 
                  <div class="input-group">
 		  <span class="input-group-addon" style="color: blue">Fecha Ingreso</span>
-		    <input id="text" type="date" class="form-control" name="f_ing" required>
+		    <input id="text" type="date" class="form-control" name="f_ing" value="<?php echo $fila['f_ing']; ?>" required>
 		 </div><br>
                 
               <div class="input-group">
@@ -622,7 +633,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_ff].'">'.$valores[cod_ff].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_ff].'" '.(($fila['cod_fin']== $valores[cod_ff])?'selected="selected"':"").'>'.$valores[cod_ff].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -652,7 +663,7 @@
                 
                   while ($valores = mysql_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_estado].'">'.$valores[cod_estado].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_estado].'" '.(($fila['marca_estado']== $valores[cod_estado])?'selected="selected"':"").'>'.$valores[cod_estado].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -668,7 +679,7 @@
   
   <div class="form-group">
    <div class="col-sm-offset-2 col-sm-12" align="left">
-   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
+   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
    <a href="cargar_lh1.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
   </div>

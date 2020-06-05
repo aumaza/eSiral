@@ -138,16 +138,16 @@ function createTableLH1(){
                "cod_uni   VARCHAR(13) NOT NULL,".
                "cod_jur   VARCHAR(2) NOT NULL,".
                "cod_subjur  VARCHAR(2) NOT NULL,".
-               "cod_entidad  VARCHAR(2) NOT NULL,".
-               "cod_prog   VARCHAR(1) NOT NULL,".
-               "cod_subprog  VARCHAR(1) NOT NULL,".
-               "cod_proy  VARCHAR(1) NOT NULL,".
+               "cod_entidad  VARCHAR(3) NOT NULL,".
+               "cod_prog   VARCHAR(2) NOT NULL,".
+               "cod_subprog  VARCHAR(2) NOT NULL,".
+               "cod_proy  VARCHAR(2) NOT NULL,".
                "cod_act  VARCHAR(2) NOT NULL,".
                "cod_geo  VARCHAR(2) NOT NULL,".
                "periodo  int(4) ZEROFILL NOT NULL,".
                "tipo_planta  VARCHAR(1) NOT NULL,".
                "f_ing  date NOT NULL,".
-               "cod_fin  int(3) ZEROFILL NOT NULL,".
+               "cod_fin  int(2) ZEROFILL NOT NULL,".
                "marca_estado  VARCHAR(1) NOT NULL,".
                "PRIMARY KEY (id)); ";
 

@@ -202,7 +202,7 @@ if($conn)
 			 echo "<td align=center>".$fila['cod_agrup']."</td>";
 			 echo "<td align=center>".$fila['cod_nivel']."</td>";
 			 echo "<td align=center>".$fila['cod_grado']."</td>";
-			 echo "<td align=center>".$fila['cod_unidad']."</td>";
+			 echo "<td align=center>".$fila['cod_uni']."</td>";
 			 echo "<td align=center>".$fila['cod_jur']."</td>";
 			 echo "<td align=center>".$fila['cod_subjur']."</td>";
 			 echo "<td align=center>".$fila['cod_entidad']."</td>";
@@ -211,7 +211,7 @@ if($conn)
 			 echo "<td align=center>".$fila['cod_proy']."</td>";
 			 echo "<td align=center>".$fila['cod_act']."</td>";
 			 echo "<td align=center>".$fila['cod_geo']."</td>";
-			 echo "<td align=center>".$fila['cod_per']."</td>";
+			 echo "<td align=center>".$fila['periodo']."</td>";
 			 echo "<td align=center>".$fila['tipo_planta']."</td>";
 			 echo "<td align=center>".$fila['f_ing']."</td>";
 			 echo "<td align=center>".$fila['cod_fin']."</td>";
