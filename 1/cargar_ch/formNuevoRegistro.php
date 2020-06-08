@@ -97,21 +97,15 @@ session_start();
 		$rem_bon = mysql_real_escape_string($_POST["rem_bon"], $conn);
 		$tip_concepto = mysql_real_escape_string($_POST["tip_concepto"], $conn);
 		
-		
-		$integer = array($nro_lote, $per_lote);
-		
-		
-		foreach($integer as $elementos){
-		if(!is_numeric($elementos)){
-		
-		  echo '<div class="alert alert-danger" role="alert">';
-		  echo  "Ha introducido datos erroneos: " .$elementos. " Verifíquelos";
-		  echo "</div>";
-		
-		}
-		}
-		
-		
+		isString($cod_arch);
+		isNumeric($nro_lote);
+		isNumeric($per_lote);
+		isString($cod_org);
+		isNumeric($cod_escalafon);
+		isNumeric($cod_concepto);
+		isString($desc_concepto);
+		isNumeric($rem_bon);
+		isNumeric($tip_concepto);
 		
 		
 		 $sqlInsert = "INSERT INTO tb_ch ".

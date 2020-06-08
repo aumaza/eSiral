@@ -96,7 +96,7 @@ function createTableCH(){
                "id INT AUTO_INCREMENT,".
                "cod_arch VARCHAR(3) NOT NULL,".
                "nro_lote int(3) ZEROFILL NOT NULL,".
-               "per_lote int(6) NOT NULL,".
+               "per_lote int(6) ZEROFILL NOT NULL,".
                "cod_inst varchar(2) NOT NULL,".
                "cod_esc  int(4) ZEROFILL NOT NULL,".
                "cod_concepto  int(6) NOT NULL,".
@@ -288,10 +288,10 @@ function updatePass($user,$pass1,$pass2){
     	mysql_select_db('sirhal_web');
     	
     	
-    	if(strcmp($pass2, $pass1) == 0)
-    	{
-    		mysql_query($sql);
-    		echo "<br>";
+    	if(strcmp($pass2, $pass1) == 0){
+    		
+		      mysql_query($sql);
+			echo "<br>";
 			echo '<div class="section"><br>
 			      <div class="container">
 			      <div class="row">
@@ -304,11 +304,8 @@ function updatePass($user,$pass1,$pass2){
 			echo "</div>";
 			echo "</div>";
 			
-	   	}
-
-    	else
-    	{
-    		echo "<br>";
+	   	}else{
+			echo "<br>";
 			echo '<div class="section"><br>
 			      <div class="container">
 			      <div class="row">

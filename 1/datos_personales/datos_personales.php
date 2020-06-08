@@ -124,7 +124,7 @@
 <div class="collapse navbar-collapse" id="alignment-example">
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
-      </ul>
+    </ul>
 <!-- Search -->
 </div>
 </div>
@@ -173,6 +173,7 @@ if($conn)
 			 echo "<td align=center>".$fila['organismo']."</td>";
 			 echo "<td class='text-nowrap'>";
 			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="editPassword.php?id='.$fila['id'].'" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-refresh"></span> Cambiar Password</a>';
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;

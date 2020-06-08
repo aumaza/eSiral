@@ -125,7 +125,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> DP </strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> DP - Datos de Personas</strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->

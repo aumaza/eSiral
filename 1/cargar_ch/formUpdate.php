@@ -1,4 +1,5 @@
 <?php include "../../connection/connection.php";
+      include "../../functions/functions.php"; 
 
 session_start();
 	$varsession = $_SESSION['user'];
@@ -110,6 +111,16 @@ session_start();
 		$desc_concepto = mysql_real_escape_string($_POST["desc_concepto"], $conn);
 		$rem_bon = mysql_real_escape_string($_POST["rem_bon"], $conn);
 		$tip_concepto = mysql_real_escape_string($_POST["tip_concepto"], $conn);
+		
+		isString($cod_arch);
+		isNumeric($nro_lote);
+		isNumeric($per_lote);
+		isString($cod_org);
+		isNumeric($cod_escalafon);
+		isNumeric($cod_concepto);
+		isString($desc_concepto);
+		isNumeric($rem_bon);
+		isNumeric($tip_concepto);
 		
 			
 		$sqlInsert = "UPDATE tb_ch SET cod_arch='$cod_arch',nro_lote='$nro_lote',per_lote='$per_lote', cod_inst='$cod_org',

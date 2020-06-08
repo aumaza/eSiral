@@ -125,7 +125,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> LH1 </strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> LH1 - Liquidación de Haberes</strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->
