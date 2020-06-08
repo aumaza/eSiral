@@ -168,6 +168,41 @@ function createTableLH1(){
 }
 
 
+function createTableLH2(){
+  
+  $sql = "CREATE TABLE tb_lh2 (".
+               "id INT AUTO_INCREMENT,".
+               "cod_inst VARCHAR(2) NOT NULL,".
+               "cod_arch VARCHAR(3) NOT NULL,".
+               "nro_lote int(3) ZEROFILL NOT NULL,".
+               "per_lote int(6) NOT NULL,".
+               "tipo_doc VARCHAR(3) NOT NULL,".
+               "nro_doc  int(16) ZEROFILL NOT NULL,".
+               "cod_esc  int(4) ZEROFILL NOT NULL,".
+               "cod_concepto  int(6) NOT NULL,".
+               "importe  float(15,2) ZEROFILL NOT NULL,".
+               "tipo_uf  int(2) ZEROFILL NOT NULL,".
+               "cant_uf  int(6) ZEROFILL NOT NULL,".
+               "periodo  int(4) NOT NULL,".
+               "PRIMARY KEY (id)); ";
+
+	mysql_select_db('sirhal_web');
+	$retval = mysql_query($sql);
+	
+	if(!$retval){
+	  
+	echo '<div class="alert alert-danger" role="alert">';
+	mysql_error(); 
+	echo '</div>';
+	}else{
+	  echo '<div class="alert alert-success" role="alert">';
+	  echo 'Table create Succesfully';
+	  echo '</div>';
+	 }
+  
+}
+
+
 
 
 
@@ -543,5 +578,34 @@ function processDP($fp){
   
 }
 
+
+function isNumeric($var){
+  
+  if(!is_numeric($var)){
+		  echo '<div class="alert alert-danger" role="alert">';
+		  echo  "El dato introducido no es numérico: " .$var. " Verifíquelo";
+		  echo "</div>";
+  }else{
+		  echo '<div class="alert alert-success" role="alert">';
+		  echo  "El dato es numérico: " .$var;
+		  echo "</div>";
+  }
+  
+}
+
+function isString($var){
+  
+  if(!is_string($var)){
+    
+		  echo '<div class="alert alert-danger" role="alert">';
+		  echo  "El dato introducido no es alfabético: " .$var. " Verifíquelo";
+		  echo "</div>";    
+  }else{
+		  echo '<div class="alert alert-success" role="alert">';
+		  echo  "El dato es alabético: " .$var;
+		  echo "</div>";
+  }
+  
+}
 
 ?>

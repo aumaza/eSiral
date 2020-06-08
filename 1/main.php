@@ -113,12 +113,20 @@
 
    <div class="btn-group btn-group-justified">
     <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes</a>
-    <a href="cargar_dp/cargar_dp.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar DP</a>
-    <a href="cargar_ch/cargar_ch.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar CH</a>
-    <a href="cargar_lh1/cargar_lh1.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH1</a>
-    <a href="cargar_lh2/cargar_lh2.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH2</a>
+    <div class="btn-group btn-group-justified">
+    <button type="button" class="btn btn-default"><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Cargar Lotes </button>
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+    <li><a href="cargar_dp/cargar_dp.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar DP (Datos Personales)</a></li>
+    <li><a href="cargar_ch/cargar_ch.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar CH (Cabezal de Haberes)</a></li>
+    <li><a href="cargar_lh1/cargar_lh1.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH1 (Listado de Haberes)</a></li>
+    <li><a href="cargar_lh2/cargar_lh2.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH2 (Listado de Haberes)</a></li>
+    </ul>
+  </div>
     <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
     <a href="datos_personales/datos_personales.php" class="btn btn-default"><span class="pull-center "><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</a>
+</div>
+    
    
   
   </div>
