@@ -133,6 +133,8 @@
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
     <li class="active" ><a href="nuevoRegistro.php">Ingresar Registro <span class="pull-center "><img src="../../icons/actions/list-add.png"  class="img-reponsive img-rounded"></a></li>
+      <li class="active" ><a href="genLote.php">Generar Archivo de Lote <span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"></a></li>
+       <li class="active" ><a href="../upload_lote/lotes_ok.php">Descargar Lote Generado <span class="pull-center "><img src="../../icons/actions/svn-update.png"  class="img-reponsive img-rounded"></a></li>
       </ul>
 <!-- Search -->
 </div>

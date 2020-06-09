@@ -6,7 +6,6 @@
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysql_select_db('sirhal_web');
         $retval = mysql_query($sql);
-        
         while($fila = mysql_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
@@ -17,6 +16,14 @@
 	$valor = mysql_query($sqla);
 	while($row = mysql_fetch_array($valor)){
 	  $organismo = $row['organismo'];
+	}
+		
+	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
+	mysql_select_db('sirhal_web');
+	$res = mysql_query($query);
+	while($linea = mysql_fetch_array($res)){
+	  $cod = $linea['cod_org'];
+	 
 	}
 	
 	if($varsession == null || $varsession = ''){
@@ -33,7 +40,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Cargar LH1</title>
+	<title>Lotes Generados</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -57,15 +64,7 @@
 
       $(document).ready(function(){
       $('#myTable').DataTable({
-	"order": [[1, "asc"]],
-	"scrollY":        "300px",
-        "scrollX":        true,
-        "scrollCollapse": true,
-        "paging":         false,
-        "columnDefs": [
-            { width: '40%', targets: 0 }
-        ],
-        "fixedColumns": true,
+      "order": [[1, "asc"]],
       "language":{
         "lengthMenu": "Mostrar _MENU_ registros por pagina",
         "info": "Mostrando pagina _PAGE_ de _PAGES_",
@@ -97,7 +96,7 @@
 	<?php setlocale(LC_ALL,"es_ES"); ?>
 	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
 	 <?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %B del %Y"); ?> </button>
+	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %b de %Y"); ?> </button>
 	</div>
 	</div>
 	</div>
@@ -125,16 +124,13 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> LH1 - Liquidación de Haberes</strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/places/server-database.png"  class="img-reponsive img-rounded"><strong> Lotes Generados</strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->
 <div class="collapse navbar-collapse" id="alignment-example">
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
-    <li class="active" ><a href="nuevoRegistro.php">Ingresar Registro <span class="pull-center "><img src="../../icons/actions/list-add.png"  class="img-reponsive img-rounded"></a></li>
-      <li class="active" ><a href="genLote.php">Generar Archivo de Lote <span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"></a></li>
-       <li class="active" ><a href="../upload_lote/lotes_ok.php">Descargar Lote Generado <span class="pull-center "><img src="../../icons/actions/svn-update.png"  class="img-reponsive img-rounded"></a></li>
       </ul>
 <!-- Search -->
 </div>
@@ -146,7 +142,7 @@
 
 if($conn)
 {
-	$sql = "SELECT * FROM tb_lh1";
+	$sql = "SELECT * FROM files_ok where cod_org = '$cod'";
     	mysql_select_db('sirhal_web');
     	$resultado = mysql_query($sql,$conn);
 	//mostramos fila x fila
@@ -159,30 +155,10 @@ if($conn)
               echo "<thead>
 
                     <th class='text-nowrap text-center'>ID</th>
-                    <th class='text-nowrap text-center'>Código Archivo</th>
-                    <th class='text-nowrap text-center'>Nro. Lote</th>
-                    <th class='text-nowrap text-center'>Período Lote</th>
-                    <th class='text-nowrap text-center'>Código Organismo</th>
-                    <th class='text-nowrap text-center'>Tipo Doc.</th>
-                    <th class='text-nowrap text-center'>Nro. Doc.</th>
-                    <th class='text-nowrap text-center'>Código Escalafón</th>
-                    <th class='text-nowrap text-center'>Código Agrup.</th>
-                    <th class='text-nowrap text-center'>Código Nivel</th>
-                    <th class='text-nowrap text-center'>Código Grado</th>
-                    <th class='text-nowrap text-center'>Código Unidad</th>
-                    <th class='text-nowrap text-center'>Código Juris.</th>
-                    <th class='text-nowrap text-center'>Código SubJuris.</th>
-                    <th class='text-nowrap text-center'>Código Entidad</th>
-                    <th class='text-nowrap text-center'>Código Programa</th>
-                    <th class='text-nowrap text-center'>Código Sub-Programa</th>
-                    <th class='text-nowrap text-center'>Código Proyecto</th>
-                    <th class='text-nowrap text-center'>Código Actividad</th>
-                    <th class='text-nowrap text-center'>Código Geográfico</th>
-                    <th class='text-nowrap text-center'>Período</th>
-                    <th class='text-nowrap text-center'>Tipo de Planta</th>
-                    <th class='text-nowrap text-center'>Fecha Ing.</th>
-                    <th class='text-nowrap text-center'>Código Financiamiento</th>
-                    <th class='text-nowrap text-center'>Marca de Estado</th>
+                    <th class='text-nowrap text-center'>Archivo</th>
+                    <th class='text-nowrap text-center'>Usuario</th>
+                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th class='text-nowrap text-center'>Subido</th>
                     <th>&nbsp;</th>
                     </thead>";
 
@@ -194,33 +170,12 @@ if($conn)
 			 // Listado normal
 			 echo "<tr>";
 			 echo "<td align=center>".$fila['id']."</td>";
-			 echo "<td align=center>".$fila['cod_arch']."</td>";
-			 echo "<td align=center>".$fila['nro_lote']."</td>";
-			 echo "<td align=center>".$fila['per_lote']."</td>";
-			 echo "<td align=center>".$fila['cod_inst']."</td>";
-			 echo "<td align=center>".$fila['tipo_doc']."</td>";
-			 echo "<td align=center>".$fila['nro_doc']."</td>";
-			 echo "<td align=center>".$fila['cod_esc']."</td>";
-			 echo "<td align=center>".$fila['cod_agrup']."</td>";
-			 echo "<td align=center>".$fila['cod_nivel']."</td>";
-			 echo "<td align=center>".$fila['cod_grado']."</td>";
-			 echo "<td align=center>".$fila['cod_uni']."</td>";
-			 echo "<td align=center>".$fila['cod_jur']."</td>";
-			 echo "<td align=center>".$fila['cod_subjur']."</td>";
-			 echo "<td align=center>".$fila['cod_entidad']."</td>";
-			 echo "<td align=center>".$fila['cod_prog']."</td>";
-			 echo "<td align=center>".$fila['cod_subprog']."</td>";
-			 echo "<td align=center>".$fila['cod_proy']."</td>";
-			 echo "<td align=center>".$fila['cod_act']."</td>";
-			 echo "<td align=center>".$fila['cod_geo']."</td>";
-			 echo "<td align=center>".$fila['periodo']."</td>";
-			 echo "<td align=center>".$fila['tipo_planta']."</td>";
-			 echo "<td align=center>".$fila['f_ing']."</td>";
-			 echo "<td align=center>".$fila['cod_fin']."</td>";
-			 echo "<td align=center>".$fila['marca_estado']."</td>";
+			 echo "<td align=center>".$fila['file_name']."</td>";
+			 echo "<td align=center>".$fila['user_name']."</td>";
+			 echo "<td align=center>".$fila['cod_org']."</td>";
+			 echo "<td align=center>".$fila['upload_on']."</td>";
 			 echo "<td class='text-nowrap'>";
-			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="#" data-href="eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo '<a href="download_lote.php?file_name='.$fila['file_name'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-save"></span> Descargar</a>';
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;

@@ -69,6 +69,7 @@ $sql = "CREATE TABLE files_ok (".
       "id INT AUTO_INCREMENT,".
       "file_name VARCHAR(255),".
       "user_name VARCHAR(60),".
+      "cod_org   VARCHAR(2),".
       "path_folder VARCHAR(60),".
       "upload_on datetime NOT NULL,".
       "status enum('1','0') NOT NULL DEFAULT 1,".
@@ -79,12 +80,16 @@ $sql = "CREATE TABLE files_ok (".
 	
 	if(!$retval)
 	{
-		mysql_error(); 	
+	    echo '<div class="alert alert-danger" role="alert" align="center">';
+	    echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error ' .mysql_error();
+	    echo "</div>";
 	}
 	
 	else
 	 {	
-		echo 'Table create Succesfully\n';
+	    echo '<div class="alert alert-success" role="alert" align="center">';
+	    echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Tabla Creada Exitosamente';
+	    echo "</div>";
 	 }
    
 }
@@ -604,5 +609,117 @@ function isString($var){
   }
   
 }
+
+
+function genLoteDP($var1,$var2,$var3,$var4){
+
+    
+           
+	$sql = "SELECT tipo_dni, nro_dni, nombreApellido, f_nac, cod_sexo, cod_est_civ, cod_inst, f_ing, cod_nac, cod_niv_edu, desc_tit, cuil_cuit, sist_prev, cod_sist_prev, cod_ob_soc, nro_afi, tip_hor FROM tb_dp WHERE nro_lote = $var3";
+            
+	mysql_select_db('sirhal_web');
+	$resval = mysql_query($sql);
+	
+	$file = "$var1$var2$var3.SIR";
+	
+	if (mysql_num_rows($resval) != 0) {
+	  $jump = "\r\n";
+	  $separator1 = " ";
+	  $separator2 = "  ";
+	  $separador3 = "   ";
+	  $separador4 = "         ";
+	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
+	 	  
+	  while($row = mysql_fetch_array($resval)) {
+	  $registro = $row['tipo_dni'] . $separator1 . $row['nro_dni'] . $row['nombreApellido'] . $separador4. $row['f_nac'] . $row['cod_sexo'] .$row['cod_est_civ'] .$separator2. $row['cod_inst'] .$separator2. $row['f_ing'] . $row['cod_nac'] .  $row['cod_niv_edu'] . $row['desc_tit'] . $row['cuil_cuit'] . $row['sist_prev'] . $row['cod_sist_prev'] .$separator3. $row['cod_ob_soc'] . $row['nro_afi'] . $row['tip_hor'] . $jump;
+	  fwrite($fp, $registro);
+	  }
+	  
+	  fclose($fp);
+	  chmod($file, 0777);
+	  
+	  $targetDir = '../../uploads/files_ok/';
+	  
+	  $sqlInsert = "INSERT INTO files_ok ".
+			  "(file_name,upload_on,user_name,cod_org,path_folder)".
+			  "VALUES ".
+			  "('$file', NOW(),'$var4','$var1','$targetDir')";
+
+			  create_table_files_ok();
+			  mysql_select_db('sirhal_web');
+			  $insert = mysql_query($sqlInsert);
+	  if($insert){
+	    
+	  echo '<div class="alert alert-success" role="alert" align="center">';
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo "</div>";
+	  }else{
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo "</div>";
+	  }
+	  }else{
+		//en caso no se haya creado el archivo, muestro un mensaje
+		  echo '<div class="alert alert-danger" role="alert" align="center">';
+		  echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Hubo un error al momento de crear el archivo.';
+		  echo "</div>"; 
+	}
+}
+
+
+function genLoteCH($var1,$var2,$var3,$var4){
+
+    
+           
+	$sql = "SELECT cod_inst,cod_esc,cod_concepto,desc_concepto,rem_bon,tip_concepto FROM tb_ch WHERE nro_lote = $var3";
+            
+	mysql_select_db('sirhal_web');
+	$resval = mysql_query($sql);
+	
+	$file = "$var1$var2$var3.SIR";
+	
+	if (mysql_num_rows($resval) != 0) {
+	  $jump = "\r\n";
+	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
+	 	  
+	  while($row = mysql_fetch_array($resval)) {
+	  $registro = $row['cod_inst'] . $row['cod_esc'] . $row['cod_concepto'] . $row['desc_concepto'] . $row['rem_bon'] .$row['tip_concepto'] . $jump;
+	  fwrite($fp, $registro);
+	  }
+	  
+	  fclose($fp);
+	  chmod($file, 0777);
+	  
+	  $targetDir = '../../uploads/files_ok/';
+	  
+	  $sqlInsert = "INSERT INTO files_ok ".
+			  "(file_name,upload_on,user_name,cod_org,path_folder)".
+			  "VALUES ".
+			  "('$file', NOW(),'$var4','$var1','$targetDir')";
+
+			  create_table_files_ok();
+			  mysql_select_db('sirhal_web');
+			  $insert = mysql_query($sqlInsert);
+	  if($insert){
+	    
+	  echo '<div class="alert alert-success" role="alert" align="center">';
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo "</div>";
+	  }else{
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo "</div>";
+	  }
+	  }else{
+		//en caso no se haya creado el archivo, muestro un mensaje
+		  echo '<div class="alert alert-danger" role="alert" align="center">';
+		  echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Hubo un error al momento de crear el archivo.';
+		  echo "</div>"; 
+	}
+}
+
+
+
+
 
 ?>
