@@ -719,7 +719,108 @@ function genLoteCH($var1,$var2,$var3,$var4){
 }
 
 
+function genLoteLH1($var1,$var2,$var3,$var4){
 
+    
+           
+	$sql = "SELECT * FROM tb_lh1 WHERE nro_lote = $var3";
+            
+	mysql_select_db('sirhal_web');
+	$resval = mysql_query($sql);
+	
+	$file = "$var1$var2$var3.SIR";
+	
+	if (mysql_num_rows($resval) != 0) {
+	  $jump = "\r\n";
+	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
+	 	  
+	  while($row = mysql_fetch_array($resval)) {
+	  $registro = $row['cod_inst'] . $row['tipo_doc'] . $row['nro_doc'] . $row['cod_esc'] . $row['cod_agrup'] .$row['cod_nivel'] .$row['cod_grado'] . $row['cod_uni'] .$row['cod_jur'] .$row['cod_subjur'] .$row['cod_entidad'] .$row['cod_prog'] .$row['cod_subprog'] .$row['cod_proy']. $row['cod_act'] .$row['cod_geo'] .$row['periodo'] .$row['tipo_planta'] .$row['f_ing'] .$row['cod_fin'] . $row['marca_estado'] . $jump;
+	  fwrite($fp, $registro);
+	  }
+	  
+	  fclose($fp);
+	  chmod($file, 0777);
+	  
+	  $targetDir = '../../uploads/files_ok/';
+	  
+	  $sqlInsert = "INSERT INTO files_ok ".
+			  "(file_name,upload_on,user_name,cod_org,path_folder)".
+			  "VALUES ".
+			  "('$file', NOW(),'$var4','$var1','$targetDir')";
+
+			  create_table_files_ok();
+			  mysql_select_db('sirhal_web');
+			  $insert = mysql_query($sqlInsert);
+	  if($insert){
+	    
+	  echo '<div class="alert alert-success" role="alert" align="center">';
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo "</div>";
+	  }else{
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo "</div>";
+	  }
+	  }else{
+		//en caso no se haya creado el archivo, muestro un mensaje
+		  echo '<div class="alert alert-danger" role="alert" align="center">';
+		  echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Hubo un error al momento de crear el archivo.';
+		  echo "</div>"; 
+	}
+}
+
+
+function genLoteLH2($var1,$var2,$var3,$var4){
+
+    
+           
+	$sql = "SELECT * FROM tb_lh2 WHERE nro_lote = $var3";
+            
+	mysql_select_db('sirhal_web');
+	$resval = mysql_query($sql);
+	
+	$file = "$var1$var2$var3.SIR";
+	
+	if (mysql_num_rows($resval) != 0) {
+	  $jump = "\r\n";
+	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
+	 	  
+	  while($row = mysql_fetch_array($resval)) {
+	  $registro =  $row['tipo_doc'] . $row['nro_doc'] . $row['cod_esc'] . $row['cod_concepto'] .$row['importe'] .$row['tipo_uf'] . $row['cant_uf'] .$row['periodo'] . $jump;
+	  fwrite($fp, $registro);
+	  }
+	  
+	  fclose($fp);
+	  chmod($file, 0777);
+	  
+	  $targetDir = '../../uploads/files_ok/';
+	  
+	  $sqlInsert = "INSERT INTO files_ok ".
+			  "(file_name,upload_on,user_name,cod_org,path_folder)".
+			  "VALUES ".
+			  "('$file', NOW(),'$var4','$var1','$targetDir')";
+
+			  create_table_files_ok();
+			  mysql_select_db('sirhal_web');
+			  $insert = mysql_query($sqlInsert);
+	  if($insert){
+	    
+	  echo '<div class="alert alert-success" role="alert" align="center">';
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo "</div>";
+	  }else{
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo "</div>";
+	  }
+	  }else{
+		//en caso no se haya creado el archivo, muestro un mensaje
+		  echo '<div class="alert alert-danger" role="alert" align="center">';
+		  echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Hubo un error al momento de crear el archivo.';
+		  echo "</div>"; 
+	}
+}
 
 
 ?>
