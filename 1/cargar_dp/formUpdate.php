@@ -1,4 +1,5 @@
 <?php include "../../connection/connection.php";
+      include "../../functions/functions.php";
 
 session_start();
 	$varsession = $_SESSION['user'];
@@ -121,6 +122,26 @@ session_start();
 		$cod_ob_soc = mysql_real_escape_string($_POST["cod_ob_soc"], $conn);
 		$nro_afi = mysql_real_escape_string($_POST["nro_afi"], $conn);
 		$tip_hor = mysql_real_escape_string($_POST["tip_hor"], $conn);
+		
+		isString($cod_arch);
+		isNumeric($nro_lote);
+		isNumeric($per_lote);
+		isString($tip_doc);
+		isNumeric($nro_dni);
+		isString($nombre);
+		isString($sexo);
+		isString($cod_est_civ);
+		isString($cod_inst);
+		isNumeric($f_ing);
+		isNumeric($cod_nac);
+		isString($cod_niv_edu);
+		isString($desc_tit);
+		isString($cuit_cuil);
+		isString($sist_prev);
+		isString($cod_sist_prev);
+		isString($cod_ob_soc);
+		isString($nro_afi);
+		isString($tip_hor);
 			
 		$sqlInsert = "UPDATE tb_dp SET cod_arch='$cod_arch',nro_lote='$nro_lote',per_lote='$per_lote',tipo_dni='$tip_doc',nro_dni='$nro_dni',
 		nombreApellido='$nombre',f_nac='$f_nac',cod_sexo='$sexo',cod_est_civ='$cod_est_civ',cod_inst='$cod_inst',f_ing='$f_ing',

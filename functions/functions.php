@@ -1,5 +1,9 @@
 <?php
 
+/*
+** Se crea la tabla usuarios, contenedora de los datos para ingreso a la app.-
+*/
+
 function createTable(){
 
 			
@@ -34,6 +38,9 @@ function createTable(){
 
 }
 
+/*
+** Se crea la tabla files, contendrá los datos de los archivos subidos, para llevar un control de los mismos.-
+*/
 
 function create_table_files(){
 
@@ -61,6 +68,10 @@ $sql = "CREATE TABLE files (".
 	 }
    
 }
+
+/*
+** Se crea la tabla "files_ok" contendrá los datos de los archivos generados, para llevar un control de los mismos.-
+*/
 
 function create_table_files_ok(){
 
@@ -94,6 +105,56 @@ $sql = "CREATE TABLE files_ok (".
    
 }
 
+/*
+** Se crea la tabla "tb_dp", es la depositaria de los datos del archivo de lotes DP
+** sus datos serán utilizados para la generación del archivo de lote DP.-
+*/
+
+function createTableDP(){
+  
+  $sql = "CREATE TABLE tb_dp (".
+               "id INT AUTO_INCREMENT,".
+               "cod_arch VARCHAR(3) NOT NULL,".
+               "nro_lote int(3) ZEROFILL NOT NULL,".
+               "per_lote int(6) NOT NULL,".
+               "tipo_dni VARCHAR(3) NOT NULL,".
+               "nro_dni int(16) ZEROFILL NOT NULL,".
+               "nombreApellido VARCHAR(41) NOT NULL,".
+               "f_nac date NOT NULL,".
+               "cod_sexo VARCHAR(4) NOT NULL,".
+               "cod_est_civ VARCHAR(3) NOT NULL,".
+               "cod_inst VARCHAR(2) NOT NULL,".
+               "f_ing int(6) NOT NULL,".
+               "cod_nac int(2) NOT NULL,".
+               "cod_niv_edu VARCHAR(2) NOT NULL,".
+               "desc_tit VARCHAR(30) NOT NULL,".
+               "cuil_cuit VARCHAR(11) NOT NULL,".
+               "sist_prev VARCHAR(1) NOT NULL,".
+               "cod_sist_prev VARCHAR(2) NOT NULL,".
+               "cod_ob_soc VARCHAR(1) NOT NULL,".
+               "nro_afi VARCHAR(14) NOT NULL,".
+               "tip_hor VARCHAR(1) NOT NULL,".
+               "PRIMARY KEY (id)); ";
+
+	mysql_select_db('sirhal_web');
+	$retval = mysql_query($sql, $conn);
+	
+	if(!$retval){	  
+	echo '<div class="alert alert-danger" role="alert">';
+	mysql_error(); 
+	echo '</div>';
+	}else{
+	  echo '<div class="alert alert-success" role="alert">';
+	  echo 'Table create Succesfully';
+	  echo '</div>';
+	 }
+     
+}
+
+/*
+** Se crea la tabla "tb_ch", es la depositaria de los datos del archivo de lotes CH
+** sus datos serán utilizados para la generación del archivo de lote CH.-
+*/
 
 function createTableCH(){
   
@@ -125,6 +186,12 @@ function createTableCH(){
 	 }
   
 }
+
+
+/*
+** Se crea la tabla "tb_lh1", es la depositaria de los datos del archivo de lotes LH1
+** sus datos serán utilizados para la generación del archivo de lote LH1.-
+*/
 
 function createTableLH1(){
   
@@ -172,6 +239,10 @@ function createTableLH1(){
   
 }
 
+/*
+** Se crea la tabla "tb_LH2", es la depositaria de los datos del archivo de lotes LH2
+** sus datos serán utilizados para la generación del archivo de lote LH2.-
+*/
 
 function createTableLH2(){
   
@@ -210,9 +281,6 @@ function createTableLH2(){
 
 
 
-
-
-
 function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 
 		
@@ -224,49 +292,39 @@ function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 		
 
 
-	if(strcmp($pass2, $pass1) == 0) 
-	{
+	if(strcmp($pass2, $pass1) == 0){
 		mysql_query($sqlInsert);	
 		echo "<br>";
 		echo '<div class="container">';
 		echo '<div class="alert alert-success" role="alert">';
 		echo 'Usuario Creado Satisfactoriamente';
 		echo "</div>";
-		echo "</div>";
-	
-	}
-
-	else
-	{
+		echo "</div>";	
+	}else{
 		echo "<br>";
 		echo '<div class="container">';
 		echo '<div class="alert alert-warning" role="alert">';
 		echo "Las Contraseñas no Coinciden. Intente Nuevamente!";
 		echo "</div>";
 		echo "</div>";
-		
 	}
 }
 
 
 function buscarUser($nombre){
-
 		$sql = "SELECT * FROM usuarios where nombre = '$nombre'";
 		mysql_select_db('admin_csc');
 		$retval = mysql_query($sql);
 	
-		if(!$retval)
-		{
+		if(!$retval){
 		  echo "<br>";
 		  echo '<div class="alert alert-warning" role="alert">';
 		  echo 'No Existe Usuario para ' .$nombre;
 		  echo '</div>';
 
 		}
-
-
-		while($fila = mysql_fetch_array($retval))
-		{
+		
+		while($fila = mysql_fetch_array($retval)){
 			
 		  if($retval){
 		    $res = $fila['user'];
@@ -604,7 +662,7 @@ function isString($var){
 		  echo "</div>";    
   }else{
 		  echo '<div class="alert alert-success" role="alert">';
-		  echo  "El dato es alabético: " .$var;
+		  echo  "El dato es alfabético: " .$var;
 		  echo "</div>";
   }
   

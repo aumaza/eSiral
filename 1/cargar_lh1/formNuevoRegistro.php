@@ -87,30 +87,30 @@ session_start();
       if($conn){
 		createTableLH1();
 		
-		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
-		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);
-		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn);
-		$cod_org = mysql_real_escape_string($_POST["cod_org"], $conn);
-		$tipo_doc = mysql_real_escape_string($_POST["tip_doc"], $conn);
-		$nro_dni = mysql_real_escape_string($_POST["nro_dni"], $conn);
-		$cod_esc = mysql_real_escape_string($_POST["cod_esc"], $conn);
-		$cod_agrup = mysql_real_escape_string($_POST["cod_agrup"], $conn);
-		$cod_nivel = mysql_real_escape_string($_POST["cod_nivel"], $conn);
-		$cod_grado = mysql_real_escape_string($_POST["cod_grado"], $conn);
-		$cod_uni = mysql_real_escape_string($_POST["cod_uni"], $conn);
-		$cod_jur = mysql_real_escape_string($_POST["cod_jur"], $conn);
-		$cod_subjur = mysql_real_escape_string($_POST["cod_subjur"], $conn);
-		$cod_entidad = mysql_real_escape_string($_POST["cod_entidad"], $conn);
-		$cod_prog = mysql_real_escape_string($_POST["cod_prog"], $conn);
-		$cod_subprog = mysql_real_escape_string($_POST["cod_subprog"], $conn);
-		$cod_proy = mysql_real_escape_string($_POST["cod_proy"], $conn);
-		$cod_act = mysql_real_escape_string($_POST["cod_act"], $conn);
-		$cod_geo = mysql_real_escape_string($_POST["cod_geo"], $conn);
-		$periodo = mysql_real_escape_string($_POST["periodo"], $conn);
-		$cod_planta = mysql_real_escape_string($_POST["cod_planta"], $conn);
-		$f_ing = mysql_real_escape_string($_POST["f_ing"], $conn);
-		$cod_ff = mysql_real_escape_string($_POST["cod_ff"], $conn);
-		$cod_est = mysql_real_escape_string($_POST["cod_estado"], $conn);
+		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn); // char
+		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn); // int
+		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn); // int
+		$cod_org = mysql_real_escape_string($_POST["cod_org"], $conn); // char
+		$tipo_doc = mysql_real_escape_string($_POST["tip_doc"], $conn); // char
+		$nro_dni = mysql_real_escape_string($_POST["nro_dni"], $conn); // int
+		$cod_esc = mysql_real_escape_string($_POST["cod_esc"], $conn); // int
+		$cod_agrup = mysql_real_escape_string($_POST["cod_agrup"], $conn); // char
+		$cod_nivel = mysql_real_escape_string($_POST["cod_nivel"], $conn); // char
+		$cod_grado = mysql_real_escape_string($_POST["cod_grado"], $conn); // char
+		$cod_uni = mysql_real_escape_string($_POST["cod_uni"], $conn); // char
+		$cod_jur = mysql_real_escape_string($_POST["cod_jur"], $conn); // char
+		$cod_subjur = mysql_real_escape_string($_POST["cod_subjur"], $conn); // char
+		$cod_entidad = mysql_real_escape_string($_POST["cod_entidad"], $conn); // char
+		$cod_prog = mysql_real_escape_string($_POST["cod_prog"], $conn); // char
+		$cod_subprog = mysql_real_escape_string($_POST["cod_subprog"], $conn); // char
+		$cod_proy = mysql_real_escape_string($_POST["cod_proy"], $conn); // char
+		$cod_act = mysql_real_escape_string($_POST["cod_act"], $conn); // char
+		$cod_geo = mysql_real_escape_string($_POST["cod_geo"], $conn); // char
+		$periodo = mysql_real_escape_string($_POST["periodo"], $conn); // int
+		$cod_planta = mysql_real_escape_string($_POST["cod_planta"], $conn); // char
+		$f_ing = mysql_real_escape_string($_POST["f_ing"], $conn); // date
+		$cod_ff = mysql_real_escape_string($_POST["cod_ff"], $conn); // int
+		$cod_est = mysql_real_escape_string($_POST["cod_estado"], $conn); // char
 		
 		
 		

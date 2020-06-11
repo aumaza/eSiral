@@ -1,6 +1,7 @@
 <?php include "../../connection/connection.php";
+      include "../../functions/functions.php";
 
-session_start();
+	session_start();
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
@@ -29,43 +30,7 @@ session_start();
 	die();
 	}
 
-if($conn){
-
-$sql = "CREATE TABLE tb_dp (".
-               "id INT AUTO_INCREMENT,".
-               "cod_arch VARCHAR(3) NOT NULL,".
-               "nro_lote int(3) ZEROFILL NOT NULL,".
-               "per_lote int(6) NOT NULL,".
-               "tipo_dni VARCHAR(3) NOT NULL,".
-               "nro_dni int(16) ZEROFILL NOT NULL,".
-               "nombreApellido VARCHAR(41) NOT NULL,".
-               "f_nac date NOT NULL,".
-               "cod_sexo VARCHAR(4) NOT NULL,".
-               "cod_est_civ VARCHAR(3) NOT NULL,".
-               "cod_inst VARCHAR(2) NOT NULL,".
-               "f_ing int(6) NOT NULL,".
-               "cod_nac int(2) NOT NULL,".
-               "cod_niv_edu VARCHAR(2) NOT NULL,".
-               "desc_tit VARCHAR(30) NOT NULL,".
-               "cuil_cuit VARCHAR(11) NOT NULL,".
-               "sist_prev VARCHAR(1) NOT NULL,".
-               "cod_sist_prev VARCHAR(2) NOT NULL,".
-               "cod_ob_soc VARCHAR(1) NOT NULL,".
-               "nro_afi VARCHAR(14) NOT NULL,".
-               "tip_hor VARCHAR(1) NOT NULL,".
-               "PRIMARY KEY (id)); ";
-
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql, $conn);
-	
-	if(!$retval){
-	mysql_error(); 	
-	}else{
-	  echo 'Table create Succesfully\n';
-	 }
-	 
-	}	
-		$background = 'background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%"';
+	$background = 'background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%"';
 ?>
 
 <html><head>
@@ -97,19 +62,19 @@ $sql = "CREATE TABLE tb_dp (".
 </head>
 <body <?php echo $background ?>>
 
-<div class="container-fluid"><br>
+    <div class="container-fluid"><br>
       <div class="row">
-      <div class="col-md-12 text-center">
-	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
-	<button><span class="glyphicon glyphicon-user"></span> Organismo: <?php echo $organismo ?></button>
-	<?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
-	 <?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %B del %Y"); ?> </button>
+	<div class="col-md-12 text-center">
+	  <button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
+	    <button><span class="glyphicon glyphicon-user"></span> Organismo: <?php echo $organismo ?></button>
+	      <?php setlocale(LC_ALL,"es_ES"); ?>
+		<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
+		  <?php setlocale(LC_ALL,"es_ES"); ?>
+		    <button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %B del %Y"); ?> </button>
 	</div>
-	</div>
-	</div>
-	<br><hr>
+      </div>
+    </div>
+    <br><hr>
 
 
             <div class="container">
@@ -120,7 +85,7 @@ $sql = "CREATE TABLE tb_dp (".
 <?php
 
       if($conn){
-
+		createTableDP();
 		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
 		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);
 		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn);
@@ -142,22 +107,23 @@ $sql = "CREATE TABLE tb_dp (".
 		$nro_afi = mysql_real_escape_string($_POST["nro_afi"], $conn);
 		$tip_hor = mysql_real_escape_string($_POST["tip_hor"], $conn);
 		
-		$integer = array($nro_lote, $per_lote, $nro_dni, $f_ing);
 		
-		
-		foreach($integer as $elementos){
-		if(!is_numeric($elementos)){
-		
-		  echo '<div class="alert alert-danger" role="alert">';
-		  echo  "Ha introducido datos erroneos: " .$elementos. " Verifíquelos";
-		  //echo '<hr> <a href="nuevoRegistro.php"><input type="button" value="Volver" class="btn btn-primary"></a>';
-		  echo "</div>";
-		 // break;
-		 
-		  
-		}
-		}
-		
+		isString($tipo_doc);
+		isNumeric($nro_dni);
+		isString($nombre);
+		isString($sexo);
+		isString($cod_est_civ);
+		isString($cod_inst);
+		isNumeric($f_ing);
+		isNumeric($cod_nac);
+		isString($cod_niv_edu);
+		isString($desc_tit);
+		isString($cuit_cuil);
+		isString($sist_prev);
+		isString($cod_sist_prev);
+		isString($cod_ob_soc);
+		isString($nro_afi);
+		isString($tip_hor);
 		
 		
 		 $sqlInsert = "INSERT INTO tb_dp ".
@@ -167,21 +133,17 @@ $sql = "CREATE TABLE tb_dp (".
 		  $q = mysql_query($sqlInsert,$conn);
 		  
 		  if(!$q){
- 
-			echo '<div class="alert alert-danger" role="alert">';
+ 			echo '<div class="alert alert-danger" role="alert">';
 			echo 'Could not enter data: ' . mysql_error();
 			echo "</div>";
 			echo '<hr> <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>'; 
 			}else{
-   
-			      echo '<div class="alert alert-success" role="alert">';
+ 			      echo '<div class="alert alert-success" role="alert">';
 			      echo "Registro Guardado Exitosamente!!";
 			      echo "</div>";
 			      echo '<hr> <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>';
 			      } 
-		    
-		
-		    }else{
+			      }else{
 			  echo '<div class="alert alert-danger" role="alert">';
 			  echo 'Could not Connect to Database: ' . mysql_error();
 			  echo "</div>";
@@ -193,8 +155,8 @@ $sql = "CREATE TABLE tb_dp (".
 
     
 ?>
-</div>
-</div>
+    </div>
+  </div>
 </div>
 
 
