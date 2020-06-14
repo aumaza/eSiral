@@ -1,28 +1,28 @@
 <?php include "../../connection/connection.php";
       include "../../functions/functions.php";
 
-session_start();
+	session_start();
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
-        while($fila = mysql_fetch_array($retval)){
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
-	mysql_select_db('sirhal_web');
-	$res = mysql_query($query);
-	while($linea = mysql_fetch_array($res)){
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 
 	}
@@ -40,12 +40,12 @@ session_start();
       if($conn){
       $id = $_GET['id'];
       $sql = "SELECT * FROM tb_lh2 WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
       }else{
 	echo '<div class="alert alert-danger" role="alert">';
-	echo 'Could not Connect: ' . mysql_error();
+	echo 'Could not Connect: ' . mysqli_error($conn);
 	echo "</div>";
       }
 
@@ -101,19 +101,19 @@ session_start();
     <?php
     
     if($conn){
-		$id = mysql_real_escape_string($_POST["id"], $conn);
-		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
-		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);
-		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn);
-		$cod_org = mysql_real_escape_string($_POST["cod_org"], $conn);
-		$tipo_doc = mysql_real_escape_string($_POST["tipo_doc"], $conn);
-		$nro_dni = mysql_real_escape_string($_POST["nro_dni"], $conn);
-		$cod_esc = mysql_real_escape_string($_POST["cod_esc"], $conn);
-		$cod_concepto = mysql_real_escape_string($_POST["cod_concepto"], $conn);
-		$importe = mysql_real_escape_string($_POST["importe"], $conn);
-		$tipo_uf = mysql_real_escape_string($_POST["tipo_uf"], $conn);
-		$cant_uf = mysql_real_escape_string($_POST["cant_uf"], $conn);
-		$per_liquidado = mysql_real_escape_string($_POST["per_liquidado"], $conn);
+		$id = mysqli_real_escape_string($conn,$_POST["id"]);
+		$cod_arch = mysqli_real_escape_string($conn,$_POST["cod_arch"]);
+		$nro_lote = mysqli_real_escape_string($conn,$_POST["nro_lote"]);
+		$per_lote = mysqli_real_escape_string($conn,$_POST["per_lote"]);
+		$cod_org = mysqli_real_escape_string($conn,$_POST["cod_org"]);
+		$tipo_doc = mysqli_real_escape_string($conn,$_POST["tipo_doc"]);
+		$nro_dni = mysqli_real_escape_string($conn,$_POST["nro_dni"]);
+		$cod_esc = mysqli_real_escape_string($conn,$_POST["cod_esc"]);
+		$cod_concepto = mysqli_real_escape_string($conn,$_POST["cod_concepto"]);
+		$importe = mysqli_real_escape_string($conn,$_POST["importe"]);
+		$tipo_uf = mysqli_real_escape_string($conn,$_POST["tipo_uf"]);
+		$cant_uf = mysqli_real_escape_string($conn,$_POST["cant_uf"]);
+		$per_liquidado = mysqli_real_escape_string($conn,$_POST["per_liquidado"]);
 		
 		isString($cod_arch);
 		isNumeric($nro_lote);
@@ -133,13 +133,13 @@ session_start();
 		tipo_doc='$tipo_doc', nro_doc='$nro_dni', cod_esc='$cod_esc', cod_concepto='$cod_concepto', importe='$importe', tipo_uf='$tipo_uf', cant_uf='$cant_uf', periodo='$per_liquidado' WHERE id = '$id'";
 		
   			
-mysql_select_db('sirhal_web');
-$q = mysql_query($sqlInsert,$conn);
+mysqli_select_db('sirhal_web');
+$q = mysqli_query($conn,$sqlInsert);
 
 if(!$q)
 {
 	 echo '<div class="alert alert-danger" role="alert">';
-         echo 'Could not enter data: ' . mysql_error();
+         echo 'Could not enter data: ' . mysqli_error($conn);
          echo "</div>";
 }
 
@@ -155,7 +155,7 @@ else
 else 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
 	 	
 	  	

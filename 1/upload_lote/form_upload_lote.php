@@ -50,10 +50,10 @@
 	
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
         
-        while($fila = mysql_fetch_array($retval)){
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  }
       	
@@ -94,8 +94,8 @@ if(isset($_POST["submit"]) && !empty($_FILES["files"]["name"][$key])){
 			  "VALUES ".
 			  "('$fileName', NOW(),'$nombre','$targetDir')";
 
-			  mysql_select_db('sirhal_web');
-			  $insert = mysql_query($sqlInsert);
+			  mysqli_select_db('sirhal_web');
+			  $insert = mysqli_query($conn,$sqlInsert);
           
             if($insert){
             

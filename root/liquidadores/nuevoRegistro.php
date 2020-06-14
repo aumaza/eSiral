@@ -134,20 +134,20 @@
                if($conn){
 
               $query = "SELECT * FROM organismos order by descripcion ASC";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[descripcion].'">'.$valores[descripcion].'</option>';
                     }
                 }
                 }
 
-                mysql_close($conn);
+                mysqli_close($conn);
 
                 ?>
                 </select>

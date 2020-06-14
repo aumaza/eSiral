@@ -4,7 +4,7 @@
 ** Se crea la tabla usuarios, contenedora de los datos para ingreso a la app.-
 */
 
-function createTable(){
+function createTable($var1){
 
 			
 		$sql = "CREATE TABLE usuarios(".
@@ -15,11 +15,11 @@ function createTable(){
 		      "roles INT".
 		      "PRIMARY KEY (id)); ";
 
-	$retval = mysql_query($sql);
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval)
 	{
-		mysql_error();
+		mysqli_error($var1);
 		echo "<br>"; 	
 	}
 	
@@ -42,7 +42,7 @@ function createTable(){
 ** Se crea la tabla files, contendrá los datos de los archivos subidos, para llevar un control de los mismos.-
 */
 
-function create_table_files(){
+function create_table_files($var1){
 
 
 $sql = "CREATE TABLE files (".
@@ -54,12 +54,12 @@ $sql = "CREATE TABLE files (".
       "status enum('1','0') NOT NULL DEFAULT 1,".
       "PRIMARY KEY (id)); ";
 
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval)
 	{
-		mysql_error(); 	
+		mysqli_error($var1); 	
 	}
 	
 	else
@@ -73,7 +73,7 @@ $sql = "CREATE TABLE files (".
 ** Se crea la tabla "files_ok" contendrá los datos de los archivos generados, para llevar un control de los mismos.-
 */
 
-function create_table_files_ok(){
+function create_table_files_ok($var1){
 
 
 $sql = "CREATE TABLE files_ok (".
@@ -86,13 +86,13 @@ $sql = "CREATE TABLE files_ok (".
       "status enum('1','0') NOT NULL DEFAULT 1,".
       "PRIMARY KEY (id)); ";
 
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval)
 	{
 	    echo '<div class="alert alert-danger" role="alert" align="center">';
-	    echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error ' .mysql_error();
+	    echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error ' .mysqli_error($var1);
 	    echo "</div>";
 	}
 	
@@ -106,11 +106,68 @@ $sql = "CREATE TABLE files_ok (".
 }
 
 /*
+** Se crea la tabla "organismos", es la depositaria de los datos de cada organismo
+*/
+
+function createTableOrganismos($conn){
+$sql = "CREATE TABLE organismos(".
+               "id INT AUTO_INCREMENT,".
+               "cod_org VARCHAR(2) NOT NULL,".
+               "saf INT NOT NULL,".
+               "descripcion VARCHAR(90) NOT NULL,".
+               "PRIMARY KEY (id)); ";
+
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($conn,$sql);
+	
+	if(!$retval){	  
+	echo '<div class="alert alert-danger" role="alert">';
+	mysqli_error($conn); 
+	echo '</div>';
+	}else{
+	  echo '<div class="alert alert-success" role="alert">';
+	  echo 'Table create Succesfully';
+	  echo '</div>';
+	 }
+}
+
+/*
+** Se crea la tabla "liquidadores", es la depositaria de los datos de los usuarios de cada organismo
+*/
+
+function createTableLiquidadores($conn){
+
+$sql = "CREATE TABLE liquidadores (".
+               "id INT AUTO_INCREMENT,".
+               "nombreApellido VARCHAR(30) NOT NULL,".
+               "sexo VARCHAR(9) NOT NULL,".
+               "dni VARCHAR(8) NOT NULL,".
+               "email VARCHAR(20) NOT NULL,".
+               "telefono VARCHAR(20) NOT NULL,".
+               "organismo VARCHAR(90) NOT NULL,".
+               "PRIMARY KEY (id)); ";
+
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($conn,$sql);
+	
+	if(!$retval){	  
+	echo '<div class="alert alert-danger" role="alert">';
+	mysqli_error($$conn); 
+	echo '</div>';
+	}else{
+	  echo '<div class="alert alert-success" role="alert">';
+	  echo 'Table create Succesfully';
+	  echo '</div>';
+	 }
+
+}
+
+/*
 ** Se crea la tabla "tb_dp", es la depositaria de los datos del archivo de lotes DP
 ** sus datos serán utilizados para la generación del archivo de lote DP.-
 */
 
-function createTableDP(){
+function createTableDP($var1){
   
   $sql = "CREATE TABLE tb_dp (".
                "id INT AUTO_INCREMENT,".
@@ -136,12 +193,12 @@ function createTableDP(){
                "tip_hor VARCHAR(1) NOT NULL,".
                "PRIMARY KEY (id)); ";
 
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql, $conn);
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval){	  
 	echo '<div class="alert alert-danger" role="alert">';
-	mysql_error(); 
+	mysqli_error($var1); 
 	echo '</div>';
 	}else{
 	  echo '<div class="alert alert-success" role="alert">';
@@ -156,7 +213,7 @@ function createTableDP(){
 ** sus datos serán utilizados para la generación del archivo de lote CH.-
 */
 
-function createTableCH(){
+function createTableCH($var1){
   
   $sql = "CREATE TABLE tb_ch (".
                "id INT AUTO_INCREMENT,".
@@ -171,13 +228,13 @@ function createTableCH(){
                "tip_concepto int(1) NOT NULL,".
                "PRIMARY KEY (id)); ";
 
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval){
 	  
 	echo '<div class="alert alert-danger" role="alert">';
-	mysql_error(); 
+	mysqli_error($var1); 
 	echo '</div>';
 	}else{
 	  echo '<div class="alert alert-success" role="alert">';
@@ -193,7 +250,7 @@ function createTableCH(){
 ** sus datos serán utilizados para la generación del archivo de lote LH1.-
 */
 
-function createTableLH1(){
+function createTableLH1($var1){
   
   $sql = "CREATE TABLE tb_lh1 (".
                "id INT AUTO_INCREMENT,".
@@ -223,13 +280,13 @@ function createTableLH1(){
                "marca_estado  VARCHAR(1) NOT NULL,".
                "PRIMARY KEY (id)); ";
 
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval){
 	  
 	echo '<div class="alert alert-danger" role="alert">';
-	mysql_error(); 
+	mysqli_error($var1); 
 	echo '</div>';
 	}else{
 	  echo '<div class="alert alert-success" role="alert">';
@@ -244,7 +301,7 @@ function createTableLH1(){
 ** sus datos serán utilizados para la generación del archivo de lote LH2.-
 */
 
-function createTableLH2(){
+function createTableLH2($var1){
   
   $sql = "CREATE TABLE tb_lh2 (".
                "id INT AUTO_INCREMENT,".
@@ -262,13 +319,13 @@ function createTableLH2(){
                "periodo  int(4) NOT NULL,".
                "PRIMARY KEY (id)); ";
 
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$retval = mysqli_query($var1,$sql);
 	
 	if(!$retval){
 	  
 	echo '<div class="alert alert-danger" role="alert">';
-	mysql_error(); 
+	mysqli_error($var1); 
 	echo '</div>';
 	}else{
 	  echo '<div class="alert alert-success" role="alert">';
@@ -281,7 +338,7 @@ function createTableLH2(){
 
 
 
-function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
+function agregarUser($nombre,$user,$pass1,$pass2,$permisos,$conn){
 
 		
 
@@ -293,7 +350,7 @@ function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 
 
 	if(strcmp($pass2, $pass1) == 0){
-		mysql_query($sqlInsert);	
+		mysqli_query($conn,$sqlInsert);	
 		echo "<br>";
 		echo '<div class="container">';
 		echo '<div class="alert alert-success" role="alert">';
@@ -311,10 +368,10 @@ function agregarUser($nombre,$user,$pass1,$pass2,$permisos){
 }
 
 
-function buscarUser($nombre){
+function buscarUser($nombre,$conn){
 		$sql = "SELECT * FROM usuarios where nombre = '$nombre'";
-		mysql_select_db('admin_csc');
-		$retval = mysql_query($sql);
+		mysqli_select_db('admin_csc');
+		$retval = mysqli_query($conn,$sql);
 	
 		if(!$retval){
 		  echo "<br>";
@@ -324,7 +381,7 @@ function buscarUser($nombre){
 
 		}
 		
-		while($fila = mysql_fetch_array($retval)){
+		while($fila = mysqli_fetch_array($retval)){
 			
 		  if($retval){
 		    $res = $fila['user'];
@@ -343,17 +400,17 @@ function buscarUser($nombre){
 
 
 
-function updatePass($user,$pass1,$pass2){
+function updatePass($user,$pass1,$pass2,$conn){
 
 	
 
     	$sql = "UPDATE usuarios set password = '$pass1' WHERE user = '$user'";
-    	mysql_select_db('sirhal_web');
+    	mysqli_select_db('sirhal_web');
     	
     	
     	if(strcmp($pass2, $pass1) == 0){
     		
-		      mysql_query($sql);
+		      mysqli_query($conn,$sql);
 			echo "<br>";
 			echo '<div class="section"><br>
 			      <div class="container">
@@ -388,13 +445,13 @@ function updatePass($user,$pass1,$pass2){
     
 }
 
-function cambiarPermisos($user,$permisos){
+function cambiarPermisos($user,$permisos,$conn){
 
   $sql = "UPDATE usuarios set permisos = '$permisos' where user = '$user'";
-  mysql_select_db('sirhal_web');
+  mysqli_select_db('sirhal_web');
   
   if($user){
-    mysql_query($sql);
+    mysqli_query($conn,$sql);
     echo "<br>";
 			echo '<div class="section"><br>
 			      <div class="container">
@@ -505,13 +562,13 @@ function genPass(){
     return $pass;
 }
 
-function resetPass($nombre,$email){
+function resetPass($nombre,$email,$conn){
 
   $password = genPass();
   
   $sql = "UPDATE usuarios SET password = '$password' where nombre = '$nombre'";
   
-  $retval = mysql_query($sql);
+  $retval = mysqli_query($conn,$sql);
  
   
   if($retval){
@@ -669,18 +726,18 @@ function isString($var){
 }
 
 
-function genLoteDP($var1,$var2,$var3,$var4){
+function genLoteDP($var1,$var2,$var3,$var4,$var5){
 
     
            
 	$sql = "SELECT tipo_dni, nro_dni, nombreApellido, f_nac, cod_sexo, cod_est_civ, cod_inst, f_ing, cod_nac, cod_niv_edu, desc_tit, cuil_cuit, sist_prev, cod_sist_prev, cod_ob_soc, nro_afi, tip_hor FROM tb_dp WHERE nro_lote = $var3";
             
-	mysql_select_db('sirhal_web');
-	$resval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$resval = mysqli_query($var5,$sql);
 	
 	$file = "$var1$var2$var3.SIR";
 	
-	if (mysql_num_rows($resval) != 0) {
+	if (mysqli_num_rows($resval) != 0) {
 	  $jump = "\r\n";
 	  $separator1 = " ";
 	  $separator2 = "  ";
@@ -688,7 +745,7 @@ function genLoteDP($var1,$var2,$var3,$var4){
 	  $separador4 = "         ";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
-	  while($row = mysql_fetch_array($resval)) {
+	  while($row = mysqli_fetch_array($resval)) {
 	  $registro = $row['tipo_dni'] . $separator1 . $row['nro_dni'] . $row['nombreApellido'] . $separador4. $row['f_nac'] . $row['cod_sexo'] .$row['cod_est_civ'] .$separator2. $row['cod_inst'] .$separator2. $row['f_ing'] . $row['cod_nac'] .  $row['cod_niv_edu'] . $row['desc_tit'] . $row['cuil_cuit'] . $row['sist_prev'] . $row['cod_sist_prev'] .$separator3. $row['cod_ob_soc'] . $row['nro_afi'] . $row['tip_hor'] . $jump;
 	  fwrite($fp, $registro);
 	  }
@@ -703,17 +760,17 @@ function genLoteDP($var1,$var2,$var3,$var4){
 			  "VALUES ".
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
-			  create_table_files_ok();
-			  mysql_select_db('sirhal_web');
-			  $insert = mysql_query($sqlInsert);
+			  create_table_files_ok($var5);
+			  mysqli_select_db('sirhal_web');
+			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
 	    
 	  echo '<div class="alert alert-success" role="alert" align="center">';
-	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysqli_num_rows($resval).' registros en el archivo: ' .$file;
 	  echo "</div>";
 	  }else{
 	      echo '<div class="alert alert-danger" role="alert" align="center">';
-	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysqli_error($var5);
 	      echo "</div>";
 	  }
 	  }else{
@@ -725,22 +782,21 @@ function genLoteDP($var1,$var2,$var3,$var4){
 }
 
 
-function genLoteCH($var1,$var2,$var3,$var4){
+function genLoteCH($var1,$var2,$var3,$var4,$var5){
 
-    
-           
-	$sql = "SELECT cod_inst,cod_esc,cod_concepto,desc_concepto,rem_bon,tip_concepto FROM tb_ch WHERE nro_lote = $var3";
-            
-	mysql_select_db('sirhal_web');
-	$resval = mysql_query($sql);
-	
+        $sql = "SELECT cod_inst,cod_esc,cod_concepto,desc_concepto,rem_bon,tip_concepto FROM tb_ch WHERE nro_lote = $var3";
+        
+   	mysqli_select_db('sirhal_web');
+	$resval = mysqli_query($var5,$sql);
+		
 	$file = "$var1$var2$var3.SIR";
 	
-	if (mysql_num_rows($resval) != 0) {
+	if(mysqli_num_rows($resval) != 0){
+		  
 	  $jump = "\r\n";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
-	  while($row = mysql_fetch_array($resval)) {
+	  while($row = mysqli_fetch_array($resval)) {
 	  $registro = $row['cod_inst'] . $row['cod_esc'] . $row['cod_concepto'] . $row['desc_concepto'] . $row['rem_bon'] .$row['tip_concepto'] . $jump;
 	  fwrite($fp, $registro);
 	  }
@@ -756,43 +812,43 @@ function genLoteCH($var1,$var2,$var3,$var4){
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
 			  create_table_files_ok();
-			  mysql_select_db('sirhal_web');
-			  $insert = mysql_query($sqlInsert);
+			  mysqli_select_db('sirhal_web');
+			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
 	    
 	  echo '<div class="alert alert-success" role="alert" align="center">';
-	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysqli_num_rows($resval).' registros en el archivo: ' .$file;
 	  echo "</div>";
 	  }else{
 	      echo '<div class="alert alert-danger" role="alert" align="center">';
-	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysqli_error($var5);
 	      echo "</div>";
 	  }
 	  }else{
 		//en caso no se haya creado el archivo, muestro un mensaje
 		  echo '<div class="alert alert-danger" role="alert" align="center">';
-		  echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Hubo un error al momento de crear el archivo.';
+		  echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Hubo un error al momento de crear el archivo.' .mysqli_error($conn);
 		  echo "</div>"; 
 	}
 }
 
 
-function genLoteLH1($var1,$var2,$var3,$var4){
+function genLoteLH1($var1,$var2,$var3,$var4,$var5){
 
     
            
 	$sql = "SELECT * FROM tb_lh1 WHERE nro_lote = $var3";
             
-	mysql_select_db('sirhal_web');
-	$resval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$resval = mysqli_query($var5,$sql);
 	
 	$file = "$var1$var2$var3.SIR";
 	
-	if (mysql_num_rows($resval) != 0) {
+	if (mysqli_num_rows($resval) != 0) {
 	  $jump = "\r\n";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
-	  while($row = mysql_fetch_array($resval)) {
+	  while($row = mysqli_fetch_array($resval)) {
 	  $registro = $row['cod_inst'] . $row['tipo_doc'] . $row['nro_doc'] . $row['cod_esc'] . $row['cod_agrup'] .$row['cod_nivel'] .$row['cod_grado'] . $row['cod_uni'] .$row['cod_jur'] .$row['cod_subjur'] .$row['cod_entidad'] .$row['cod_prog'] .$row['cod_subprog'] .$row['cod_proy']. $row['cod_act'] .$row['cod_geo'] .$row['periodo'] .$row['tipo_planta'] .$row['f_ing'] .$row['cod_fin'] . $row['marca_estado'] . $jump;
 	  fwrite($fp, $registro);
 	  }
@@ -808,16 +864,16 @@ function genLoteLH1($var1,$var2,$var3,$var4){
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
 			  create_table_files_ok();
-			  mysql_select_db('sirhal_web');
-			  $insert = mysql_query($sqlInsert);
+			  mysqli_select_db('sirhal_web');
+			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
 	    
 	  echo '<div class="alert alert-success" role="alert" align="center">';
-	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysqli_num_rows($resval).' registros en el archivo: ' .$file;
 	  echo "</div>";
 	  }else{
 	      echo '<div class="alert alert-danger" role="alert" align="center">';
-	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysqli_error($var5);
 	      echo "</div>";
 	  }
 	  }else{
@@ -829,22 +885,22 @@ function genLoteLH1($var1,$var2,$var3,$var4){
 }
 
 
-function genLoteLH2($var1,$var2,$var3,$var4){
+function genLoteLH2($var1,$var2,$var3,$var4,$var5){
 
     
            
 	$sql = "SELECT * FROM tb_lh2 WHERE nro_lote = $var3";
             
-	mysql_select_db('sirhal_web');
-	$resval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+	$resval = mysqli_query($var5,$sql);
 	
 	$file = "$var1$var2$var3.SIR";
 	
-	if (mysql_num_rows($resval) != 0) {
+	if (mysqli_num_rows($resval) != 0) {
 	  $jump = "\r\n";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
-	  while($row = mysql_fetch_array($resval)) {
+	  while($row = mysqli_fetch_array($resval)) {
 	  $registro =  $row['tipo_doc'] . $row['nro_doc'] . $row['cod_esc'] . $row['cod_concepto'] .$row['importe'] .$row['tipo_uf'] . $row['cant_uf'] .$row['periodo'] . $jump;
 	  fwrite($fp, $registro);
 	  }
@@ -860,8 +916,8 @@ function genLoteLH2($var1,$var2,$var3,$var4){
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
 			  create_table_files_ok();
-			  mysql_select_db('sirhal_web');
-			  $insert = mysql_query($sqlInsert);
+			  mysqli_select_db('sirhal_web');
+			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
 	    
 	  echo '<div class="alert alert-success" role="alert" align="center">';
@@ -869,7 +925,7 @@ function genLoteLH2($var1,$var2,$var3,$var4){
 	  echo "</div>";
 	  }else{
 	      echo '<div class="alert alert-danger" role="alert" align="center">';
-	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysql_error();
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Error '.mysqli_error($var5);
 	      echo "</div>";
 	  }
 	  }else{

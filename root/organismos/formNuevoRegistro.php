@@ -15,28 +15,10 @@ session_start();
 
 if($conn){
 
-$sql = "CREATE TABLE organismos(".
-               "id INT AUTO_INCREMENT,".
-               "cod_org VARCHAR(2) NOT NULL,".
-               "saf INT NOT NULL,".
-               "descripcion VARCHAR(90) NOT NULL,".
-               "PRIMARY KEY (id)); ";
-
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql, $conn);
-	
-	if(!$retval)
-	{
-		mysql_error(); 	
-	}
-	
-	else
-	 {	
-		echo 'Table create Succesfully\n';
-	 }
-		$cod = mysql_real_escape_string($_POST["cod"], $conn);
-		$saf = mysql_real_escape_string($_POST["saf"], $conn);
-		$organismo = mysql_real_escape_string($_POST["organismo"], $conn);
+		createTableOrganismos($conn);
+		$cod = mysqli_real_escape_string($conn,$_POST["cod"]);
+		$saf = mysqli_real_escape_string($conn,$_POST["saf"]);
+		$organismo = mysqli_real_escape_string($conn,$_POST["organismo"]);
 		
 	
 $sqlInsert = "INSERT INTO organismos ".
@@ -45,12 +27,12 @@ $sqlInsert = "INSERT INTO organismos ".
 "('$cod','$saf','$organismo')";
 
 
-$q = mysql_query($sqlInsert,$conn);
+$q = mysqli_query($conn,$sqlInsert);
 }
 
 else{
  echo '<div class="alert alert-danger" role="alert">';
-  echo 'Could not Connect to Database: ' . mysql_error();
+  echo 'Could not Connect to Database: ' . mysqli_error($conn);
   echo "</div>";
 }
 
@@ -122,7 +104,7 @@ if(!$q)
 {
  
   echo '<div class="alert alert-danger" role="alert">';
-  echo 'Could not enter data: ' . mysql_error();
+  echo 'Could not enter data: ' . mysqli_error($conn);
   echo "</div>";
  
 }
@@ -141,7 +123,7 @@ else
 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
     
 ?>

@@ -1,25 +1,22 @@
 <?php include "connection/connection.php";
 
-	$user = mysql_real_escape_string($_POST["user"],$conn);
-	$pass1 = mysql_real_escape_string($_POST["pass"],$conn);
+	$user = mysqli_real_escape_string($conn,$_POST["user"]);
+	$pass1 = mysqli_real_escape_string($conn,$_POST["pass"]);
 	session_start();
 	$_SESSION['user'] = $user;
 	$_SESSION['pass'] = $pass1;
 	
       if($conn){
-	
-	         
-	mysql_select_db('sirhal_web');
+	        
+	mysqli_select_db('sirhal_web');
 	
 	$sql = "SELECT * FROM usuarios where user='$user' and password='$pass1' and permisos = 1";
-	$q = mysql_query($sql,$conn);
+	$q = mysqli_query($conn,$sql);
 	
 	$query = "SELECT * FROM usuarios where user='$user' and password='$pass1' and permisos = 0";
-	$retval = mysql_query($query,$conn);
+	$retval = mysqli_query($conn,$query);
 	
-		
 	}
-
 
 ?>
   <html style="height: 100%">
@@ -50,35 +47,38 @@
     		if(!$q && !$retval) 
 		{	
 			echo '<div class="alert alert-danger" role="alert">';
-			echo "Error de Conexion...";
-			exit;
+			echo "Error de Conexion..." .mysqli_error();
 			echo "</div>";
 			echo '<a href="index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 			exit;			
 			
 		}
 		
-			if($user = mysql_fetch_assoc($retval)){
+			if($user = mysqli_fetch_assoc($retval)){
 				
 
-				echo '<div class="alert alert-success" role="alert">';
-				echo "Bienvenido!  " .$_SESSION["user"];
+				echo '<div class="alert alert-danger" role="alert">';
+				echo "<strong>Atención!  </strong>" .$_SESSION["user"];
 				echo "<br>";
-				echo "Presione -Aceptar- para continuar";
+				echo "Su Usuario se encuentra bloqueado. Contacte al Administrador";
   				echo "</div>";
-				echo '<a href="0/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
+				echo '<a href="index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
+				exit;
 			}
 
-			else if($user = mysql_fetch_assoc($q)){
+			else if($user = mysqli_fetch_assoc($q)){
 
 				if(strcmp($_SESSION["user"], 'root') == 0){
 
 				echo '<div class="alert alert-success" role="alert">';
 				echo "Bienvenido!  " .$_SESSION["user"];
 				echo "<br>";
-				echo "Presione -Aceptar- para continuar";
+				echo "Aguarde un Instante...";
+				echo "<br>";
+				//echo "Presione -Aceptar- para continuar";
   				echo "</div>";
-				echo '<a href="root/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';		
+  				echo '<meta http-equiv="refresh" content="3;URL=http:root/main.php "/>';
+				//echo '<a href="root/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';		
 			}
 
 			
@@ -87,9 +87,12 @@
 				echo '<div class="alert alert-success" role="alert">';
 				echo "Bienvenido!  " .$_SESSION["user"];
 				echo "<br>";
-				echo "Presione -Aceptar- para continuar";
+				echo "Aguarde un instante...";
+				echo "<br>";
+				//echo "Presione -Aceptar- para continuar";
   				echo "</div>";
-				echo '<a href="1/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
+  				echo '<meta http-equiv="refresh" content="3;URL=http:1/main.php "/>';
+				//echo '<a href="1/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
 			}
 			} 
 
@@ -108,7 +111,7 @@
 	
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
     ?>
 </div>
 </div>

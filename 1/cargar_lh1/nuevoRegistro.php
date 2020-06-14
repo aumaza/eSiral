@@ -4,24 +4,24 @@
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
-        while($fila = mysql_fetch_array($retval)){
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
-	mysql_select_db('sirhal_web');
-	$res = mysql_query($query);
-	while($linea = mysql_fetch_array($res)){
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 
 	}
@@ -175,13 +175,13 @@
                if($conn){
 
               $query = "SELECT * FROM escalafones";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_esc].'">'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
                     }
@@ -206,13 +206,13 @@
                if($conn){
 
               $query = "SELECT * FROM agrupamiento";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_agrup].'">'.$valores[cod_agrup].'-'.$valores[descripcion].'</option>';
                     }
@@ -237,13 +237,13 @@
                if($conn){
 
               $query = "SELECT * FROM niveles";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_nivel].'">'.$valores[cod_nivel].'-'.$valores[descripcion].'</option>';
                     }
@@ -267,13 +267,13 @@
                if($conn){
 
               $query = "SELECT * FROM grados";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_grado].'">'.$valores[cod_grado].'-'.$valores[descripcion].'</option>';
                     }
@@ -297,13 +297,13 @@
                if($conn){
 
               $query = "SELECT * FROM uni_org";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_uni].'">'.$valores[cod_uni].'-'.$valores[descripcion].'</option>';
                     }
@@ -327,13 +327,13 @@
                if($conn){
 
               $query = "SELECT * FROM jurisdicciones";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_jur].'">'.$valores[cod_jur].'-'.$valores[descripcion].'</option>';
                     }
@@ -357,13 +357,13 @@
                if($conn){
 
               $query = "SELECT * FROM sub_jur";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_subjur].'">'.$valores[cod_subjur].'-'.$valores[descripcion].'</option>';
                     }
@@ -387,13 +387,13 @@
                if($conn){
 
               $query = "SELECT * FROM entidades";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_entidad].'">'.$valores[cod_entidad].'-'.$valores[descripcion].'</option>';
                     }
@@ -419,13 +419,13 @@
                if($conn){
 
               $query = "SELECT * FROM programas";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_prog].'">'.$valores[cod_prog].'-'.$valores[descripcion].'</option>';
                     }
@@ -449,13 +449,13 @@
                if($conn){
 
               $query = "SELECT * FROM subprogramas";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_subprog].'">'.$valores[cod_subprog].'-'.$valores[descripcion].'</option>';
                     }
@@ -479,13 +479,13 @@
                if($conn){
 
               $query = "SELECT * FROM proyectos";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_proy].'">'.$valores[cod_proy].'-'.$valores[descripcion].'</option>';
                     }
@@ -510,13 +510,13 @@
                if($conn){
 
               $query = "SELECT * FROM actividades";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_act].'">'.$valores[cod_act].'-'.$valores[descripcion].'</option>';
                     }
@@ -541,13 +541,13 @@
                if($conn){
 
               $query = "SELECT * FROM ubi_geo";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_geo].'">'.$valores[cod_geo].'-'.$valores[descripcion].'</option>';
                     }
@@ -579,13 +579,13 @@
                if($conn){
 
               $query = "SELECT * FROM tipo_planta";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_planta].'">'.$valores[cod_planta].'-'.$valores[descripcion].'</option>';
                     }
@@ -614,13 +614,13 @@
                if($conn){
 
               $query = "SELECT * FROM fuente_financiamiento";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_ff].'">'.$valores[cod_ff].'-'.$valores[descripcion].'</option>';
                     }
@@ -644,20 +644,20 @@
                if($conn){
 
               $query = "SELECT * FROM marca_estado";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[cod_estado].'">'.$valores[cod_estado].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
 
-                mysql_close($conn);
+                mysqli_close($conn);
 
                 ?>
                 </select>

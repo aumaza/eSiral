@@ -5,18 +5,18 @@
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
         
-        while($fila = mysql_fetch_array($retval)){
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 	

@@ -15,34 +15,13 @@ session_start();
 
 if($conn){
 
-$sql = "CREATE TABLE liquidadores (".
-               "id INT AUTO_INCREMENT,".
-               "nombreApellido VARCHAR(30) NOT NULL,".
-               "sexo VARCHAR(9) NOT NULL,".
-               "dni VARCHAR(8) NOT NULL,".
-               "email VARCHAR(20) NOT NULL,".
-               "telefono VARCHAR(20) NOT NULL,".
-               "organismo VARCHAR(90) NOT NULL,".
-               "PRIMARY KEY (id)); ";
-
-	mysql_select_db('sirhal_web');
-	$retval = mysql_query($sql, $conn);
-	
-	if(!$retval)
-	{
-		mysql_error(); 	
-	}
-	
-	else
-	 {	
-		echo 'Table create Succesfully\n';
-	 }
-		$nombre = mysql_real_escape_string($_POST["nombre"], $conn);
-		$sexo = mysql_real_escape_string($_POST["sexo"], $conn);
-		$dni = mysql_real_escape_string($_POST["dni"], $conn);
-		$email = mysql_real_escape_string($_POST["email"], $conn);
-		$telefono = mysql_real_escape_string($_POST["telefono"], $conn);    
-		$organismo = mysql_real_escape_string($_POST["organismo"], $conn);
+		createTableLiquidadores($conn);
+		$nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
+		$sexo = mysqli_real_escape_string($conn,$_POST["sexo"]);
+		$dni = mysqli_real_escape_string($conn,$_POST["dni"]);
+		$email = mysqli_real_escape_string($conn,$_POST["email"]);
+		$telefono = mysqli_real_escape_string($conn,$_POST["telefono"]);    
+		$organismo = mysqli_real_escape_string($conn,$_POST["organismo"]);
 	
 $sqlInsert = "INSERT INTO liquidadores ".
 "(nombreApellido,sexo,dni,email,telefono,organismo)".
@@ -50,12 +29,12 @@ $sqlInsert = "INSERT INTO liquidadores ".
 "('$nombre','$sexo','$dni','$email','$telefono','$organismo')";
 
 
-$q = mysql_query($sqlInsert,$conn);
+$q = mysqli_query($conn,$sqlInsert);
 }
 
 else{
  echo '<div class="alert alert-danger" role="alert">';
-  echo 'Could not Connect to Database: ' . mysql_error();
+  echo 'Could not Connect to Database: ' . mysqli_error($conn);
   echo "</div>";
 }
 
@@ -117,7 +96,7 @@ if(!$q)
 {
  
   echo '<div class="alert alert-danger" role="alert">';
-  echo 'Could not enter data: ' . mysql_error();
+  echo 'Could not enter data: ' . mysqli_error($conn);
   echo "</div>";
   echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
  
@@ -136,7 +115,7 @@ else
 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
     
 ?>

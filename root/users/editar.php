@@ -16,9 +16,9 @@
 	
       $id = $_GET['id'];
       $sql = "SELECT * FROM usuarios WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
 
 ?>
 
@@ -125,8 +125,8 @@
   <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
   <select class="browser-default custom-select" name="permisos">
   <option value="" disabled selected>Permisos</option>
-  <option value="1" <?php if($fila['permisos'] == "1") echo 'selected'; ?>>Administrador</option>
-  <option value="0" <?php if($fila['permisos'] == "0") echo 'selected'; ?>>Usuario</option>
+  <option value="1" <?php if($fila['permisos'] == "1") echo 'selected'; ?>>Usuario</option>
+  <option value="0" <?php if($fila['permisos'] == "0") echo 'selected'; ?>>Usuario Bloqueado</option>
   </select>
 </div>
 

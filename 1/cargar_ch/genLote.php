@@ -5,24 +5,24 @@
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
-        while($fila = mysql_fetch_array($retval)){
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
-	mysql_select_db('sirhal_web');
-	$res = mysql_query($query);
-	while($linea = mysql_fetch_array($res)){
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 
 	}
@@ -90,7 +90,7 @@
 
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> DP - Generar Archivo de Lote</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> CH - Generar Archivo de Lote</h2>
   </div>
     <div class="panel-body">
    
@@ -158,27 +158,27 @@
         
        if($conn){
        
-	mysql_select_db('sirhal_web');
+	mysqli_select_db('sirhal_web');
 	  	
 	     if (isset($_POST['A'])) {
 	     
-			    $cod_org = mysql_real_escape_string($_POST["cod_org"], $conn);
-                            $cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
-                            $nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);;
+			    $cod_org = mysqli_real_escape_string($conn,$_POST["cod_org"]);
+                            $cod_arch = mysqli_real_escape_string($conn,$_POST["cod_arch"]);
+                            $nro_lote = mysqli_real_escape_string($conn,$_POST["nro_lote"]);
                                                         
-                             genLoteCH($cod_org,$cod_arch,$nro_lote,$nombre);
+                             genLoteCH($cod_org,$cod_arch,$nro_lote,$nombre,$conn);
                              
                              }
                              }else {
 
-                                      mysql_error();
+                                      mysqli_error();
 
                                     }
                                     
 
   //cerramos la conexion
   
-  mysql_close($conn);
+  mysqli_close($conn);
 
 
 ?>

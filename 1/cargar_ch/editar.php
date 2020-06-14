@@ -4,24 +4,24 @@
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
-        while($fila = mysql_fetch_array($retval)){
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
-	mysql_select_db('sirhal_web');
-	$res = mysql_query($query);
-	while($linea = mysql_fetch_array($res)){
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 
 	}
@@ -39,9 +39,9 @@
 	
 	$id = $_GET['id'];
       $sql = "SELECT * FROM tb_ch WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
 	
 	
 
@@ -96,7 +96,7 @@
 
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> CH - Nuevo Registro</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/document-edit.png"  class="img-reponsive img-rounded"> CH - Editar Registro</h2>
   </div>
     <div class="panel-body">
    
@@ -114,7 +114,7 @@
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" value="<?php echo $fila['nro_lote']; ?>"required>
+    <input id="text" type="text" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" value="<?php echo $fila['nro_lote']; ?>" required>
     </div>
     <br>
   
@@ -141,20 +141,20 @@
                if($conn){
 
               $query = "SELECT * FROM escalafones";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                        echo '<option value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'>'.$valores[cod_esc].'-'.$valores[descripcion].'</option>';
                     }
                 }
                 }
 
-                mysql_close($conn);
+                mysqli_close($conn);
 
                 ?>
                 </select>
@@ -200,7 +200,7 @@
   
   <div class="form-group">
    <div class="col-sm-offset-2 col-sm-12" align="left">
-   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
+   <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span>  Editar</button>
    <a href="cargar_ch.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
   </div>

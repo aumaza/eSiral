@@ -1,12 +1,12 @@
 <?php include "../../connection/connection.php";
       include "../../functions/functions.php";
 
-session_start();
+	session_start();
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
         
         while($fila = mysql_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
@@ -14,9 +14,9 @@ session_start();
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 	
@@ -85,20 +85,20 @@ session_start();
 <?php
 
       if($conn){
-		createTableLH2();
+		createTableLH2($conn);
 		
-		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn); // char
-		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn); // int
-		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn); // int
-		$cod_org = mysql_real_escape_string($_POST["cod_org"], $conn); // char
-		$tipo_doc = mysql_real_escape_string($_POST["tipo_doc"], $conn); // char
-		$nro_dni = mysql_real_escape_string($_POST["nro_dni"], $conn); // int
-		$cod_esc = mysql_real_escape_string($_POST["cod_esc"], $conn); // int
-		$cod_concepto = mysql_real_escape_string($_POST["cod_concepto"], $conn); // int
-		$importe = mysql_real_escape_string($_POST["importe"], $conn); //float
-		$tipo_uf = mysql_real_escape_string($_POST["tipo_uf"], $conn); // int
-		$cant_uf = mysql_real_escape_string($_POST["cant_uf"], $conn); // int
-		$per_liquidado = mysql_real_escape_string($_POST["per_liquidado"], $conn); //int
+		$cod_arch = mysqli_real_escape_string($conn,$_POST["cod_arch"]); // char
+		$nro_lote = mysqli_real_escape_string($conn,$_POST["nro_lote"]); // int
+		$per_lote = mysqli_real_escape_string($conn,$_POST["per_lote"]); // int
+		$cod_org = mysqli_real_escape_string($conn,$_POST["cod_org"]); // char
+		$tipo_doc = mysqli_real_escape_string($conn,$_POST["tipo_doc"]); // char
+		$nro_dni = mysqli_real_escape_string($conn,$_POST["nro_dni"]); // int
+		$cod_esc = mysqli_real_escape_string($conn,$_POST["cod_esc"]); // int
+		$cod_concepto = mysqli_real_escape_string($conn,$_POST["cod_concepto"]); // int
+		$importe = mysqli_real_escape_string($conn,$_POST["importe"]); //float
+		$tipo_uf = mysqli_real_escape_string($conn,$_POST["tipo_uf"]); // int
+		$cant_uf = mysqli_real_escape_string($conn,$_POST["cant_uf"]); // int
+		$per_liquidado = mysqli_real_escape_string($conn,$_POST["per_liquidado"]); //int
 		
 		
 		isString($cod_arch);
@@ -120,14 +120,14 @@ session_start();
 		  "(cod_inst,cod_arch,nro_lote,per_lote,tipo_doc,nro_doc,cod_esc,cod_concepto,importe,tipo_uf,cant_uf,periodo)".
 		  "VALUES ".
 		  "('$cod_org','$cod_arch','$nro_lote','$per_lote','$tipo_doc','$nro_dni','$cod_esc','$cod_concepto','$importe','$tipo_uf','$cant_uf','$per_liquidado')";
-		  $q = mysql_query($sqlInsert,$conn);
+		  $q = mysqli_query($conn,$sqlInsert);
 		  
 		  
 		  
 		  if(!$q){
  
 			echo '<div class="alert alert-danger" role="alert">';
-			echo 'Could not enter data: ' . mysql_error();
+			echo 'Could not enter data: ' . mysqli_error($conn);
 			echo "</div>";
 			echo '<hr> <a href="nuevoRegistro.php"><input type="button" value="Volver" class="btn btn-primary"></a>'; 
 			}else{
@@ -141,13 +141,13 @@ session_start();
 		
 		    }else{
 			  echo '<div class="alert alert-danger" role="alert">';
-			  echo 'Could not Connect to Database: ' . mysql_error();
+			  echo 'Could not Connect to Database: ' . mysqli_error($conn);
 			  echo "</div>";
 			 }
 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
     
 ?>

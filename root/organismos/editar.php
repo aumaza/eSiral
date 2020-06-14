@@ -15,9 +15,9 @@
 	
       $id = $_GET['id'];
       $sql = "SELECT * FROM organismos WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
 
 ?>
 

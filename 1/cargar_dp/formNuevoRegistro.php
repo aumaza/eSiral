@@ -5,18 +5,18 @@
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
         
-        while($fila = mysql_fetch_array($retval)){
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 	
@@ -85,27 +85,27 @@
 <?php
 
       if($conn){
-		createTableDP();
-		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
-		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);
-		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn);
-		$tip_doc = mysql_real_escape_string($_POST["tip_doc"], $conn);
-		$nro_dni = mysql_real_escape_string($_POST["nro_dni"], $conn);
-		$nombre = mysql_real_escape_string($_POST["nombre"], $conn);
-		$f_nac = mysql_real_escape_string($_POST["f_nac"], $conn);
-		$sexo = mysql_real_escape_string($_POST["sexo"], $conn);
-		$cod_est_civ = mysql_real_escape_string($_POST["cod_est_civ"], $conn);
-		$cod_inst = mysql_real_escape_string($_POST["cod_org"], $conn);
-		$f_ing = mysql_real_escape_string($_POST["f_ing"], $conn);
-		$cod_nac = mysql_real_escape_string($_POST["cod_nac"], $conn);
-		$cod_niv_edu = mysql_real_escape_string($_POST["cod_niv_edu"], $conn);
-		$desc_tit = mysql_real_escape_string($_POST["desc_tit"], $conn);
-		$cuit_cuil = mysql_real_escape_string($_POST["cuit_cuil"], $conn);
-		$sist_prev = mysql_real_escape_string($_POST["sist_prev"], $conn);
-		$cod_sist_prev = mysql_real_escape_string($_POST["cod_sist_prev"], $conn);
-		$cod_ob_soc = mysql_real_escape_string($_POST["cod_ob_soc"], $conn);
-		$nro_afi = mysql_real_escape_string($_POST["nro_afi"], $conn);
-		$tip_hor = mysql_real_escape_string($_POST["tip_hor"], $conn);
+		createTableDP($conn);
+		$cod_arch = mysqli_real_escape_string($conn,$_POST["cod_arch"]);
+		$nro_lote = mysqli_real_escape_string($conn,$_POST["nro_lote"]);
+		$per_lote = mysqli_real_escape_string($conn,$_POST["per_lote"]);
+		$tip_doc = mysqli_real_escape_string($conn,$_POST["tip_doc"]);
+		$nro_dni = mysqli_real_escape_string($conn,$_POST["nro_dni"]);
+		$nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
+		$f_nac = mysqli_real_escape_string($conn,$_POST["f_nac"]);
+		$sexo = mysqli_real_escape_string($conn,$_POST["sexo"]);
+		$cod_est_civ = mysqli_real_escape_string($conn,$_POST["cod_est_civ"]);
+		$cod_inst = mysqli_real_escape_string($conn,$_POST["cod_org"]);
+		$f_ing = mysqli_real_escape_string($conn,$_POST["f_ing"]);
+		$cod_nac = mysqli_real_escape_string($conn,$_POST["cod_nac"]);
+		$cod_niv_edu = mysqli_real_escape_string($conn,$_POST["cod_niv_edu"]);
+		$desc_tit = mysqli_real_escape_string($conn,$_POST["desc_tit"]);
+		$cuit_cuil = mysqli_real_escape_string($conn,$_POST["cuit_cuil"]);
+		$sist_prev = mysqli_real_escape_string($conn,$_POST["sist_prev"]);
+		$cod_sist_prev = mysqli_real_escape_string($conn,$_POST["cod_sist_prev"]);
+		$cod_ob_soc = mysqli_real_escape_string($conn,$_POST["cod_ob_soc"]);
+		$nro_afi = mysqli_real_escape_string($conn,$_POST["nro_afi"]);
+		$tip_hor = mysqli_real_escape_string($conn,$_POST["tip_hor"]);
 		
 		
 		isString($tipo_doc);
@@ -130,11 +130,11 @@
 		  "(cod_arch,nro_lote,per_lote,tipo_dni,nro_dni,nombreApellido,f_nac,cod_sexo,cod_est_civ,cod_inst,f_ing,cod_nac,cod_niv_edu,desc_tit,cuil_cuit,sist_prev,cod_sist_prev,cod_ob_soc,nro_afi,tip_hor)".
 		  "VALUES ".
 		  "('$cod_arch','$nro_lote','$per_lote','$tip_doc','$nro_dni','$nombre','$f_nac','$sexo','$cod_est_civ','$cod_inst','$f_ing','$cod_nac','$cod_niv_edu','$desc_tit','$cuit_cuil','$sist_prev','$cod_sist_prev','$cod_ob_soc','$nro_afi','$tip_hor')";
-		  $q = mysql_query($sqlInsert,$conn);
+		  $q = mysqli_query($conn,$sqlInsert);
 		  
 		  if(!$q){
  			echo '<div class="alert alert-danger" role="alert">';
-			echo 'Could not enter data: ' . mysql_error();
+			echo 'Could not enter data: ' . mysqli_error($conn);
 			echo "</div>";
 			echo '<hr> <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>'; 
 			}else{
@@ -145,13 +145,13 @@
 			      } 
 			      }else{
 			  echo '<div class="alert alert-danger" role="alert">';
-			  echo 'Could not Connect to Database: ' . mysql_error();
+			  echo 'Could not Connect to Database: ' . mysql_error($conn);
 			  echo "</div>";
 			 }
 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
     
 ?>

@@ -5,24 +5,24 @@ session_start();
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
-        while($fila = mysql_fetch_array($retval)){
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
-	mysql_select_db('sirhal_web');
-	$res = mysql_query($query);
-	while($linea = mysql_fetch_array($res)){
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 
 	}
@@ -40,12 +40,12 @@ session_start();
       if($conn){
       $id = $_GET['id'];
       $sql = "SELECT * FROM tb_ch WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
       }else{
 	echo '<div class="alert alert-danger" role="alert">';
-	echo 'Could not Connect: ' . mysql_error();
+	echo 'Could not Connect: ' . mysqli_error();
 	echo "</div>";
       }
 
@@ -101,16 +101,16 @@ session_start();
     <?php
     
     if($conn){
-		$id = mysql_real_escape_string($_POST["id"], $conn);
-		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
-		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);
-		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn);
-		$cod_org = mysql_real_escape_string($_POST["cod_org"], $conn);
-		$cod_escalafon = mysql_real_escape_string($_POST["cod_esc"], $conn);
-		$cod_concepto = mysql_real_escape_string($_POST["cod_concepto"], $conn);
-		$desc_concepto = mysql_real_escape_string($_POST["desc_concepto"], $conn);
-		$rem_bon = mysql_real_escape_string($_POST["rem_bon"], $conn);
-		$tip_concepto = mysql_real_escape_string($_POST["tip_concepto"], $conn);
+		$id = mysqli_real_escape_string($conn,$_POST["id"]);
+		$cod_arch = mysqli_real_escape_string($conn,$_POST["cod_arch"]);
+		$nro_lote = mysqli_real_escape_string($conn,$_POST["nro_lote"]);
+		$per_lote = mysqli_real_escape_string($conn,$_POST["per_lote"]);
+		$cod_org = mysqli_real_escape_string($conn,$_POST["cod_org"]);
+		$cod_escalafon = mysqli_real_escape_string($conn,$_POST["cod_esc"]);
+		$cod_concepto = mysqli_real_escape_string($conn,$_POST["cod_concepto"]);
+		$desc_concepto = mysqli_real_escape_string($conn,$_POST["desc_concepto"]);
+		$rem_bon = mysqli_real_escape_string($conn,$_POST["rem_bon"]);
+		$tip_concepto = mysqli_real_escape_string($conn,$_POST["tip_concepto"]);
 		
 		isString($cod_arch);
 		isNumeric($nro_lote);
@@ -127,13 +127,13 @@ session_start();
 		cod_esc='$cod_escalafon',cod_concepto='$cod_concepto',desc_concepto='$desc_concepto',rem_bon='$rem_bon',tip_concepto='$tip_concepto' WHERE id = '$id'";
 		
   			
-mysql_select_db('sirhal_web');
-$q = mysql_query($sqlInsert,$conn);
+mysqli_select_db('sirhal_web');
+$q = mysqli_query($conn,$sqlInsert);
 
 if(!$q)
 {
 	 echo '<div class="alert alert-danger" role="alert">';
-         echo 'Could not enter data: ' . mysql_error();
+         echo 'Could not enter data: ' . mysqli_error($conn);
          echo "</div>";
 }
 
@@ -149,7 +149,7 @@ else
 else 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
 	 	
 	  	

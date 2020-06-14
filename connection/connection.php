@@ -1,9 +1,11 @@
 <?php
 
-$dbhost = 'localhost:3036';
+$dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = 'slack142';
 $dbase = 'sirhal_web';
-$conn = mysql_connect($dbhost, $dbuser, $dbpass, $dbase);
+$conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbase);
+//$conn = mysqli_connect('localhost','root','slack142','sirhal_web');
+
 
 ?>

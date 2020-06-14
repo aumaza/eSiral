@@ -119,8 +119,8 @@
   <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
   <select class="browser-default custom-select" name="permisos">
   <option value="" disabled selected>Permisos</option>
-  <option value="1" >Administrador</option>
-  <option value="0" >Usuario</option>
+  <option value="1" >Usuario</option>
+  <option value="0" >Usuario Bloqueado</option>
   </select>
 </div>
  

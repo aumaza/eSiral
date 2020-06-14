@@ -72,33 +72,33 @@
         
        if($conn){
        
-	mysql_select_db('sirhal_web');
+	mysqli_select_db('sirhal_web');
 	  	
 	     if (isset($_POST['A'])) {
 	     
 			    
                             
-                            $nombre = mysql_real_escape_string($_POST["nombre"], $conn);
-                            $user = mysql_real_escape_string($_POST["user"], $conn);
-                            $pass1 = mysql_real_escape_string($_POST["pass1"], $conn);
-                            $pass2 = mysql_real_escape_string($_POST["pass2"], $conn);
-                            $permisos = mysql_real_escape_string($_POST["permisos"], $conn);;
+                            $nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
+                            $user = mysqli_real_escape_string($conn,$_POST["user"]);
+                            $pass1 = mysqli_real_escape_string($conn,$_POST["pass1"]);
+                            $pass2 = mysqli_real_escape_string($conn,$_POST["pass2"]);
+                            $permisos = mysqli_real_escape_string($conn,$_POST["permisos"]);
                                                         
-                             agregarUser($nombre,$user,$pass1,$pass2,$permisos);
+                             agregarUser($nombre,$user,$pass1,$pass2,$permisos,$conn);
                              
 
 
                              }
                              }else {
 
-                                      mysql_error();
+                                      mysqli_error($conn);
 
                                     }
                                     
 
   //cerramos la conexion
   
-  mysql_close($conn);
+  mysqli_close($conn);
 
 
 ?>

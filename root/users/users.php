@@ -120,8 +120,8 @@
 if($conn)
 {
 	$sql = "SELECT * FROM usuarios";
-    	mysql_select_db('sirhal_web');
-    	$resultado = mysql_query($sql,$conn);
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
 	//mostramos fila x fila
 
 	echo '<br><br>';
@@ -139,7 +139,7 @@ if($conn)
                     </thead>";
 
 
-	while($fila = mysql_fetch_array($resultado))
+	while($fila = mysqli_fetch_array($resultado))
 	{
 
 
@@ -175,7 +175,7 @@ if($conn)
 			echo 'Connection Failure...';
 		}
 
-    mysql_close($conn);
+    mysqli_close($conn);
 
 
 

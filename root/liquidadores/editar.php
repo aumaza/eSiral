@@ -15,9 +15,9 @@
 	
 	$id = $_GET['id'];
       $sql = "SELECT * FROM liquidadores WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
 
 ?>
 
@@ -141,20 +141,20 @@
                if($conn){
 
               $query = "SELECT * FROM organismos order by descripcion ASC";
-              mysql_select_db('sirhal_web');
-              $res = mysql_query($query);
+              mysqli_select_db('sirhal_web');
+              $res = mysqli_query($conn,$query);
 
               if($res)
               {
                 
-                  while ($valores = mysql_fetch_array($res))
+                  while ($valores = mysqli_fetch_array($res))
                     {
                         echo '<option value="'.$valores[descripcion].'" '.(($fila['organismo']== $valores[descripcion])?'selected="selected"':"").'>'.$valores[descripcion].'</option>';
                     }
                 }
                 }
 
-                mysql_close($conn);
+                mysqli_close($conn);
 
                 ?>
                 </select>

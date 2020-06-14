@@ -4,24 +4,24 @@ session_start();
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
-	mysql_select_db('sirhal_web');
-        $retval = mysql_query($sql);
-        while($fila = mysql_fetch_array($retval)){
+	mysqli_select_db('sirhal_web');
+        $retval = mysqli_query($conn,$sql);
+        while($fila = mysqli_fetch_array($retval)){
 	  $nombre = $fila['nombre'];
 	  
 	  }
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
-	mysql_select_db('sirhal_web');
-	$valor = mysql_query($sqla);
-	while($row = mysql_fetch_array($valor)){
+	mysqli_select_db('sirhal_web');
+	$valor = mysqli_query($conn,$sqla);
+	while($row = mysqli_fetch_array($valor)){
 	  $organismo = $row['organismo'];
 	}
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
-	mysql_select_db('sirhal_web');
-	$res = mysql_query($query);
-	while($linea = mysql_fetch_array($res)){
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 
 	}
@@ -39,12 +39,12 @@ session_start();
       if($conn){
       $id = $_GET['id'];
       $sql = "SELECT * FROM tb_lh1 WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
       }else{
 	echo '<div class="alert alert-danger" role="alert">';
-	echo 'Could not Connect: ' . mysql_error();
+	echo 'Could not Connect: ' . mysqli_error($conn);
 	echo "</div>";
       }
 
@@ -100,31 +100,31 @@ session_start();
     <?php
     
     if($conn){
-		$id = mysql_real_escape_string($_POST["id"], $conn);
-		$cod_arch = mysql_real_escape_string($_POST["cod_arch"], $conn);
-		$nro_lote = mysql_real_escape_string($_POST["nro_lote"], $conn);
-		$per_lote = mysql_real_escape_string($_POST["per_lote"], $conn);
-		$cod_org = mysql_real_escape_string($_POST["cod_org"], $conn);
-		$tipo_doc = mysql_real_escape_string($_POST["tip_doc"], $conn);
-		$nro_dni = mysql_real_escape_string($_POST["nro_dni"], $conn);
-		$cod_esc = mysql_real_escape_string($_POST["cod_esc"], $conn);
-		$cod_agrup = mysql_real_escape_string($_POST["cod_agrup"], $conn);
-		$cod_nivel = mysql_real_escape_string($_POST["cod_nivel"], $conn);
-		$cod_grado = mysql_real_escape_string($_POST["cod_grado"], $conn);
-		$cod_uni = mysql_real_escape_string($_POST["cod_uni"], $conn);
-		$cod_jur = mysql_real_escape_string($_POST["cod_jur"], $conn);
-		$cod_subjur = mysql_real_escape_string($_POST["cod_subjur"], $conn);
-		$cod_entidad = mysql_real_escape_string($_POST["cod_entidad"], $conn);
-		$cod_prog = mysql_real_escape_string($_POST["cod_prog"], $conn);
-		$cod_subprog = mysql_real_escape_string($_POST["cod_subprog"], $conn);
-		$cod_proy = mysql_real_escape_string($_POST["cod_proy"], $conn);
-		$cod_act = mysql_real_escape_string($_POST["cod_act"], $conn);
-		$cod_geo = mysql_real_escape_string($_POST["cod_geo"], $conn);
-		$periodo = mysql_real_escape_string($_POST["periodo"], $conn);
-		$cod_planta = mysql_real_escape_string($_POST["cod_planta"], $conn);
-		$f_ing = mysql_real_escape_string($_POST["f_ing"], $conn);
-		$cod_ff = mysql_real_escape_string($_POST["cod_ff"], $conn);
-		$cod_est = mysql_real_escape_string($_POST["cod_estado"], $conn);
+		$id = mysqli_real_escape_string($_POST["id"], $conn);
+		$cod_arch = mysqli_real_escape_string($conn,$_POST["cod_arch"]);
+		$nro_lote = mysqli_real_escape_string($conn,$_POST["nro_lote"]);
+		$per_lote = mysqli_real_escape_string($conn,$_POST["per_lote"]);
+		$cod_org = mysqli_real_escape_string($conn,$_POST["cod_org"]);
+		$tipo_doc = mysqli_real_escape_string($conn,$_POST["tip_doc"]);
+		$nro_dni = mysqli_real_escape_string($conn,$_POST["nro_dni"]);
+		$cod_esc = mysqli_real_escape_string($conn,$_POST["cod_esc"]);
+		$cod_agrup = mysqli_real_escape_string($conn,$_POST["cod_agrup"]);
+		$cod_nivel = mysqli_real_escape_string($conn,$_POST["cod_nivel"]);
+		$cod_grado = mysqli_real_escape_string($conn,$_POST["cod_grado"]);
+		$cod_uni = mysqli_real_escape_string($conn,$_POST["cod_uni"]);
+		$cod_jur = mysqli_real_escape_string($conn,$_POST["cod_jur"]);
+		$cod_subjur = mysqli_real_escape_string($conn,$_POST["cod_subjur"]);
+		$cod_entidad = mysqli_real_escape_string($conn,$_POST["cod_entidad"]);
+		$cod_prog = mysqli_real_escape_string($conn,$_POST["cod_prog"]);
+		$cod_subprog = mysqli_real_escape_string($conn,$_POST["cod_subprog"]);
+		$cod_proy = mysqli_real_escape_string($conn,$_POST["cod_proy"]);
+		$cod_act = mysqli_real_escape_string($conn,$_POST["cod_act"]);
+		$cod_geo = mysqli_real_escape_string($conn,$_POST["cod_geo"]);
+		$periodo = mysqli_real_escape_string($conn,$_POST["periodo"]);
+		$cod_planta = mysqli_real_escape_string($conn,$_POST["cod_planta"]);
+		$f_ing = mysqli_real_escape_string($conn,$_POST["f_ing"]);
+		$cod_ff = mysqli_real_escape_string($conn,$_POST["cod_ff"]);
+		$cod_est = mysqli_real_escape_string($conn,$_POST["cod_estado"]);
 		
 		
 		$sqlInsert = "UPDATE tb_lh1 SET cod_inst='$cod_org', cod_arch='$cod_arch', nro_lote='$nro_lote', per_lote='$per_lote',
@@ -134,13 +134,13 @@ session_start();
 		tipo_planta='$cod_planta', f_ing='$f_ing', cod_fin='$cod_ff', marca_estado='$cod_est' WHERE id = '$id'";
 		
   			
-mysql_select_db('sirhal_web');
-$q = mysql_query($sqlInsert,$conn);
+mysqli_select_db('sirhal_web');
+$q = mysqli_query($conn,$sqlInsert);
 
 if(!$q)
 {
 	 echo '<div class="alert alert-danger" role="alert">';
-         echo 'Could not enter data: ' . mysql_error();
+         echo 'Could not enter data: ' . mysqli_error($conn);
          echo "</div>";
 }
 
@@ -156,7 +156,7 @@ else
 else 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
 	 	
 	  	

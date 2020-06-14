@@ -16,12 +16,12 @@ session_start();
       if($conn){
       $id = $_GET['id'];
       $sql = "SELECT * FROM liquidadores WHERE id = '$id'";
-      mysql_select_db('sirhal_web');
-      $resultado = mysql_query($sql,$conn);
-      $fila = mysql_fetch_assoc($resultado);
+      mysqli_select_db('sirhal_web');
+      $resultado = mysqli_query($conn,$sql);
+      $fila = mysqli_fetch_assoc($resultado);
       }else{
 	echo '<div class="alert alert-danger" role="alert">';
-	echo 'Could not Connect: ' . mysql_error();
+	echo 'Could not Connect: ' . mysqli_error($conn);
 	echo "</div>";
       }
 
@@ -77,24 +77,24 @@ session_start();
     
     if($conn){
       
-		$id = mysql_real_escape_string($_POST["id"], $conn);
-		$nombre = mysql_real_escape_string($_POST["nombre"], $conn);
-		$sexo = mysql_real_escape_string($_POST["sexo"], $conn);
-		$dni = mysql_real_escape_string($_POST["dni"], $conn);
-		$email = mysql_real_escape_string($_POST["email"], $conn);
-		$telefono = mysql_real_escape_string($_POST["telefono"], $conn);
-		$organismo = mysql_real_escape_string($_POST["organismo"], $conn);
+		$id = mysqli_real_escape_string($conn,$_POST["id"]);
+		$nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
+		$sexo = mysqli_real_escape_string($conn,$_POST["sexo"]);
+		$dni = mysqli_real_escape_string($conn,$_POST["dni"]);
+		$email = mysqli_real_escape_string($conn,$_POST["email"]);
+		$telefono = mysqli_real_escape_string($conn,$_POST["telefono"]);
+		$organismo = mysqli_real_escape_string($conn,$_POST["organismo"]);
 			
 		$sqlInsert = "UPDATE liquidadores SET nombreApellido='$nombre', sexo='$sexo', dni='$dni', email='$email', telefono='$telefono', organismo='$organismo' WHERE id = '$id'";
 		
   			
-mysql_select_db('sirhal_web');
-$q = mysql_query($sqlInsert,$conn);
+mysqli_select_db('sirhal_web');
+$q = mysqli_query($conn,$sqlInsert);
 
 if(!$q)
 {
 	 echo '<div class="alert alert-danger" role="alert">';
-         echo 'Could not enter data: ' . mysql_error();
+         echo 'Could not enter data: ' . mysqli_error($conn);
          echo "</div>";
 }
 
@@ -110,7 +110,7 @@ else
 else 
 	//cerramos la conexion
 	
-	mysql_close($conn);
+	mysqli_close($conn);
 
 	 	
 	  	
