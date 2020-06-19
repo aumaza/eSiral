@@ -44,15 +44,14 @@
 
 <?php
 	
-    		if(!$q && !$retval) 
-		{	
+    		if(!$q && !$retval){	
 			echo '<div class="alert alert-danger" role="alert">';
 			echo "Error de Conexion..." .mysqli_error();
 			echo "</div>";
 			echo '<a href="index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 			exit;			
 			
-		}
+			}
 		
 			if($user = mysqli_fetch_assoc($retval)){
 				
@@ -60,8 +59,8 @@
 				echo '<div class="alert alert-danger" role="alert">';
 				echo "<strong>Atención!  </strong>" .$_SESSION["user"];
 				echo "<br>";
-				echo "Su Usuario se encuentra bloqueado. Contacte al Administrador";
-  				echo "</div>";
+				echo '<span class="pull-center "><img src="icons/status/security-low.png"  class="img-reponsive img-rounded"><strong> Usuario Bloqueado. Contacte al Administrador.</strong>';
+				echo "</div>";
 				echo '<a href="index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 				exit;
 			}
@@ -70,42 +69,32 @@
 
 				if(strcmp($_SESSION["user"], 'root') == 0){
 
+				echo "<br>";
 				echo '<div class="alert alert-success" role="alert">';
-				echo "Bienvenido!  " .$_SESSION["user"];
+				echo '<span class="pull-center "><img src="img/tenor.gif" class="img-reponsive img-rounded" weight="5%" height="5%">';
+				echo "<strong> Bienvenido!  </strong>" .$_SESSION["user"];
+				echo "<strong> Aguarde un Instante...</strong>";
 				echo "<br>";
-				echo "Aguarde un Instante...";
-				echo "<br>";
-				//echo "Presione -Aceptar- para continuar";
-  				echo "</div>";
-  				echo '<meta http-equiv="refresh" content="3;URL=http:root/main.php "/>';
+				echo "</div>";
+  				echo '<meta http-equiv="refresh" content="10;URL=http:root/main.php "/>';
 				//echo '<a href="root/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';		
-			}
-
-			
-				else{
-				
+			}else{
 				echo '<div class="alert alert-success" role="alert">';
-				echo "Bienvenido!  " .$_SESSION["user"];
+				echo '<span class="pull-center "><img src="img/tenor.gif" class="img-reponsive img-rounded"  weight="5%" height="5%">';
+				echo "<strong> Bienvenido!  </strong>" .$_SESSION["user"];
+				echo "<strong> Aguarde un Instante...</strong>";
 				echo "<br>";
-				echo "Aguarde un instante...";
-				echo "<br>";
-				//echo "Presione -Aceptar- para continuar";
-  				echo "</div>";
+				echo "</div>";
   				echo '<meta http-equiv="refresh" content="3;URL=http:1/main.php "/>';
 				//echo '<a href="1/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';
 			}
-			} 
-
-			
-
-			else{
-
+			}else{
 				echo '<div class="alert alert-danger" role="alert">';
-				echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
+				echo '<span class="pull-center "><img src="icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Usuario o Contraseña Incorrecta. Reintente Por Favor....';
+				//echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
 				echo "</div>";
 				echo '<a href="index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
-	
-			}
+				}
 	
 			
 	

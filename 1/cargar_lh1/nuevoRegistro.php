@@ -347,187 +347,49 @@
                 </div><br>
                 
                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Sub-Jurisdicción</span>
-              <select class="browser-default custom-select" name="cod_subjur">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM sub_jur";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
+		<span class="input-group-addon" style="color: blue">Subjurisdicción</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" class="form-control" name="cod_subjur"  required>
+	      </div><br>
                 
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_subjur].'">'.$valores[cod_subjur].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
-                
-                <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Entidades</span>
-              <select class="browser-default custom-select" name="cod_entidad">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM entidades";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_entidad].'">'.$valores[cod_entidad].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+               <div class="input-group">
+		<span class="input-group-addon" style="color: blue">Entidades</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" class="form-control" name="cod_entidad"  required>
+	      </div><br>
                 
                 
                   
                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Programas</span>
-              <select class="browser-default custom-select" name="cod_prog">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM programas";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
+		<span class="input-group-addon" style="color: blue">Programa</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" class="form-control" name="cod_prog" required>
+	      </div><br>
                 
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_prog].'">'.$valores[cod_prog].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
+              <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Subprograma</span>
+	      <!-- Trigger the modal with a button -->
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" class="form-control" name="cod_subprog"  required>
+	    </div><br>
                 
-
-                ?>
-                </select>
-                </div><br>
-                
-                <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Sub-Programas</span>
-              <select class="browser-default custom-select" name="cod_subprog">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM subprogramas";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_subprog].'">'.$valores[cod_subprog].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
-                
-                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Proyectos</span>
-              <select class="browser-default custom-select" name="cod_proy">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM proyectos";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_proy].'">'.$valores[cod_proy].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+              <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Proyeto</span>
+	      <!-- Trigger the modal with a button -->
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" class="form-control" name="cod_proy"  required>
+	    </div><br>
                 
                 
-                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Actividades</span>
-              <select class="browser-default custom-select" name="cod_act">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM actividades";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_act].'">'.$valores[cod_act].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+             <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Actividad</span>
+	      <!-- Trigger the modal with a button -->
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" class="form-control" name="cod_act"  required>
+	    </div><br>
                 
                 
                 <div class="input-group">
