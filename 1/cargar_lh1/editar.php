@@ -42,12 +42,14 @@
       mysqli_select_db('sirhal_web');
       $resultado = mysqli_query($conn,$sql);
       $fila = mysqli_fetch_assoc($resultado);
+      
+      
 
 ?>
 
 <html><head>
 	<meta charset="utf-8">
-	<title>LH1 - Nuevo Registro</title>
+	<title>LH1 - Editar Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -91,6 +93,16 @@
   });
 
   </script>
+  
+  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres que los Permitidos!!");
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -316,7 +328,7 @@
                 
                   while ($valores = mysqli_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_uni].'" '.(($fila['cod_uni']== $valores[cod_uni])?'selected="selected"':"").'>'.$valores[cod_uni].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_uni].'" '.(($fila['cod_uni']== $valores[cod_uni])?'selected="selected"':"").'>'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -358,187 +370,50 @@
                 </div><br>
                 
                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Sub-Jurisdicción</span>
-              <select class="browser-default custom-select" name="cod_subjur">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
+		<span class="input-group-addon" style="color: blue">Subjurisdicción</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#SubJur"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_subjur"  onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_subjur'] ?>" required>
+		</div><br>
 
-              $query = "SELECT * FROM sub_jur";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_subjur].'" '.(($fila['cod_subjur']== $valores[cod_subjur])?'selected="selected"':"").'>'.$valores[cod_subjur].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
                 
                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Entidades</span>
-              <select class="browser-default custom-select" name="cod_entidad">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM entidades";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_entidad].'" '.(($fila['cod_entidad']== $valores[cod_entidad])?'selected="selected"':"").'>'.$valores[cod_entidad].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+		<span class="input-group-addon" style="color: blue">Entidades</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Entidad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" maxlenght="3" class="form-control" name="cod_entidad" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" value="<?php echo $fila['cod_entidad'] ?>" required>
+	      </div><br>
                 
                 
                   
-                <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Programas</span>
-              <select class="browser-default custom-select" name="cod_prog">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM programas";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_prog].'" '.(($fila['cod_prog']== $valores[cod_prog])?'selected="selected"':"").'>'.$valores[cod_prog].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
-                
-                <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Sub-Programas</span>
-              <select class="browser-default custom-select" name="cod_subprog">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM subprogramas";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_subprog].'" '.(($fila['cod_subprog']== $valores[cod_subprog])?'selected="selected"':"").'>'.$valores[cod_subprog].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+               <div class="input-group">
+		<span class="input-group-addon" style="color: blue">Programa</span>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Programa"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_prog" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_prog'] ?>" required>
+	      </div><br>
                 
                  <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Proyectos</span>
-              <select class="browser-default custom-select" name="cod_proy">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM proyectos";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
+	      <span class="input-group-addon" style="color: blue">Subprograma</span>
+	      <!-- Trigger the modal with a button -->
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Subprograma"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_subprog" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_subprog'] ?>" required>
+	    </div><br>
                 
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_proy].'" '.(($fila['cod_proy']== $valores[cod_proy])?'selected="selected"':"").'>'.$valores[cod_proy].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+               <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Proyeto</span>
+	      <!-- Trigger the modal with a button -->
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Proyecto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_proy'] ?>" required>
+	    </div><br>
                 
                 
-                 <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Actividades</span>
-              <select class="browser-default custom-select" name="cod_act">
-              <option value="" disabled selected>Seleccionar</option>
-              
-             <?php
-             
-             
-               if($conn){
-
-              $query = "SELECT * FROM actividades";
-              mysqli_select_db('sirhal_web');
-              $res = mysqli_query($conn,$query);
-
-              if($res)
-              {
-                
-                  while ($valores = mysqli_fetch_array($res))
-                    {
-                        echo '<option value="'.$valores[cod_act].'" '.(($fila['cod_act']== $valores[cod_act])?'selected="selected"':"").'>'.$valores[cod_act].'-'.$valores[descripcion].'</option>';
-                    }
-                }
-                }
-
-                
-
-                ?>
-                </select>
-                </div><br>
+                <div class="input-group">
+	      <span class="input-group-addon" style="color: blue">Actividad</span>
+	      <!-- Trigger the modal with a button -->
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Actividad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_act" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_act'] ?>"  required>
+	    </div><br>
                 
                 
                 <div class="input-group">
@@ -785,6 +660,152 @@
   </div>
 </div>
 <!-- End Modal Periodo-->
+
+
+   <!-- Modal Subjurisdicción-->
+<div id="SubJur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Subjurisdicción</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda a su Subjurisdicción.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Subjurisdicción-->
+
+ <!-- Modal Entidad-->
+<div id="Entidad" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Entidad</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de tres (3) dígitos.-</p>
+	<p>Ejemplo: 000, 001 o el valor que corresponda a su Entidad.</p>
+	<p>En caso de no conocerlo ingrese 000.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Entidad-->
+
+
+ <!-- Modal Programa-->
+<div id="Programa" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Programa</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda al Programa en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Entidad-->
+    
+<!-- Modal Subprograma-->
+<div id="Subprograma" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sub-Programa</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda al Sub-Programa en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Subprograma-->
+
+<!-- Modal Proyecto-->
+<div id="Proyecto" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Proyecto</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda al Proyecto en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Proyecto-->
+
+<!-- Modal Actividad-->
+<div id="Actividad" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Actividad</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda a la Actividad en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Actividad-->
     
 
 

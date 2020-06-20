@@ -1,7 +1,7 @@
 <?php include "../../connection/connection.php";
       include "../../functions/functions.php";
 
-session_start();
+        session_start();
 	$varsession = $_SESSION['user'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
@@ -109,8 +109,8 @@ session_start();
 		$periodo = mysqli_real_escape_string($conn,$_POST["periodo"]); // int
 		$cod_planta = mysqli_real_escape_string($conn,$_POST["cod_planta"]); // char
 		$f_ing = mysqli_real_escape_string($conn,$_POST["f_ing"]); // date
-		$cod_ff = mysqli_real_escape_string($_POST[$conn,"cod_ff"]); // int
-		$cod_est = mysqli_real_escape_string($_POST[$conn,"cod_estado"]); // char
+		$cod_ff = mysqli_real_escape_string($conn,$_POST["cod_ff"]); // int
+		$cod_est = mysqli_real_escape_string($conn,$_POST["cod_estado"]); // char
 		
 		
 		

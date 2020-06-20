@@ -85,6 +85,23 @@
   });
 
   </script>
+  
+    </script>
+  
+  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos!!");
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos!!");
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -305,7 +322,7 @@
                 
                   while ($valores = mysqli_fetch_array($res))
                     {
-                        echo '<option value="'.$valores[cod_uni].'">'.$valores[cod_uni].'-'.$valores[descripcion].'</option>';
+                        echo '<option value="'.$valores[cod_uni].'">'.$valores[descripcion].'</option>';
                     }
                 }
                 }
@@ -349,15 +366,15 @@
                 <div class="input-group">
 		<span class="input-group-addon" style="color: blue">Subjurisdicción</span>
 		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="cod_subjur"  required>
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#SubJur"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_subjur" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	      </div><br>
                 
                <div class="input-group">
 		<span class="input-group-addon" style="color: blue">Entidades</span>
 		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="cod_entidad"  required>
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Entidad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" maxlenght="3" class="form-control" name="cod_entidad" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
 	      </div><br>
                 
                 
@@ -365,30 +382,30 @@
                 <div class="input-group">
 		<span class="input-group-addon" style="color: blue">Programa</span>
 		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="cod_prog" required>
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Programa"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_prog" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	      </div><br>
                 
               <div class="input-group">
 	      <span class="input-group-addon" style="color: blue">Subprograma</span>
 	      <!-- Trigger the modal with a button -->
-	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" class="form-control" name="cod_subprog"  required>
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Subprograma"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_subprog" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	    </div><br>
                 
               <div class="input-group">
 	      <span class="input-group-addon" style="color: blue">Proyeto</span>
 	      <!-- Trigger the modal with a button -->
-	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" class="form-control" name="cod_proy"  required>
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Proyecto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	    </div><br>
                 
                 
              <div class="input-group">
 	      <span class="input-group-addon" style="color: blue">Actividad</span>
 	      <!-- Trigger the modal with a button -->
-	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" class="form-control" name="cod_act"  required>
+	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Actividad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_act" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	    </div><br>
                 
                 
@@ -636,11 +653,152 @@
   </div>
 </div>
 <!-- End Modal Periodo-->
+
+
+    <!-- Modal Subjurisdicción-->
+<div id="SubJur" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Subjurisdicción</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda a su Subjurisdicción.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Subjurisdicción-->
+
+ <!-- Modal Entidad-->
+<div id="Entidad" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Entidad</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de tres (3) dígitos.-</p>
+	<p>Ejemplo: 000, 001 o el valor que corresponda a su Entidad.</p>
+	<p>En caso de no conocerlo ingrese 000.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Entidad-->
+
+
+ <!-- Modal Programa-->
+<div id="Programa" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Programa</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda al Programa en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Entidad-->
     
+<!-- Modal Subprograma-->
+<div id="Subprograma" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sub-Programa</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda al Sub-Programa en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
 
+  </div>
+</div>
+<!-- End Modal Subprograma-->
 
+<!-- Modal Proyecto-->
+<div id="Proyecto" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Proyecto</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda al Proyecto en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Proyecto-->
+
+<!-- Modal Actividad-->
+<div id="Actividad" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Actividad</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <p>Deberá ingresar un valor de dos (2) dígitos.-</p>
+	<p>Ejemplo: 00, 01 o el valor que corresponda a la Actividad en cuestión.</p>
+	<p>En caso de no conocerlo ingrese 00.-</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal Actividad-->
     
 
 </div>

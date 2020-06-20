@@ -85,6 +85,43 @@
   });
 
   </script>
+  
+   <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
+
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -130,7 +167,7 @@
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" required>
+    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);"  placeholder="Ingrese nro. de Lote" required>
     </div>
     <br>
   
@@ -138,7 +175,7 @@
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="per_lote" placeholder="AAAAMM" required>
+    <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" placeholder="AAAAMM" required>
   </div><br>
   
   <div class="input-group">
@@ -161,7 +198,7 @@
     <span class="input-group-addon" style="color: blue">Nro. DNI</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_dni" placeholder="99666444" required>
+    <input id="text" type="text" maxlenght="8" class="form-control" name="nro_dni" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);" placeholder="99666444" required>
   </div><br>
   
    <div class="input-group">
@@ -198,14 +235,14 @@
 		<span class="input-group-addon" style="color: blue">Código de Concepto</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="cod_concepto"  required>
+		<input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
 		</div><br>
 		
 		<div class="input-group">
 		<span class="input-group-addon" style="color: blue">Importe</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Importe"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="importe"  required>
+		<input id="text" type="text" class="form-control" name="importe" value="" onkeyup="this.value=Numeros(this.value);" required>
 		</div><br>
 		
 		<div class="input-group">
@@ -221,14 +258,14 @@
 		<span class="input-group-addon" style="color: blue">Cantidad Unidad Física</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#UniFisica"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input type="number" class="form-control" name="cant_uf"  required>
+		<input type="number" class="form-control" name="cant_uf" required>
 		</div><br>
 		
 		<div class="input-group">
 		<span class="input-group-addon" style="color: blue">Período Liquidado</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Periodo"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="per_liquidado" placeholder="AAAAMM" required>
+		<input id="text" type="text" maxlenght="6" class="form-control" name="per_liquidado" placeholder="AAAAMM" value="" onkeyup="this.value=Numeros(this.value);"  onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
 		</div><br>
  
   
