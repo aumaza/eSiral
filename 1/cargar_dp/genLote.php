@@ -42,7 +42,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>DP - Generación de Archivo de Lote</title>
+	<title>DP Datos de Personal - Generación de Archivo de Lote</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -90,7 +90,7 @@
 
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> DP - Generar Archivo de Lote</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> DP Datos de Personal - Generar Archivo de Lote</h2>
   </div>
     <div class="panel-body">
    

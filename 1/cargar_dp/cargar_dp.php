@@ -33,7 +33,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Cargar DP</title>
+	<title>DP Datos de Personal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -125,7 +125,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> DP - Datos de Personas</strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> DP - Datos de Personal</strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->

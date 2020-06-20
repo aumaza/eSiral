@@ -35,7 +35,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>DP - Registro Guardado</title>
+	<title>DP Datos de Personal - Registro Guardado</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >

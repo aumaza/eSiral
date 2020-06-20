@@ -41,7 +41,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>LH1 - Nuevo Registro</title>
+	<title>LH1 Cabezal de Haberes - Nuevo Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -130,7 +130,7 @@
 
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> LH1 - Nuevo Registro</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> LH1 Cabezal de Haberes - Nuevo Registro</h2>
   </div>
     <div class="panel-body">
    

@@ -33,7 +33,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Cargar CH</title>
+	<title>CH Concepto de Haberes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -117,7 +117,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> CH - Conceptos de Liquidación de Haberes</strong></a>
+  <a class="navbar-brand"><span class="pull-center "><img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"><strong> CH - Conceptos de Haberes</strong></a>
 </div>
 
 <!-- COLLAPSIBLE NAVBAR -->

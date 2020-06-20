@@ -42,7 +42,7 @@
 
 <html><head>
 	<meta charset="utf-8">
-	<title>LH2 - Generación de Archivo de Lote</title>
+	<title>LH2 Detalle de Haberes - Generación de Archivo de Lote</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
@@ -90,7 +90,7 @@
 
 <div class="panel panel-info" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> LH2 - Generar Archivo de Lote</h2>
+    <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> LH2 Detalle de Haberes - Generar Archivo de Lote</h2>
   </div>
     <div class="panel-body">
    

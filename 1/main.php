@@ -117,10 +117,10 @@
     <button type="button" class="btn btn-default"><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Cargar Lotes </button>
     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
-    <li><a href="cargar_dp/cargar_dp.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar DP (Datos de Personas)</a></li>
-    <li><a href="cargar_ch/cargar_ch.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar CH (Cabezal de Haberes)</a></li>
-    <li><a href="cargar_lh1/cargar_lh1.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH1 (Listado de Haberes)</a></li>
-    <li><a href="cargar_lh2/cargar_lh2.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH2 (Listado de Haberes)</a></li>
+    <li><a href="cargar_dp/cargar_dp.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> DP (Datos de Personas)</a></li>
+    <li><a href="cargar_ch/cargar_ch.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> CH (Concepto de Haberes)</a></li>
+    <li><a href="cargar_lh1/cargar_lh1.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH1 (Cabezal de Haberes)</a></li>
+    <li><a href="cargar_lh2/cargar_lh2.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2 (Detalle de Haberes)</a></li>
     </ul>
   </div>
     <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
