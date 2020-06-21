@@ -86,7 +86,7 @@
 
   </script>
   
-   <script >
+  <script >
     function limitText(limitField, limitNum) {
        if (limitField.value.length > limitNum) {
           
@@ -105,7 +105,7 @@
 function Numeros(string){
 //Solo numeros
     var out = '';
-    var filtro = '1234567890';//Caracteres validos
+    var filtro = '1234567890-';//Caracteres validos
 	
     //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
     for (var i=0; i<string.length; i++){
@@ -120,6 +120,23 @@ function Numeros(string){
     //Retornar valor filtrado
     return out;
 } 
+</script>
+
+<script> 
+function Text(string){//validacion solo letras
+    var out = '';
+    //Se añaden las letras validas
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+  
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+	     out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permite Texto");
+	     }
+	     }
+    return out;
+}
 </script>
 
 	

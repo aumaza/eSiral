@@ -101,20 +101,6 @@
 		$per_liquidado = mysqli_real_escape_string($conn,$_POST["per_liquidado"]); //int
 		
 		
-		isString($cod_arch);
-		isNumeric($nro_lote);
-		isNumeric($per_lote);
-		isString($cod_org);
-		isString($tipo_doc);
-		isNumeric($nro_dni);
-		isNumeric($cod_esc);
-		isNumeric($cod_concepto);
-		isNumeric($importe);
-		isNumeric($tipo_uf);
-		isNumeric($cant_uf);
-		isNumeric($per_liquidado);
-		
-		
 		
 		 $sqlInsert = "INSERT INTO tb_lh2 ".
 		  "(cod_inst,cod_arch,nro_lote,per_lote,tipo_doc,nro_doc,cod_esc,cod_concepto,importe,tipo_uf,cant_uf,periodo)".

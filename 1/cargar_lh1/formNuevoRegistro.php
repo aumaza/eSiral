@@ -113,20 +113,7 @@
 		$cod_est = mysqli_real_escape_string($conn,$_POST["cod_estado"]); // char
 		
 		
-		
-		$integer = array($nro_lote, $per_lote,$nro_dni);
-		
-		
-		foreach($integer as $elementos){
-		if(!is_numeric($elementos)){
-		
-		  echo '<div class="alert alert-danger" role="alert">';
-		  echo  "Ha introducido datos erroneos: " .$elementos. " Verifíquelos";
-		  echo "</div>";
-		
-		}
-		}
-		
+				
 		 $sqlInsert = "INSERT INTO tb_lh1 ".
 		  "(cod_inst,cod_arch,nro_lote,per_lote,tipo_doc,nro_doc,cod_esc,cod_agrup,cod_nivel,cod_grado,cod_uni,cod_jur,cod_subjur,cod_entidad,cod_prog,cod_subprog,cod_proy,cod_act,cod_geo,periodo,tipo_planta,f_ing,cod_fin,marca_estado)".
 		  "VALUES ".

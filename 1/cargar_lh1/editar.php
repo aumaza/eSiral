@@ -98,9 +98,52 @@
     function limitText(limitField, limitNum) {
        if (limitField.value.length > limitNum) {
           
-           alert("Ha ingresado más caracteres que los Permitidos!!");
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
             limitField.value = limitField.value.substring(0, limitNum);
        }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
+
+<script> 
+function Text(string){//validacion solo letras
+    var out = '';
+    //Se añaden las letras validas
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+  
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+	     out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permite Texto");
+	     }
+	     }
+    return out;
 }
 </script>
 	
@@ -149,7 +192,7 @@
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_lote" value="<?php echo $fila['nro_lote']; ?>" required>
+    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="<?php echo $fila['nro_lote']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
     </div>
     <br>
   
@@ -157,7 +200,7 @@
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="per_lote" value="<?php echo $fila['per_lote']; ?>" required>
+    <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="<?php echo $fila['per_lote']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
   </div><br>
   
   <div class="input-group">
@@ -180,7 +223,7 @@
     <span class="input-group-addon" style="color: blue">Nro. DNI</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_dni" value="<?php echo $fila['nro_doc']; ?>" required>
+    <input id="text" type="text" maxlenght="8" class="form-control" name="nro_dni" value="<?php echo $fila['nro_doc']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);" required>
   </div><br>
   
    <div class="input-group">
@@ -297,7 +340,6 @@
                 
                   while ($valores = mysqli_fetch_array($res))
                     {
-                        //value="'.$valores[cod_esc].'" '.(($fila['cod_esc']== $valores[cod_esc])?'selected="selected"':"").'
                         echo '<option value="'.$valores[cod_grado].'" '.(($fila['cod_grado']== $valores[cod_grado])?'selected="selected"':"").'>'.$valores[cod_grado].'-'.$valores[descripcion].'</option>';
                     }
                 }
@@ -373,7 +415,7 @@
 		<span class="input-group-addon" style="color: blue">Subjurisdicción</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#SubJur"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_subjur"  onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_subjur'] ?>" required>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_subjur"  value="<?php echo $fila['cod_subjur'] ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 		</div><br>
 
                 
@@ -381,7 +423,7 @@
 		<span class="input-group-addon" style="color: blue">Entidades</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Entidad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="3" class="form-control" name="cod_entidad" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" value="<?php echo $fila['cod_entidad'] ?>" required>
+		<input id="text" type="text" maxlenght="3" class="form-control" name="cod_entidad" value="<?php echo $fila['cod_entidad'] ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
 	      </div><br>
                 
                 
@@ -390,21 +432,21 @@
 		<span class="input-group-addon" style="color: blue">Programa</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Programa"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_prog" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_prog'] ?>" required>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_prog" value="<?php echo $fila['cod_prog'] ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	      </div><br>
                 
                  <div class="input-group">
 	      <span class="input-group-addon" style="color: blue">Subprograma</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Subprograma"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_subprog" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_subprog'] ?>" required>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_subprog" value="<?php echo $fila['cod_subprog'] ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	    </div><br>
                 
                <div class="input-group">
 	      <span class="input-group-addon" style="color: blue">Proyeto</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Proyecto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_proy'] ?>" required>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy" value="" onkeyup="this.value=Numeros(this.value);" value="<?php echo $fila['cod_proy'] ?>"  onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
 	    </div><br>
                 
                 
@@ -412,7 +454,7 @@
 	      <span class="input-group-addon" style="color: blue">Actividad</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Actividad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_act" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" value="<?php echo $fila['cod_act'] ?>"  required>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_act" value="<?php echo $fila['cod_act'] ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);"  required>
 	    </div><br>
                 
                 
@@ -450,7 +492,7 @@
 		<span class="input-group-addon" style="color: blue">Período</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Periodo"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" class="form-control" name="periodo" value="<?php echo $fila['periodo']; ?>" required>
+		<input id="text" type="text" maxlenght="6" class="form-control" name="periodo" value="<?php echo $fila['periodo']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
 		</div><br>
 		
 		

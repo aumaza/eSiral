@@ -112,16 +112,7 @@ session_start();
 		$rem_bon = mysqli_real_escape_string($conn,$_POST["rem_bon"]);
 		$tip_concepto = mysqli_real_escape_string($conn,$_POST["tip_concepto"]);
 		
-		isString($cod_arch);
-		isNumeric($nro_lote);
-		isNumeric($per_lote);
-		isString($cod_org);
-		isNumeric($cod_escalafon);
-		isNumeric($cod_concepto);
-		isString($desc_concepto);
-		isNumeric($rem_bon);
-		isNumeric($tip_concepto);
-		
+	
 			
 		$sqlInsert = "UPDATE tb_ch SET cod_arch='$cod_arch',nro_lote='$nro_lote',per_lote='$per_lote', cod_inst='$cod_org',
 		cod_esc='$cod_escalafon',cod_concepto='$cod_concepto',desc_concepto='$desc_concepto',rem_bon='$rem_bon',tip_concepto='$tip_concepto' WHERE id = '$id'";

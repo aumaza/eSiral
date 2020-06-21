@@ -126,8 +126,8 @@ function Numeros(string){
 function Text(string){//validacion solo letras
     var out = '';
     //Se añaden las letras validas
-    var filtro = 'abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ';//Caracteres validos
-	
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+  
     for (var i=0; i<string.length; i++){
        if (filtro.indexOf(string.charAt(i)) != -1){ 
 	     out += string.charAt(i);
@@ -138,6 +138,8 @@ function Text(string){//validacion solo letras
     return out;
 }
 </script>
+
+
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">

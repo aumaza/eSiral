@@ -115,19 +115,6 @@
 		$cant_uf = mysqli_real_escape_string($conn,$_POST["cant_uf"]);
 		$per_liquidado = mysqli_real_escape_string($conn,$_POST["per_liquidado"]);
 		
-		isString($cod_arch);
-		isNumeric($nro_lote);
-		isNumeric($per_lote);
-		isString($cod_org);
-		isString($tipo_doc);
-		isNumeric($nro_dni);
-		isNumeric($cod_esc);
-		isNumeric($cod_concepto);
-		isNumeric($importe);
-		isNumeric($tipo_uf);
-		isNumeric($cant_uf);
-		isNumeric($per_liquidado);
-		
 		
 		$sqlInsert = "UPDATE tb_lh2 SET cod_inst='$cod_org', cod_arch='$cod_arch', nro_lote='$nro_lote', per_lote='$per_lote',
 		tipo_doc='$tipo_doc', nro_doc='$nro_dni', cod_esc='$cod_esc', cod_concepto='$cod_concepto', importe='$importe', tipo_uf='$tipo_uf', cant_uf='$cant_uf', periodo='$per_liquidado' WHERE id = '$id'";

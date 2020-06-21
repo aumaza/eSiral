@@ -103,7 +103,7 @@ function Numeros(string){
 function Text(string){//validacion solo letras
     var out = '';
     //Se añaden las letras validas
-    var filtro = 'abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ';//Caracteres validos
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
 	
     for (var i=0; i<string.length; i++){
        if (filtro.indexOf(string.charAt(i)) != -1){ 
@@ -114,6 +114,18 @@ function Text(string){//validacion solo letras
 	     }
     return out;
 }
+</script>
+
+
+<script>
+$('input.nombre').bind('keypress', function(event) {
+var regex = new RegExp("^[a-zA-Z ]+$");
+var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+if (!regex.test(key)) {
+event.preventDefault();
+return false;
+}
+});
 </script>
 
 	
