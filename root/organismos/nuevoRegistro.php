@@ -61,6 +61,60 @@
   });
 
   </script>
+  
+  
+  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
+
+<script> 
+function Text(string){//validacion solo letras
+    var out = '';
+    //Se añaden las letras validas
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+  
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+	     out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permite Texto");
+	     }
+	     }
+    return out;
+}
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -96,18 +150,18 @@
          
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
-    <input id="text" type="text" class="form-control" name="cod" placeholder="Codigo de Organismo" required>
+    <input id="text" type="text" maxlenght="2" class="form-control" name="cod" placeholder="Codigo de Organismo" value="" onkeyup="this.value=Text(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
   </div>
   
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-    <input id="text" type="text" class="form-control" name="saf" placeholder="Ingrese nro de SAF" required>
+    <input id="text" type="text" maxlenght="3" class="form-control" name="saf" placeholder="Ingrese nro de SAF" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
   </div>
   
   
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-    <input  type="text" class="form-control" name="organismo" placeholder="Descripción Organismo" required>
+    <input  type="text" maxlenght="100" class="form-control" name="organismo" placeholder="Descripción Organismo" value="" onkeyup="this.value=Text(this.value);" onKeyDown="limitText(this,100);" onKeyUp="limitText(this,100);" required>
   </div>
   <br>
   <div class="form-group">

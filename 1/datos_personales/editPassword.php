@@ -84,6 +84,21 @@
   });
 
   </script>
+  
+  	  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -131,11 +146,11 @@
   </div>
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input id="password" type="password" class="form-control" name="pass1" placeholder="Password" >
+    <input id="password" maxlenght="11" type="password" class="form-control" name="pass1" placeholder="Password" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" >
   </div>
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input  type="password" class="form-control" name="pass2" placeholder="Repita Password" >
+    <input maxlenght="11" type="password" class="form-control" name="pass2" placeholder="Repita Password" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" >
   </div> 
   <br>
  

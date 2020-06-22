@@ -84,6 +84,42 @@
   });
 
   </script>
+  
+  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890-';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -144,7 +180,7 @@
   </div>
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-    <input  type="text" class="form-control" name="telefono" placeholder="1144444444" value="<?php echo $fila['telefono']; ?>">
+    <input  type="text" maxlenght="10" class="form-control" name="telefono"  value="<?php echo $fila['telefono']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,10);" onKeyUp="limitText(this,10);" >
   </div>
   
   <div class="input-group">

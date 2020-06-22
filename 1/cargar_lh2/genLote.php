@@ -60,6 +60,42 @@
 	<script src="/sirhal-web/skeleton/js/dataTables.editor.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.select.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.buttons.min.js"></script>
+	
+	  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890-';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
 
 	
 	
@@ -112,7 +148,7 @@
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" required>
+    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" placeholder="Ingrese nro. de Lote" required>
     </div>
     <br>
   
@@ -141,9 +177,9 @@
         <h4 class="modal-title">Lote Número</h4>
       </div>
       <div class="modal-body">
-        <p>Puede ingresar el número de dos maneras.</p>
-	<p>Por ejemplo, si el número de lote que desea generar es el 1</p>
-	<p>Puede tipear "1" o "001" para el programa es indistinto</p>
+        <p>Deberá ingresar el número de lote de la siguiente manera.</p>
+	<p>Debe tipear "001" para que el programa pueda encontrar el lote que desea generar</p>
+	<p>Y el Valor no puede ser "000"</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
