@@ -67,6 +67,59 @@
   });
 
   </script>
+  
+  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
+
+<script> 
+function Text(string){//validacion solo letras
+    var out = '';
+    //Se añaden las letras validas
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+  
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+	     out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permite Texto");
+	     }
+	     }
+    return out;
+}
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -103,7 +156,7 @@
          
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido" value="<?php echo $fila['nombreApellido']; ?>">
+    <input id="text" type="text" class="form-control" name="nombre" value="<?php echo $fila['nombreApellido']; ?>" value="" onkeyup="this.value=Text(this.value);" >
   </div>
   
   <div class="input-group">
@@ -118,16 +171,16 @@
   
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-    <input id="text" type="text" class="form-control" name="dni" placeholder="Nro. DNI" value="<?php echo $fila['dni']; ?>">
+    <input id="text" type="text" maxlenght="8" class="form-control" name="dni" placeholder="Nro. DNI" value="<?php echo $fila['dni']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);">
   </div>
   
    <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-    <input  type="email" class="form-control" name="email" placeholder="E-Mail" value="<?php echo $fila['email']; ?>">
+    <input  type="email" maxlenght="20" class="form-control" name="email" placeholder="E-Mail" value="<?php echo $fila['email']; ?>" onKeyDown="limitText(this,20);" onKeyUp="limitText(this,20);" >
   </div>
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-    <input  type="text" class="form-control" name="telefono" placeholder="1144444444" value="<?php echo $fila['telefono']; ?>">
+    <input  type="text" maxlenght="10" class="form-control" name="telefono" placeholder="1144444444" value="<?php echo $fila['telefono']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,10);" onKeyUp="limitText(this,10);" >
   </div>
   
   <div class="input-group">

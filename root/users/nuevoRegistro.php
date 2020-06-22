@@ -62,6 +62,59 @@
   });
 
   </script>
+  
+  <script >
+    function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+       
+       if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
+
+<script> 
+function Text(string){//validacion solo letras
+    var out = '';
+    //Se añaden las letras validas
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+  
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+	     out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permite Texto");
+	     }
+	     }
+    return out;
+}
+</script>
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -99,20 +152,20 @@
          
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido">
+    <input id="text" type="text" class="form-control" name="nombre" value="" onkeyup="this.value=Text(this.value);" placeholder="Nombre y Apellido">
   </div>
  
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="text" type="text" class="form-control" name="user" placeholder="User Name">
+    <input id="text" type="text" class="form-control" name="user" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" placeholder="User Name">
   </div>
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input id="password" type="password" class="form-control" name="pass1" placeholder="Password" >
+    <input id="password" type="password" class="form-control" name="pass1" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" placeholder="Password" >
   </div>
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input  type="password" class="form-control" name="pass2" placeholder="Repita Password">
+    <input  type="password" class="form-control" name="pass2" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" placeholder="Repita Password">
   </div>
   
    <div class="input-group">
