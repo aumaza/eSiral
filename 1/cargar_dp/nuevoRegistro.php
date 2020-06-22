@@ -162,7 +162,7 @@ function Text(string){//validacion solo letras
 	<hr>
 	
 <!-- main body -->
-<div class="container"><br>
+<div class="container-fluid"><br>
 <div class="row">
 <div class="col-sm-12">
 
@@ -176,26 +176,34 @@ function Text(string){//validacion solo letras
     
      <form action="formNuevoRegistro.php" method="post">
   
-  <div class="input-group">
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
+ <div class="input-group">
     <span class="input-group-addon" style="color: blue">Código Archivo</span>
     <input id="text" type="text" class="form-control" name="cod_arch" value="DP" readonly>
-  </div><br>
-  
+  </div>
+  </div>
+   
+<div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" placeholder="Ingrese nro. de Lote" required>
     </div>
-    <br>
-  
+    </div>
+    
+    <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" placeholder="AAAAMM" required>
-  </div><br>
-  
+  </div>
+  </div>
+   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Tipo Documento</span>
   <select class="browser-default custom-select" name="tip_doc" required>
@@ -205,27 +213,41 @@ function Text(string){//validacion solo letras
   <option value="LC">Libreta Cívica</option>
   <option value="OTS">Otro Documento</option>
   </select>
-  </div><br>
+  </div>
+  </div>
+  </div>
+  </div>
+  <hr>
   
+   <div class="container">
+    <div class="row">
+   <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Nro. DNI</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="8" class="form-control" name="nro_dni" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);" placeholder="99666444" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
    <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Apellido y Nombre</span>
+    <span class="input-group-addon" style="color: blue">Ap.Nombre</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NombreApellido"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" class="form-control" name="nombre" value="" onkeyup="this.value=Text(this.value);" placeholder="Apellido y Nombre" required>
-  </div><br>
+  </div>
+  </div>
   
+   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Fecha Nacimiento</span>
     <input id="text" type="date" class="form-control" name="f_nac" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Sexo</span>
   <select class="browser-default custom-select" name="sexo">
@@ -233,8 +255,14 @@ function Text(string){//validacion solo letras
   <option value="FEM">Femenino</option>
   <option value="MASC">Masculino</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+ <div class="container">
+  <div class="row">
+<div class="col-sm-3">
 <div class="input-group">
   <span class="input-group-addon" style="color: blue">Estado Civil</span>
   <select class="browser-default custom-select" name="cod_est_civ" required>
@@ -247,20 +275,26 @@ function Text(string){//validacion solo letras
   <option value="UCI">Unión Civil</option>
   <option value="OTS">Otros</option>
   </select>
-</div><br>
+</div>
+</div>
 
+<div class="col-sm-3">
 <div class="input-group">
     <span class="input-group-addon" style="color: blue" >Codigo Organismo</span>
     <input id="text" type="text" class="form-control" name="cod_org" value="<?php echo $cod ?>" readonly>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Fecha Ingreso</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#FI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="f_ing" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" placeholder="AAAAMM" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Código Nacionalidad</span>
   <select class="browser-default custom-select" name="cod_nac" required>
@@ -271,36 +305,46 @@ function Text(string){//validacion solo letras
   <option value="04">Argentino por Opción</option>
   <option value="90">Otra</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
 <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Nivel Educativo</span>
+  <span class="input-group-addon" style="color: blue">Niv.Educ.</span>
   <select class="browser-default custom-select" name="cod_niv_edu" required>
   <option value="" disabled selected>Seleccionar</option>
   <option value="EP">Educación Primaria</option>
   <option value="ES">Educación Secundaria</option>
   <option value="ET">Educación Terciaria</option>
-  <option value="EU">Educación Universitaria y Superior</option>
+  <option value="EU">Educación Univ.</option>
   <option value="OT">Otra Area Educativa</option>
   </select>
-</div><br>
+</div>
+</div>
 
-  
+  <div class="col-sm-3">
   <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Título Obtenido</span>
+    <span class="input-group-addon" style="color: blue">T. Obtenido</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#TitObtenido"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" class="form-control" name="desc_tit" value="" onkeyup="this.value=Text(this.value);" placeholder="Describa el Título Obtenido" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
    <div class="input-group">
      <span class="input-group-addon" style="color: blue">Cuit/Cuil</span>
      <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CUIL"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input  type="text" maxlenght="11" class="form-control" name="cuit_cuil" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" placeholder="209996664440" required>
-  </div><br>
+  </div>
+  </div>
   
-  
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Sistema Previsional</span>
   <select class="browser-default custom-select" name="sist_prev" required>
@@ -308,16 +352,22 @@ function Text(string){//validacion solo letras
   <option value="R">Reparto</option>
   <option value="C">Capitalización</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+<div class="container">
+<div class="row">
+<div class="col-xs-3" >
 <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Codigo Sistema Previsonal</span>
+  <span class="input-group-addon" style="color: blue">Cod.Sist. Prev.</span>
   <select class="browser-default custom-select" name="cod_sist_prev" required>
   <option value="" disabled selected>Seleccionar</option>
   <option value="20">AFJP - Consolidar</option>
   <option value="21">AFJP - Siembra</option>
   <option value="22">AFJP - Orígenes</option>
-  <option value="24">AFJP - Profsion + Auge</option>
+  <option value="24">AFJP - Profesión</option>
   <option value="26">AFJP - Máxima</option>
   <option value="29">AFJP - Arauca Bit</option>
   <option value="34">AFJP - Futura</option>
@@ -328,19 +378,24 @@ function Text(string){//validacion solo letras
   <option value="42">AFJP - Unidos</option>
   <option value="90">Otra Caja o AFJP</option>
   </select>
-</div><br>
+</div>
+</div>
 
+<div class="col-xs-3" >
   <div class="input-group">
-     <span class="input-group-addon" style="color: blue">Código Obra Social</span>
+     <span class="input-group-addon" style="color: blue">Cód.Obra Social</span>
     <input  type="text" maxlenght="2" class="form-control" name="cod_ob_soc" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-xs-3">
   <div class="input-group">
      <span class="input-group-addon" style="color: blue">Nro. Afiliado</span>
     <input  type="text" maxlenght="11" class="form-control" name="nro_afi" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" required>
   </div>
-  <br>
+  </div>
   
+  <div class="col-xs-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Tipo Horario Laboral</span>
   <select class="browser-default custom-select" name="tip_hor" required>
@@ -349,10 +404,14 @@ function Text(string){//validacion solo letras
   <option value="2">Horario Reducido</option>
   <option value="3">Otros Horarios Especiales</option>
   </select>
-</div><br><hr>
+</div>
+</div>
+</div>
+</div>
+<hr>
   
   <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-12" align="left">
+   <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
    <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>

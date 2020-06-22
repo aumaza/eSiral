@@ -167,7 +167,7 @@ function Text(string){//validacion solo letras
 	<hr>
 	
 <!-- main body -->
-<div class="container"><br>
+<div class="container-fluid"><br>
 <div class="row">
 <div class="col-sm-12">
 
@@ -182,26 +182,34 @@ function Text(string){//validacion solo letras
      <form action="formUpdate.php" method="post">
      <input type="hidden" id="id" name="id" value="<?php echo $fila['id']; ?>" />
   
+  <div class="container">
+<div class="row">
+<div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Código Archivo</span>
     <input id="text" type="text" class="form-control" name="cod_arch" value="DP" readonly>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote"  value="<?php echo $fila['nro_lote']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
     </div>
-    <br>
+    </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote"  value="<?php echo $fila['per_lote']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Tipo Documento</span>
   <select class="browser-default custom-select" name="tip_doc" required>
@@ -211,27 +219,39 @@ function Text(string){//validacion solo letras
   <option value="LC" <?php if($fila['tipo_dni'] == "LC") echo 'selected'; ?>>Libreta Cívica</option>
   <option value="OTS" <?php if($fila['tipo_dni'] == "OTS") echo 'selected'; ?>>Otro Documento</option>
   </select>
-  </div><br>
+  </div>
+  </div>
+  </div>
+  </div><hr>
   
+  <div class="container">
+<div class="row">
+<div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Nro. DNI</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="8" class="form-control" name="nro_dni" value="<?php echo $fila['nro_dni']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
    <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Apellido y Nombre</span>
+    <span class="input-group-addon" style="color: blue">Ap. Nombre</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NombreApellido"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" class="form-control" name="nombre" value="<?php echo $fila['nombreApellido']; ?>" value="" onkeyup="this.value=Text(this.value);"  required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Fecha Nacimiento</span>
     <input id="text" type="date" class="form-control" name="f_nac" value="<?php echo $fila['f_nac']; ?>" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Sexo</span>
   <select class="browser-default custom-select" name="sexo">
@@ -239,8 +259,14 @@ function Text(string){//validacion solo letras
   <option value="FEM" <?php if($fila['cod_sexo'] == "FEM") echo 'selected'; ?>>Femenino</option>
   <option value="MASC" <?php if($fila['cod_sexo'] == "MASC") echo 'selected'; ?>>Masculino</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
 <div class="input-group">
   <span class="input-group-addon" style="color: blue">Estado Civil</span>
   <select class="browser-default custom-select" name="cod_est_civ" required>
@@ -253,20 +279,26 @@ function Text(string){//validacion solo letras
   <option value="UCI" <?php if($fila['cod_est_civ'] == "UCI") echo 'selected'; ?>>Unión Civil</option>
   <option value="OTS" <?php if($fila['cod_est_civ'] == "OTS") echo 'selected'; ?>>Otros</option>
   </select>
-</div><br>
+</div>
+</div>
 
+<div class="col-sm-3">
 <div class="input-group">
     <span class="input-group-addon" style="color: blue" >Codigo Organismo</span>
     <input id="text" type="text" class="form-control" name="cod_org" value="<?php echo $cod ?>" readonly>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Fecha Ingreso</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#FI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="f_ing" value="<?php echo $fila['f_ing']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Código Nacionalidad</span>
   <select class="browser-default custom-select" name="cod_nac" required>
@@ -277,36 +309,46 @@ function Text(string){//validacion solo letras
   <option value="04" <?php if($fila['cod_nac'] == "04") echo 'selected'; ?>>Argentino por Opción</option>
   <option value="90" <?php if($fila['cod_nac'] == "90") echo 'selected'; ?>>Otra</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
 <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Nivel Educativo</span>
+  <span class="input-group-addon" style="color: blue">Niv.Educ.</span>
   <select class="browser-default custom-select" name="cod_niv_edu" required>
   <option value="" disabled selected>Seleccionar</option>
   <option value="EP" <?php if($fila['cod_niv_edu'] == "EP") echo 'selected'; ?>>Educación Primaria</option>
   <option value="ES" <?php if($fila['cod_niv_edu'] == "ES") echo 'selected'; ?>>Educación Secundaria</option>
   <option value="ET" <?php if($fila['cod_niv_edu'] == "ET") echo 'selected'; ?>>Educación Terciaria</option>
-  <option value="EU" <?php if($fila['cod_niv_edu'] == "EU") echo 'selected'; ?>>Educación Universitaria y Superior</option>
+  <option value="EU" <?php if($fila['cod_niv_edu'] == "EU") echo 'selected'; ?>>Educación Univ.</option>
   <option value="OT" <?php if($fila['cod_niv_edu'] == "OT") echo 'selected'; ?>>Otra Area Educativa</option>
   </select>
-</div><br>
+</div>
+</div>
 
-  
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Título Obtenido</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#TitObtenido"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" class="form-control" name="desc_tit"  value="<?php echo $fila['desc_tit']; ?>" value="" onkeyup="this.value=Text(this.value);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
    <div class="input-group">
      <span class="input-group-addon" style="color: blue">Cuit/Cuil</span>
      <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CUIL"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input  type="text" maxlenght="11" class="form-control" name="cuit_cuil" value="<?php echo $fila['cuil_cuit']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" required>
-  </div><br>
+  </div>
+  </div>
   
-  
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Sistema Previsional</span>
   <select class="browser-default custom-select" name="sist_prev" required>
@@ -314,16 +356,22 @@ function Text(string){//validacion solo letras
   <option value="R" <?php if($fila['sist_prev'] == "R") echo 'selected'; ?>>Reparto</option>
   <option value="C" <?php if($fila['sist_prev'] == "C") echo 'selected'; ?>>Capitalización</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
 <div class="input-group">
-  <span class="input-group-addon" style="color: blue">Codigo Sistema Previsonal</span>
+  <span class="input-group-addon" style="color: blue">Cod.Sis.Prev.</span>
   <select class="browser-default custom-select" name="cod_sist_prev" required>
   <option value="" disabled selected>Seleccionar</option>
   <option value="20" <?php if($fila['cod_sist_prev'] == "20") echo 'selected'; ?>>AFJP - Consolidar</option>
   <option value="21" <?php if($fila['cod_sist_prev'] == "21") echo 'selected'; ?>>AFJP - Siembra</option>
   <option value="22" <?php if($fila['cod_sist_prev'] == "22") echo 'selected'; ?>>AFJP - Orígenes</option>
-  <option value="24" <?php if($fila['cod_sist_prev'] == "24") echo 'selected'; ?>>AFJP - Profsion + Auge</option>
+  <option value="24" <?php if($fila['cod_sist_prev'] == "24") echo 'selected'; ?>>AFJP - Profesión</option>
   <option value="26" <?php if($fila['cod_sist_prev'] == "26") echo 'selected'; ?>>AFJP - Máxima</option>
   <option value="29" <?php if($fila['cod_sist_prev'] == "29") echo 'selected'; ?>>AFJP - Arauca Bit</option>
   <option value="34" <?php if($fila['cod_sist_prev'] == "34") echo 'selected'; ?>>AFJP - Futura</option>
@@ -334,19 +382,24 @@ function Text(string){//validacion solo letras
   <option value="42" <?php if($fila['cod_sist_prev'] == "42") echo 'selected'; ?>>AFJP - Unidos</option>
   <option value="90" <?php if($fila['cod_sist_prev'] == "90") echo 'selected'; ?>>Otra Caja o AFJP</option>
   </select>
-</div><br>
+</div>
+</div>
 
+<div class="col-sm-3">
   <div class="input-group">
      <span class="input-group-addon" style="color: blue">Código Obra Social</span>
     <input  type="text" maxlenght="2" class="form-control" name="cod_ob_soc" value="<?php echo $fila['cod_ob_soc']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
      <span class="input-group-addon" style="color: blue">Nro. Afiliado</span>
     <input  type="text" maxlenght="11" class="form-control" name="nro_afi" value="<?php echo $fila['nro_afi']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" required>
   </div>
-  <br>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Tipo Horario Laboral</span>
   <select class="browser-default custom-select" name="tip_hor" required>
@@ -355,10 +408,13 @@ function Text(string){//validacion solo letras
   <option value="2" <?php if($fila['tip_hor'] == "2") echo 'selected'; ?>>Horario Reducido</option>
   <option value="3" <?php if($fila['tip_hor'] == "3") echo 'selected'; ?>>Otros Horarios Especiales</option>
   </select>
-</div><br><hr>
+</div>
+</div>
+</div>
+</div><hr>
   
   <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-12" align="left">
+   <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span>  Editar</button>
    <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>

@@ -117,17 +117,6 @@ function Text(string){//validacion solo letras
 </script>
 
 
-<script>
-$('input.nombre').bind('keypress', function(event) {
-var regex = new RegExp("^[a-zA-Z ]+$");
-var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-if (!regex.test(key)) {
-event.preventDefault();
-return false;
-}
-});
-</script>
-
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -163,32 +152,47 @@ return false;
 
     
      <form action="formNuevoRegistro.php" method="post">
-  
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Código Archivo</span>
     <input id="text" type="text" class="form-control" name="cod_arch" value="CH1" readonly>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-3">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" placeholder="Ingrese nro. de Lote" required>
     </div>
-    <br>
+    </div>
   
+
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" placeholder="AAAAMM" required>
-  </div><br>
- 
-<div class="input-group">
+  </div>
+  </div>
+  </div>
+  </div>
+  <hr>
+
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
+  <div class="input-group">
     <span class="input-group-addon" style="color: blue" >Codigo Organismo</span>
     <input id="text" type="text" class="form-control" name="cod_org" value="<?php echo $cod ?>" readonly>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-4">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Escalafón</span>
               <select class="browser-default custom-select" name="cod_esc">
@@ -217,20 +221,34 @@ return false;
 
                 ?>
                 </select>
-                </div><br>
+                </div>
+                </div>
+                </div>
+                </div><hr>
   
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
   <div class="input-group">
-    <span class="input-group-addon" style="color: blue">Código de Concepto</span>
+    <span class="input-group-addon" style="color: blue">Código Concepto</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
-  </div><br>
+  </div>
+  </div>
+  </div>
+  </div><hr>
   
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Descripción de Concepto</span>
     <input id="text" type="text" class="form-control" name="desc_concepto" value="" onkeyup="this.value=Text(this.value);" required>
-  </div><br>
+  </div>
+  </div>
   
+  <div class="col-sm-4">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Remunerativo - Bonificable</span>
   <select class="browser-default custom-select" name="rem_bon" required>
@@ -240,8 +258,14 @@ return false;
   <option value="3">Concepto No Remunerativo y Bonificable</option>
   <option value="4">Concepto No Remunerativo y No Bonificable</option>
   </select>
-</div><br>
+</div>
+</div>
+</div>
+</div><hr>
 
+<div class="container">
+<div class="row">
+<div class="col-sm-4">
 <div class="input-group">
   <span class="input-group-addon" style="color: blue">Tipo de Concepto</span>
   <!-- Trigger the modal with a button -->
@@ -253,12 +277,13 @@ return false;
   <option value="3">Otros Haberes</option>
   <option value="4">Aportes Patronales</option>
   </select>
-</div><br>
-  
- <hr>
+</div>
+</div>
+</div>
+</div><hr>
   
   <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-12" align="left">
+   <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
    <a href="cargar_ch.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
