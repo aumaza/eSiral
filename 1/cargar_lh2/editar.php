@@ -166,7 +166,7 @@ function Text(string){//validacion solo letras
 	<hr>
 	
 <!-- main body -->
-<div class="container"><br>
+<div class="container-fluid"><br>
 <div class="row">
 <div class="col-sm-12">
 
@@ -174,38 +174,47 @@ function Text(string){//validacion solo letras
   <div class="panel-heading">
     <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> LH2 Detalle de Haberes - Nuevo Registro</h2>
   </div>
-    <div class="panel-body">
+    <div class="panel-body bg-warning">
    
 
     
      <form action="formUpdate.php" method="post">
      <input type="hidden" id="id" name="id" value="<?php echo $fila['id']; ?>" />
   
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Código Archivo</span>
     <input id="text" type="text" class="form-control" name="cod_arch" value="LH2" readonly>
-  </div><br>
+  </div></div>
   
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="<?php echo $fila['nro_lote']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
     </div>
-    <br>
+    </div>
   
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="<?php echo $fila['per_lote']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
-  </div><br>
+  </div></div></div></div><hr>
   
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue" >Codigo Organismo</span>
     <input id="text" type="text" class="form-control" name="cod_org" value="<?php echo $cod ?>" readonly>
-  </div><br>
+  </div></div>
   
+  <div class="col-sm-4">
   <div class="input-group">
   <span class="input-group-addon" style="color: blue">Tipo Documento</span>
   <select class="browser-default custom-select" name="tipo_doc" required>
@@ -215,15 +224,19 @@ function Text(string){//validacion solo letras
   <option value="LC" <?php if($fila['tipo_doc'] == "LC") echo 'selected' ?>>Libreta Cívica</option>
   <option value="OTS" <?php if($fila['tipo_doc'] == "OTS") echo 'selected' ?>>Otro Documento</option>
   </select>
-  </div><br>
+  </div></div>
   
+  <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Nro. DNI</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroDNI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
     <input id="text" type="text" maxlenght="8" class="form-control" name="nro_dni" value="<?php echo $fila['nro_doc']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);" required>
-  </div><br>
+  </div></div></div></div><hr>
   
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-8">
    <div class="input-group">
   <span class="input-group-addon" style="color: blue">Escalafón</span>
               <select class="browser-default custom-select" name="cod_esc">
@@ -253,22 +266,27 @@ function Text(string){//validacion solo letras
 
                 ?>
                 </select>
-                </div><br>
+                </div></div>
                 
+                <div class="col-sm-4">
                 <div class="input-group">
 		<span class="input-group-addon" style="color: blue">Código de Concepto</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
 		<input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="<?php echo $fila['cod_concepto']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
-		</div><br>
+		</div></div></div></div><hr>
 		
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-4">
 		<div class="input-group">
 		<span class="input-group-addon" style="color: blue">Importe</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Importe"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
 		<input id="text" type="text" class="form-control" name="importe"  value="<?php echo $fila['importe']; ?>" required>
-		</div><br>
+		</div></div>
 		
+		<div class="col-sm-4">
 		<div class="input-group">
 		<span class="input-group-addon" style="color: blue">Tipo Unidad Física</span>
 		<select class="browser-default custom-select" name="tipo_uf" required>
@@ -276,25 +294,29 @@ function Text(string){//validacion solo letras
 		<option value="01" <?php if($fila['tipo_uf'] == "01") echo 'selected' ?>>Horas Cátedra</option>
 		<option value="99" <?php if($fila['tipo_uf'] == "99") echo 'selected' ?>>Cargos</option>
 		</select>
-		</div><br>
+		</div></div>
 		
+		<div class="col-sm-4">
 		<div class="input-group">
 		<span class="input-group-addon" style="color: blue">Cantidad Unidad Física</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#UniFisica"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
 		<input type="number" class="form-control" name="cant_uf"  value="<?php echo $fila['cant_uf']; ?>" required>
-		</div><br>
+		</div></div></div></div><hr>
 		
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-4">
 		<div class="input-group">
 		<span class="input-group-addon" style="color: blue">Período Liquidado</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Periodo"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
 		<input id="text" type="text" maxlenght="6" class="form-control" name="per_liquidado" value="<?php echo $fila['periodo']; ?>" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
-		</div><br>
+		</div></div></div></div><hr>
  
   
   <div class="form-group">
-   <div class="col-sm-offset-2 col-sm-12" align="left">
+   <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
    <a href="cargar_lh2.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
