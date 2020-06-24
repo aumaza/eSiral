@@ -170,7 +170,7 @@ function Text(string){//validacion solo letras
   <div class="panel-heading">
     <h2 class="panel-title text-center text-default "><span class="pull-center "><img src="../../icons/actions/user-group-new.png"  class="img-reponsive img-rounded"> DP Datos de Personal - Nuevo Registro</h2>
   </div>
-    <div class="panel-body">
+    <div class="panel-body bg-warning">
    
 
     
