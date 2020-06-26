@@ -471,7 +471,7 @@ function Text(string){//validacion solo letras
               <div class="row">
               <div class="col-sm-4">
               <div class="input-group">
-	      <span class="input-group-addon" style="color: blue">Proyeto</span>
+	      <span class="input-group-addon" style="color: blue">Proyecto</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Proyecto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
 	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy"  value="<?php echo $fila['cod_proy'] ?>"  onKeyDown="limitText(this,2);" value="" onkeyup="this.value=Numeros(this.value);" onKeyUp="limitText(this,2);" required>

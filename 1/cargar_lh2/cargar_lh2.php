@@ -19,6 +19,14 @@
 	  $organismo = $row['organismo'];
 	}
 	
+	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
+	  $cod = $linea['cod_org'];
+	 
+	}
+	
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
 	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
@@ -146,7 +154,7 @@
 
 if($conn)
 {
-	$sql = "SELECT * FROM tb_lh2";
+	$sql = "SELECT * FROM tb_lh2 where cod_inst = '$cod'";
     	mysqli_select_db('sirhal_web');
     	$resultado = mysqli_query($conn,$sql);
 	//mostramos fila x fila
