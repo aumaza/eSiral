@@ -82,7 +82,7 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
 if(isset($_POST["submit"]) && !empty($_FILES["files"]["name"][$key])){
     // Allow certain file formats
-    $allowTypes = array('SIR','csv','txt');
+    $allowTypes = array('SIR','csv','txt','sir');
     
     if(in_array($fileType, $allowTypes)){
     
