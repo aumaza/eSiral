@@ -159,7 +159,7 @@ CREATE TABLE `files_ok` (
   `upload_on` datetime NOT NULL,
   `status` enum('1','0') NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `files_ok` (
 
 LOCK TABLES `files_ok` WRITE;
 /*!40000 ALTER TABLE `files_ok` DISABLE KEYS */;
-INSERT INTO `files_ok` VALUES (1,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-09 16:21:43','1'),(2,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-09 18:08:53','1'),(3,'MELH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-10 10:29:25','1'),(4,'MELH2001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-10 11:32:01','1'),(5,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-13 17:03:33','1'),(6,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-13 17:13:58','1'),(7,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-13 17:24:00','1');
+INSERT INTO `files_ok` VALUES (1,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-09 16:21:43','1'),(2,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-09 18:08:53','1'),(3,'MELH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-10 10:29:25','1'),(4,'MELH2001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-10 11:32:01','1'),(5,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-13 17:03:33','1'),(6,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-13 17:13:58','1'),(7,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-13 17:24:00','1'),(8,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-24 19:20:16','1'),(9,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-24 19:50:16','1'),(10,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 09:41:10','1'),(11,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 09:45:17','1'),(12,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 09:46:54','1'),(13,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 10:03:49','1'),(14,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 10:13:38','1'),(15,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 10:15:46','1'),(16,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:19:22','1'),(17,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:50:49','1'),(18,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:54:01','1'),(19,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:55:25','1'),(20,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:56:24','1'),(21,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:56:51','1'),(22,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 11:58:16','1'),(23,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:02:06','1'),(24,'MECH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:03:54','1'),(25,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:23:11','1'),(26,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:24:49','1'),(27,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:34:39','1'),(28,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:42:38','1'),(29,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:45:42','1'),(30,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 16:46:41','1'),(31,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 17:38:24','1'),(32,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 17:40:25','1'),(33,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 17:42:07','1'),(34,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 17:43:59','1'),(35,'MEDP1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 17:47:38','1'),(36,'MELH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 21:38:45','1'),(37,'MELH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 21:47:32','1'),(38,'MELH1001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-25 21:51:47','1'),(39,'LH2001.SIR','Augusto Maza','','../../uploads/files_ok/','2020-06-26 08:23:05','1'),(40,'MELH2001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-26 08:28:54','1'),(41,'MELH2001.SIR','Augusto Maza','ME','../../uploads/files_ok/','2020-06-26 08:34:01','1');
 /*!40000 ALTER TABLE `files_ok` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +272,7 @@ CREATE TABLE `liquidadores` (
 
 LOCK TABLES `liquidadores` WRITE;
 /*!40000 ALTER TABLE `liquidadores` DISABLE KEYS */;
-INSERT INTO `liquidadores` VALUES (1,'Gustavo Flores','Masculino','20456852','gflores@mecon.gov.ar','43627895','MINISTERIO DE ECONOMIA\r\n'),(3,'Augusto Maza','Masculino','24283493','debianmaza@gmail.com','43626019','MINISTERIO DE ECONOMIA'),(5,'Ezequiel Greco','Masculino','38125785','egreco@mecon.gov.ar','43626019','MINISTERIO DE ECONOMIA\r\n'),(6,'Alejandro Ronald Krebs','Masculino','33789456','akrebs@mecon.gov.ar','43627874','MINISTERIO DE ECONOMIA\r\n'),(7,'Carlos Traverso','Masculino','15759842','ctrave@mecon.gov.ar','43627895','MINISTERIO DE ECONOMIA\r\n');
+INSERT INTO `liquidadores` VALUES (3,'Augusto Maza','Masculino','24283493','debianmaza@gmail.com','43626019','MINISTERIO DE ECONOMIA');
 /*!40000 ALTER TABLE `liquidadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,7 +471,7 @@ CREATE TABLE `tb_ch` (
   `rem_bon` int(1) NOT NULL,
   `tip_concepto` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -480,7 +480,7 @@ CREATE TABLE `tb_ch` (
 
 LOCK TABLES `tb_ch` WRITE;
 /*!40000 ALTER TABLE `tb_ch` DISABLE KEYS */;
-INSERT INTO `tb_ch` VALUES (3,'CH1',001,202001,'ME',0303,365456,'Descuento Obra Social',1,1);
+INSERT INTO `tb_ch` VALUES (3,'CH1',001,202001,'ME',0303,365456,'DESCUENTO OBRA SOCIAL',1,1),(4,'CH1',001,202001,'ME',0303,789652,'REINTEGRO GUARDERIA',3,1);
 /*!40000 ALTER TABLE `tb_ch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -498,23 +498,23 @@ CREATE TABLE `tb_dp` (
   `per_lote` int(6) NOT NULL,
   `tipo_dni` varchar(3) NOT NULL,
   `nro_dni` int(16) unsigned zerofill NOT NULL,
-  `nombreApellido` varchar(41) NOT NULL,
+  `nombreApellido` varchar(40) NOT NULL,
   `f_nac` date NOT NULL,
   `cod_sexo` varchar(4) NOT NULL,
   `cod_est_civ` varchar(3) NOT NULL,
   `cod_inst` varchar(2) NOT NULL,
-  `f_ing` int(6) NOT NULL,
-  `cod_nac` int(2) NOT NULL,
+  `f_ing` varchar(6) NOT NULL,
+  `cod_nac` int(2) unsigned zerofill NOT NULL,
   `cod_niv_edu` varchar(2) NOT NULL,
   `desc_tit` varchar(30) NOT NULL,
   `cuil_cuit` varchar(11) NOT NULL,
   `sist_prev` varchar(1) NOT NULL,
   `cod_sist_prev` varchar(2) NOT NULL,
-  `cod_ob_soc` varchar(1) NOT NULL,
+  `cod_ob_soc` varchar(9) NOT NULL,
   `nro_afi` varchar(14) NOT NULL,
   `tip_hor` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -523,7 +523,7 @@ CREATE TABLE `tb_dp` (
 
 LOCK TABLES `tb_dp` WRITE;
 /*!40000 ALTER TABLE `tb_dp` DISABLE KEYS */;
-INSERT INTO `tb_dp` VALUES (1,'DP',001,202001,'DNI',0000000024283493,'Maza Augusto','1975-03-13','MASC','DIV','ME',200009,1,'ET','Tecnico Superior en Programaci','20242834934','R','90','1','03214566896','1');
+INSERT INTO `tb_dp` VALUES (1,'DP',001,202001,'DNI',0000000024283493,'MAZA AUGUSTO','1975-03-13','MASC','DIV','ME','199909',01,'ET','TECNICO SUPERIOR EN PROGRAMACI','20242834934','R','90','1','03214566896','1'),(3,'DP',001,202001,'DNI',0000000050722015,'MAZA FLORENTINA','2010-12-09','FEM ','SOL','ME','201901',01,'ES','BACHILLER CONTABLE','20507220157','R','90','2','15789547963','1'),(4,'DP',001,202001,'DNI',0000000030456789,'GONZALEZ CARLOS','1988-09-15','MASC','SOL','ME','200512',01,'ES','BACHILLER','20304567894','R','90','125707','7894563621444','1');
 /*!40000 ALTER TABLE `tb_dp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,8 +545,8 @@ CREATE TABLE `tb_lh1` (
   `cod_esc` int(4) unsigned zerofill NOT NULL,
   `cod_agrup` varchar(4) NOT NULL,
   `cod_nivel` varchar(3) NOT NULL,
-  `cod_grado` varchar(3) NOT NULL,
-  `cod_uni` varchar(13) NOT NULL,
+  `cod_grado` int(3) unsigned zerofill NOT NULL,
+  `cod_uni` varchar(14) NOT NULL,
   `cod_jur` varchar(2) NOT NULL,
   `cod_subjur` varchar(2) NOT NULL,
   `cod_entidad` varchar(3) NOT NULL,
@@ -558,7 +558,7 @@ CREATE TABLE `tb_lh1` (
   `periodo` int(4) unsigned zerofill NOT NULL,
   `tipo_planta` varchar(1) NOT NULL,
   `f_ing` date NOT NULL,
-  `cod_fin` int(2) unsigned zerofill NOT NULL,
+  `cod_fin` int(3) unsigned zerofill NOT NULL,
   `marca_estado` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -570,7 +570,7 @@ CREATE TABLE `tb_lh1` (
 
 LOCK TABLES `tb_lh1` WRITE;
 /*!40000 ALTER TABLE `tb_lh1` DISABLE KEYS */;
-INSERT INTO `tb_lh1` VALUES (1,'ME','LH1',001,202001,'DNI',0000000024283493,0303,'G','D','6','5000000000000','50','00','000','01','00','00','05','02',202001,'P','2000-09-19',11,'O');
+INSERT INTO `tb_lh1` VALUES (1,'ME','LH1',001,202001,'DNI',0000000024283493,0303,'G','D',006,'5000000000000','50','00','000','01','00','00','05','02',202001,'P','2000-09-19',011,'O');
 /*!40000 ALTER TABLE `tb_lh1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -591,12 +591,12 @@ CREATE TABLE `tb_lh2` (
   `nro_doc` int(16) unsigned zerofill NOT NULL,
   `cod_esc` int(4) unsigned zerofill NOT NULL,
   `cod_concepto` int(6) NOT NULL,
-  `importe` float(15,2) unsigned zerofill NOT NULL,
+  `importe` decimal(8,2) NOT NULL,
   `tipo_uf` int(2) unsigned zerofill NOT NULL,
   `cant_uf` int(6) unsigned zerofill NOT NULL,
   `periodo` int(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -605,7 +605,7 @@ CREATE TABLE `tb_lh2` (
 
 LOCK TABLES `tb_lh2` WRITE;
 /*!40000 ALTER TABLE `tb_lh2` DISABLE KEYS */;
-INSERT INTO `tb_lh2` VALUES (5,'ME','LH2',001,202001,'DNI',0000000024283493,0303,365456,000000001850.00,99,000001,202001);
+INSERT INTO `tb_lh2` VALUES (5,'ME','LH2',001,202001,'DNI',0000000024283493,0303,365456,1850.00,99,000001,202001),(6,'ME','LH2',001,202001,'DNI',0000000024283493,0303,789741,-380.00,99,000001,202001);
 /*!40000 ALTER TABLE `tb_lh2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -720,4 +720,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-19 16:55:09
+-- Dump completed on 2020-06-26 10:33:41
