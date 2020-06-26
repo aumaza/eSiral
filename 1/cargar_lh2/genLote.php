@@ -21,7 +21,7 @@
 		
 	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
 	mysqli_select_db('sirhal_web');
-	$res = mysqli_query($query);
+	$res = mysqli_query($conn,$query);
 	while($linea = mysqli_fetch_array($res)){
 	  $cod = $linea['cod_org'];
 	 

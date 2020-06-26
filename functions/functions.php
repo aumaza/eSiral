@@ -891,7 +891,7 @@ function genLoteLH2($var1,$var2,$var3,$var4,$var5){
 
     
            
-	$sql = "SELECT * FROM tb_lh2 WHERE nro_lote = $var3";
+	$sql = "SELECT cod_inst,tipo_doc,nro_doc,cod_esc,cod_concepto,LPAD(importe,15,'0') as importe,tipo_uf,cant_uf,periodo FROM tb_lh2 WHERE nro_lote = $var3";
             
 	mysqli_select_db('sirhal_web');
 	$resval = mysqli_query($var5,$sql);
@@ -900,10 +900,12 @@ function genLoteLH2($var1,$var2,$var3,$var4,$var5){
 	
 	if (mysqli_num_rows($resval) != 0) {
 	  $jump = "\r\n";
+	  $separator1 = " ";
+	  $separator2 = "  ";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
 	  while($row = mysqli_fetch_array($resval)) {
-	  $registro =  $row['tipo_doc'] . $row['nro_doc'] . $row['cod_esc'] . $row['cod_concepto'] .$row['importe'] .$row['tipo_uf'] . $row['cant_uf'] .$row['periodo'] . $jump;
+	  $registro =  $row['cod_inst'] .$separator2. $row['tipo_doc'] . $separator1. $row['nro_doc'] . $row['cod_esc'] . $row['cod_concepto'] .$row['importe'] .$row['tipo_uf'] . $row['cant_uf'] .$row['periodo'] . $jump;
 	  fwrite($fp, $registro);
 	  }
 	  
@@ -917,13 +919,13 @@ function genLoteLH2($var1,$var2,$var3,$var4,$var5){
 			  "VALUES ".
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
-			  create_table_files_ok();
+			  create_table_files_ok($var5);
 			  mysqli_select_db('sirhal_web');
 			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
 	    
 	  echo '<div class="alert alert-success" role="alert" align="center">';
-	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysql_num_rows($resval).' registros en el archivo: ' .$file;
+	  echo '<span class="pull-center "><img src="../../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Se han guardado '.mysqli_num_rows($resval).' registros en el archivo: ' .$file;
 	  echo "</div>";
 	  }else{
 	      echo '<div class="alert alert-danger" role="alert" align="center">';
