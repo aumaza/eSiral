@@ -92,6 +92,7 @@
 		$tip_doc = mysqli_real_escape_string($conn,$_POST["tip_doc"]);
 		$nro_dni = mysqli_real_escape_string($conn,$_POST["nro_dni"]);
 		$nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
+		$nombre = strtoupper($nombre);
 		$f_nac = mysqli_real_escape_string($conn,$_POST["f_nac"]);
 		$sexo = mysqli_real_escape_string($conn,$_POST["sexo"]);
 		$cod_est_civ = mysqli_real_escape_string($conn,$_POST["cod_est_civ"]);
@@ -100,6 +101,7 @@
 		$cod_nac = mysqli_real_escape_string($conn,$_POST["cod_nac"]);
 		$cod_niv_edu = mysqli_real_escape_string($conn,$_POST["cod_niv_edu"]);
 		$desc_tit = mysqli_real_escape_string($conn,$_POST["desc_tit"]);
+		$desc_tit = strtoupper($desc_tit);
 		$cuit_cuil = mysqli_real_escape_string($conn,$_POST["cuit_cuil"]);
 		$sist_prev = mysqli_real_escape_string($conn,$_POST["sist_prev"]);
 		$cod_sist_prev = mysqli_real_escape_string($conn,$_POST["cod_sist_prev"]);

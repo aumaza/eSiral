@@ -197,7 +197,7 @@ if($conn)
 			 echo "<td align=center>".$fila['nro_dni']."</td>";
 			 echo "<td align=center>".$fila['nombreApellido']."</td>";
 			 echo "<td align=center>".$fila['f_nac']."</td>";
-			 echo "<td align=center>".$fila['cod_sex']."</td>";
+			 echo "<td align=center>".$fila['cod_sexo']."</td>";
 			 echo "<td align=center>".$fila['cod_est_civ']."</td>";
 			 echo "<td align=center>".$fila['cod_inst']."</td>";
 			 echo "<td align=center>".$fila['f_ing']."</td>";

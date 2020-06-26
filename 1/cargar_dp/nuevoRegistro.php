@@ -252,7 +252,7 @@ function Text(string){//validacion solo letras
   <span class="input-group-addon" style="color: blue">Sexo</span>
   <select class="browser-default custom-select" name="sexo">
   <option value="" disabled selected>Seleccionar</option>
-  <option value="FEM">Femenino</option>
+  <option value="FEM ">Femenino</option>
   <option value="MASC">Masculino</option>
   </select>
 </div>
@@ -290,7 +290,7 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Fecha Ingreso</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#FI"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="6" class="form-control" name="f_ing" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" placeholder="AAAAMM" required>
+    <input id="text" type="text" maxlenght="6" class="form-control" name="f_ing" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,8);" onKeyUp="limitText(this,8);" required>
   </div>
   </div>
   
@@ -384,14 +384,14 @@ function Text(string){//validacion solo letras
 <div class="col-xs-3" >
   <div class="input-group">
      <span class="input-group-addon" style="color: blue">Cód.Obra Social</span>
-    <input  type="text" maxlenght="2" class="form-control" name="cod_ob_soc" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+    <input  type="text" maxlenght="9" class="form-control" name="cod_ob_soc" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,9);" onKeyUp="limitText(this,9);" required>
   </div>
   </div>
   
   <div class="col-xs-3">
   <div class="input-group">
      <span class="input-group-addon" style="color: blue">Nro. Afiliado</span>
-    <input  type="text" maxlenght="11" class="form-control" name="nro_afi" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,11);" onKeyUp="limitText(this,11);" required>
+    <input  type="text" maxlenght="14" class="form-control" name="nro_afi" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,14);" onKeyUp="limitText(this,14);" required>
   </div>
   </div>
   

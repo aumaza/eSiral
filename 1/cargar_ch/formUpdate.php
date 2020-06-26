@@ -109,6 +109,7 @@ session_start();
 		$cod_escalafon = mysqli_real_escape_string($conn,$_POST["cod_esc"]);
 		$cod_concepto = mysqli_real_escape_string($conn,$_POST["cod_concepto"]);
 		$desc_concepto = mysqli_real_escape_string($conn,$_POST["desc_concepto"]);
+		$desc_concepto = strtoupper($desc_concepto);
 		$rem_bon = mysqli_real_escape_string($conn,$_POST["rem_bon"]);
 		$tip_concepto = mysqli_real_escape_string($conn,$_POST["tip_concepto"]);
 		

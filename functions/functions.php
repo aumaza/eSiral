@@ -730,7 +730,7 @@ function genLoteDP($var1,$var2,$var3,$var4,$var5){
 
     
            
-	$sql = "SELECT tipo_dni, nro_dni, nombreApellido, f_nac, cod_sexo, cod_est_civ, cod_inst, f_ing, cod_nac, cod_niv_edu, desc_tit, cuil_cuit, sist_prev, cod_sist_prev, cod_ob_soc, nro_afi, tip_hor FROM tb_dp WHERE nro_lote = $var3";
+	$sql = "SELECT tipo_dni, nro_dni, RPAD(nombreApellido,40,' ') as nombre, DATE_FORMAT(f_nac,'%Y%m%d') as date , cod_sexo, cod_est_civ, cod_inst, f_ing, cod_nac, cod_niv_edu, RPAD(desc_tit,30,' ') as titulo, cuil_cuit, sist_prev, RPAD(cod_sist_prev,3,' ') as prev, RPAD(cod_ob_soc,9,' ') as ob_soc, RPAD(nro_afi,14,' ') as afi, tip_hor FROM tb_dp WHERE nro_lote = $var3";
             
 	mysqli_select_db('sirhal_web');
 	$resval = mysqli_query($var5,$sql);
@@ -741,12 +741,10 @@ function genLoteDP($var1,$var2,$var3,$var4,$var5){
 	  $jump = "\r\n";
 	  $separator1 = " ";
 	  $separator2 = "  ";
-	  $separador3 = "   ";
-	  $separador4 = "         ";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
 	  while($row = mysqli_fetch_array($resval)) {
-	  $registro = $row['tipo_dni'] . $separator1 . $row['nro_dni'] . $row['nombreApellido'] . $separador4. $row['f_nac'] . $row['cod_sexo'] .$row['cod_est_civ'] .$separator2. $row['cod_inst'] .$separator2. $row['f_ing'] . $row['cod_nac'] .  $row['cod_niv_edu'] . $row['desc_tit'] . $row['cuil_cuit'] . $row['sist_prev'] . $row['cod_sist_prev'] .$separator3. $row['cod_ob_soc'] . $row['nro_afi'] . $row['tip_hor'] . $jump;
+	  $registro = $row['tipo_dni'] . $separator1 . $row['nro_dni'] . $row['nombre'] . $row['date'] . $row['cod_sexo'] .$row['cod_est_civ'] . $separator2 .$row['cod_inst'] .$separator2 .$row['f_ing'] .$row['cod_nac'] .$row['cod_niv_edu'] .$row['titulo'] .$row['cuil_cuit'] . $row['sist_prev'] . $row['prev'] .$separator1. $row['ob_soc'] . $row['afi'] . $separator2. $row['tip_hor'] . $jump;
 	  fwrite($fp, $registro);
 	  }
 	  
@@ -784,7 +782,7 @@ function genLoteDP($var1,$var2,$var3,$var4,$var5){
 
 function genLoteCH($var1,$var2,$var3,$var4,$var5){
 
-        $sql = "SELECT cod_inst,cod_esc,cod_concepto,desc_concepto,rem_bon,tip_concepto FROM tb_ch WHERE nro_lote = $var3";
+        $sql = "SELECT cod_inst,cod_esc,cod_concepto, RPAD(desc_concepto,40,' ') as concepto,rem_bon,tip_concepto FROM tb_ch WHERE nro_lote = $var3";
         
    	mysqli_select_db('sirhal_web');
 	$resval = mysqli_query($var5,$sql);
@@ -797,7 +795,7 @@ function genLoteCH($var1,$var2,$var3,$var4,$var5){
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
 	  while($row = mysqli_fetch_array($resval)) {
-	  $registro = $row['cod_inst'] . $row['cod_esc'] . $row['cod_concepto'] . $row['desc_concepto'] . $row['rem_bon'] .$row['tip_concepto'] . $jump;
+	  $registro = $row['cod_inst'] . $row['cod_esc'] . $row['cod_concepto'] . $row['concepto'] . $row['rem_bon'] .$row['tip_concepto'] . $jump;
 	  fwrite($fp, $registro);
 	  }
 	  
@@ -811,7 +809,7 @@ function genLoteCH($var1,$var2,$var3,$var4,$var5){
 			  "VALUES ".
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
-			  create_table_files_ok();
+			  create_table_files_ok($var5);
 			  mysqli_select_db('sirhal_web');
 			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
@@ -837,7 +835,7 @@ function genLoteLH1($var1,$var2,$var3,$var4,$var5){
 
     
            
-	$sql = "SELECT * FROM tb_lh1 WHERE nro_lote = $var3";
+	$sql = "SELECT  cod_inst,tipo_doc,nro_doc,cod_esc,cod_agrup,cod_nivel,cod_grado, RPAD(cod_uni,14,'0') as nudo,cod_jur,cod_subjur,cod_entidad,cod_prog,cod_subprog,cod_proy,cod_act,cod_geo,periodo,tipo_planta,DATE_FORMAT(f_ing,'%Y%m%d') as ing,cod_fin,marca_estado FROM tb_lh1 WHERE nro_lote = $var3";
             
 	mysqli_select_db('sirhal_web');
 	$resval = mysqli_query($var5,$sql);
@@ -846,10 +844,14 @@ function genLoteLH1($var1,$var2,$var3,$var4,$var5){
 	
 	if (mysqli_num_rows($resval) != 0) {
 	  $jump = "\r\n";
+	  $separator1 = " ";
+	  $separator2 = "  ";
+	  $separator3 = "   ";
+	  $separator6 = "      ";
 	  $fp = fopen('../../uploads/files_ok/'.$file, 'w');
 	 	  
 	  while($row = mysqli_fetch_array($resval)) {
-	  $registro = $row['cod_inst'] . $row['tipo_doc'] . $row['nro_doc'] . $row['cod_esc'] . $row['cod_agrup'] .$row['cod_nivel'] .$row['cod_grado'] . $row['cod_uni'] .$row['cod_jur'] .$row['cod_subjur'] .$row['cod_entidad'] .$row['cod_prog'] .$row['cod_subprog'] .$row['cod_proy']. $row['cod_act'] .$row['cod_geo'] .$row['periodo'] .$row['tipo_planta'] .$row['f_ing'] .$row['cod_fin'] . $row['marca_estado'] . $jump;
+	  $registro = $row['cod_inst'] .$separator2. $row['tipo_doc'] .$separator1. $row['nro_doc'] . $row['cod_esc'] . $row['cod_agrup'] .$separator3. $row['cod_nivel'] .$separator3. $row['cod_grado'] . $row['nudo'] .$separator1. $row['cod_jur'] .$row['cod_subjur'] .$row['cod_entidad'] .$row['cod_prog'] .$row['cod_subprog'] .$row['cod_proy']. $row['cod_act'] .$row['cod_geo'] .$separator6. $row['periodo'] .$row['tipo_planta'] .$row['ing'] .$row['cod_fin'] . $row['marca_estado'] . $jump;
 	  fwrite($fp, $registro);
 	  }
 	  
@@ -863,7 +865,7 @@ function genLoteLH1($var1,$var2,$var3,$var4,$var5){
 			  "VALUES ".
 			  "('$file', NOW(),'$var4','$var1','$targetDir')";
 
-			  create_table_files_ok();
+			  create_table_files_ok($var5);
 			  mysqli_select_db('sirhal_web');
 			  $insert = mysqli_query($var5,$sqlInsert);
 	  if($insert){
