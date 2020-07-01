@@ -1,6 +1,7 @@
 <?php include "../../connection/connection.php";
+      include "../../functions/functions.php";
 
-session_start();
+	session_start();
 	$varsession = $_SESSION['user'];
 	
 	if($varsession == null || $varsession = ''){
@@ -30,9 +31,7 @@ $sqlInsert = "INSERT INTO liquidadores ".
 
 
 $q = mysqli_query($conn,$sqlInsert);
-}
-
-else{
+}else{
  echo '<div class="alert alert-danger" role="alert">';
   echo 'Could not Connect to Database: ' . mysqli_error($conn);
   echo "</div>";

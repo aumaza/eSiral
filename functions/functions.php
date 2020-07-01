@@ -152,7 +152,7 @@ $sql = "CREATE TABLE liquidadores (".
 	
 	if(!$retval){	  
 	echo '<div class="alert alert-danger" role="alert">';
-	mysqli_error($$conn); 
+	mysqli_error($conn); 
 	echo '</div>';
 	}else{
 	  echo '<div class="alert alert-success" role="alert">';
