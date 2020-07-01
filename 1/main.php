@@ -147,7 +147,7 @@
     </div>
     <div id="collapse2" class="panel-collapse collapse">
       <ul class="list-group">
-        <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24</li></a>
+        <a href="doc_download/download_res.php?file_name=res24-2004-sirhu.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24</li></a>
         <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Manual del Usuario</li></a>
         </ul>
      </div>
