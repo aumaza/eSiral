@@ -135,7 +135,7 @@
 
 if($conn)
 {
-	$sql = "SELECT * FROM files";
+	$sql = "SELECT * FROM files where user_name = '$nombre'";
     	mysqli_select_db('sirhal_web');
     	$resultado = mysqli_query($conn,$sql);
 	//mostramos fila x fila
