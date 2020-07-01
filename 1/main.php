@@ -83,7 +83,7 @@
   <!-- END Data Table Script -->
 	
 </head>
-<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: repeat; background-position: center center; background-size: cover; height: 100%">
 <br>
 <!--User and System Information -->
 <div class="container-fluid">
@@ -101,13 +101,12 @@
 	</div><hr>
 <!-- end user and system information -->
 
-
+<!-- marco general -->
 <div class="container-fluid">
-
 <div class="row">
 <div class="col-xs-12"><br>
 
-
+<!-- Menu principal -->
 
 <div class="col-xs-2">
 <div class="panel panel-default" >
@@ -158,15 +157,51 @@
 </div> 
   
 </div></div></div>
+<!--En Menu Principal  -->
+
+<!-- menu informacion -->
+<div class="col-xs-10">
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/status/dialog-information.png"  class="img-reponsive img-rounded"> Información</h2>
+    </div>
+     <div class="panel-body">
+      <div class="alert alert-success" role="alert">
+      <p><img src="../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> No olvide que la fecha límite para cargar lotes en el sistema SIRHU es hasta el 10 de cada mes</p>
+     </div><br>
+     <div class="alert alert-success" role="alert">
+      <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
+     </div>
+     </div><hr>
+<!-- end menu informacion -->
+
+<!-- menu informacion -->
+
+<div class="col-xs-14"><br>
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/actions/view-statistics.png"  class="img-reponsive img-rounded"> Informes Estadísticos</h2>
+    </div>
+     <div class="panel-body">
+      <div class="alert alert-success" role="alert">
+      <p><img src="../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> No olvide que la fecha límite para cargar lotes en el sistema SIRHU es hasta el 10 de cada mes</p>
+     </div><br>
+     <div class="alert alert-success" role="alert">
+      <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
+     </div>
+     </div>
+     </div>
+     </div>
+     
+     
+<!-- end menu informacion -->
+    
+
 
 </div>
-
-
-
 </div>
-
 </div>
-
+<!-- End marco general -->
 
 </body>
 </html>
