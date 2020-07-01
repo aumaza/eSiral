@@ -105,20 +105,19 @@
 <div class="container-fluid">
 
 <div class="row">
-<div class="col-sm-12"><br>
+<div class="col-xs-12"><br>
 
 
-<div class="container-fluid">
-<div class="row">
-<div class="col-sm-2">
+
+<div class="col-xs-2">
 <div class="panel panel-default" >
   <div class="panel-heading">
-    <h2 class="panel-title text-center text-default ">Menú Principal</h2>
+    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/actions/dashboard-show.png"  class="img-reponsive img-rounded"> Menú Principal</h2>
     </div>
         
 <div class="list-group">
   <a href="upload_lote/lotes.php" class="list-group-item"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Listado de Lotes</a>
-  <a href="#" class="list-group-item"><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes</a>
+  <a href="#" class="list-group-item"><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Proceso y Análisis de Lotes</a>
   <a href="datos_personales/datos_personales.php" class="list-group-item"><span class="pull-center "><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</a>
   </div>
   
@@ -137,10 +136,28 @@
         <a href="cargar_lh2/cargar_lh2.php" class="list-group-item"><li class="list-group-item"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2 (Detalle de Haberes)</li></a>
       </ul>
      </div>
-  </div>
+   </div>
+   
+   <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse2"><img src="../icons/apps/accessories-dictionary.png"  class="img-reponsive img-rounded"> Documentación</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24</li></a>
+        <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Manual del Usuario</li></a>
+        </ul>
+     </div>
+   </div>
+   
+   
+   
 </div> 
   
-</div></div></div></div></div>
+</div></div></div>
 
 </div>
 
