@@ -131,6 +131,7 @@
 <div class="collapse navbar-collapse" id="alignment-example">
 <!-- Links -->
     <ul class="nav navbar-nav navbar-right">
+    <li class="active" ><a href="gen_excel.php"><span class="pull-center "><img src="../../icons/mimetypes/application-x-gnumeric.png"  class="img-reponsive img-rounded"> Bajar a Excel </a></li>
       </ul>
 <!-- Search -->
 </div>

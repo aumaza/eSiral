@@ -50,7 +50,11 @@
 	<script src="/sirhal-web/skeleton/js/dataTables.editor.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.select.min.js"></script>
 	<script src="/sirhal-web/skeleton/js/dataTables.buttons.min.js"></script>
-
+	<script src="/sirhal-web/skeleton/Chart.js/Chart.bundle.min.js"></script>
+	<script src="/sirhal-web/skeleton/Chart.js/Chart.bundle.js"></script>
+	<script src="/sirhal-web/skeleton/Chart.js/Chart.js"></script>
+	<script src="/sirhal-web/skeleton/Chart.js/Chart.min.js"></script>
+	 
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />
 	
@@ -146,7 +150,9 @@
     </div>
     <div id="collapse2" class="panel-collapse collapse">
       <ul class="list-group">
-        <a href="doc_download/download_res.php?file_name=res24-2004-sirhu.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24</li></a>
+        <a href="doc_download/download_res.php?file_name=res24-2004-sirhu.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24/2004</li></a>
+        <a href="doc_download/download_res.php?file_name=res_conj_26-2019.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Res. Conjunta 26/2019</li></a>
+        <a href="doc_download/download_res.php?file_name=dec_645-1995.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Decreto 645/1995</li></a>
         <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Manual del Usuario</li></a>
         </ul>
      </div>

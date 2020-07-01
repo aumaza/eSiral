@@ -940,5 +940,51 @@ function genLoteLH2($var1,$var2,$var3,$var4,$var5){
 	}
 }
 
+/*
+** Funcion generadora de archivo Excel a partir de tabla fils_ok
+*/
+
+function genExcel($var1,$var2){
+
+
+	$sql = "SELECT * FROM files_ok where cod_org = '$var1'";
+            
+	mysqli_select_db('sirhal_web');
+	$resval = mysqli_query($var2,$sql);
+	
+	$file = "lotes.xls";
+	
+	if (mysqli_num_rows($resval) != 0){
+	  $jump = "\r\n";
+	  $separator = ",";
+	  $fp = fopen('../../docs/'.$file, 'w');
+	 	  
+	  while($row = mysqli_fetch_array($resval)) {
+	  $registro =  $row['file_name'] .$separator. $row['upload_on'] . $separator. $row['user_name'] .$separator. $row['cod_org'] . $jump;
+	  fwrite($fp, $registro);
+	  }
+	  
+	  fclose($fp);
+	  chmod($file, 0777);
+	  
+	  
+	  if($file){
+	     $path = '../../docs/'.$file;
+	  
+	  if(is_file($path)){
+	    header('Content-Type: application/force-download');
+	    header('Content-Disposition: attachment; filename='.$file);
+	    header('Content-Transfer-Encoding: binary');
+	    header('Content-Length: '.filesize($path));
+
+	    readfile($path);
+	  }
+	  }else{
+	    exit();
+	    }
+	    
+	   }
+	   }
+	  
 
 ?>
