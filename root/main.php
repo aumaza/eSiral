@@ -103,7 +103,7 @@
   <a href="organismos/organismos.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> Alta de Organismos</a>
   <a href="upload_lote/lotes.php" class="list-group-item"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Subidos</a>
   <a href="upload_lote/lotes_ok.php" class="list-group-item"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados Manualmente</a>
-  <a href="procesar_lotes/procesar_lote.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes Subidos</a>
+  <a href="procesar_lotes/procesar_lote.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Proceso y Control de Lotes Subidos</a>
   <a href="liquidadores/liquidadores.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Datos Liquidadores</a>
   <a href="users/users.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Administración de Usuarios</a>
   </div>
