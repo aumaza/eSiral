@@ -24,15 +24,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="icons/actions/im-skype.png" />
-    <link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.css" >
-	<link rel="stylesheet" href="/sirhal-web/skeleton/css/bootstrap-theme.min.css" >
-	<link rel="stylesheet" href="/sirhal-web/skeleton/css/fontawesome.css">
-	<link rel="stylesheet" href="/sirhal-web/skeleton/css/fontawesome.min.css" >
-	<link rel="stylesheet" href="/sirhal-web/skeleton/css/jquery.dataTables.min.css" >
+    <link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap-theme.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap-theme.min.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/fontawesome.css">
+	<link rel="stylesheet" href="/eSiral/skeleton/css/fontawesome.min.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/jquery.dataTables.min.css" >
 
-	<script src="/sirhal-web/skeleton/js/jquery-3.4.1.min.js"></script>
-	<script src="/sirhal-web/skeleton/js/bootstrap.min.js"></script>
+	<script src="/eSiral/skeleton/js/jquery-3.4.1.min.js"></script>
+	<script src="/eSiral/skeleton/js/bootstrap.min.js"></script>
 	<link rel="stylesheet"  type="text/css" media="screen" href="style.css" />
 	
     <title>Bienvenido</title>
@@ -105,4 +105,3 @@
 </div>
 </div>
 </body>
-</html>
