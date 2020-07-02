@@ -30,13 +30,13 @@
 	
 	
 	
-	$ql = "select file_name, user_name, max(upload_on) as fecha from files_ok where cod_org = '$cod'";
+	$ql = "select file_name, user_name, upload_on from files_ok where cod_org = '$cod' order by upload_on limit 1";
 	mysqli_select_db('sirhal_web');
 	$resval = mysqli_query($conn,$ql);
 	while($row = mysqli_fetch_array($resval)){
 	  $archivo = $row['file_name'];
 	  $user = $row['user_name'];
-	  $fecha = $row['fecha'];
+	  $fecha = $row['upload_on'];
 	}
 	
 	if($varsession == null || $varsession = ''){
