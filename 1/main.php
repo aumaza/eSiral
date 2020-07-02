@@ -20,6 +20,25 @@
 	  $organismo = $row['organismo'];
 	}
 	
+	$query = "SELECT cod_org from organismos where descripcion = '$organismo'";
+	mysqli_select_db('sirhal_web');
+	$res = mysqli_query($conn,$query);
+	while($linea = mysqli_fetch_array($res)){
+	  $cod = $linea['cod_org'];
+	 
+	}
+	
+	
+	
+	$ql = "select file_name, user_name, max(upload_on) as fecha from files_ok where cod_org = '$cod'";
+	mysqli_select_db('sirhal_web');
+	$resval = mysqli_query($conn,$ql);
+	while($row = mysqli_fetch_array($resval)){
+	  $archivo = $row['file_name'];
+	  $user = $row['user_name'];
+	  $fecha = $row['fecha'];
+	}
+	
 	if($varsession == null || $varsession = ''){
 	echo '<div class="alert alert-danger" role="alert">';
 	echo "Usuario o Contraseña Incorrecta. Reintente Por Favor...";
@@ -190,7 +209,10 @@
     </div>
      <div class="panel-body">
       <div class="alert alert-success" role="alert">
-      <p><img src="../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> No olvide que la fecha límite para cargar lotes en el sistema SIRHU es hasta el 10 de cada mes</p>
+      <p><img src="../icons/actions/view-calendar-month.png"  class="img-reponsive img-rounded"> <strong>Ultimo Lote Generado</strong></p><hr>
+      <p><strong>Archivo:</strong> <?php echo $archivo; ?></p>
+      <p><strong>Usuario:</strong> <?php echo $user; ?></p>
+      <p><strong>Fecha:</strong> <?php echo $fecha; ?></p>
      </div><br>
      <div class="alert alert-success" role="alert">
       <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
