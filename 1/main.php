@@ -30,7 +30,7 @@
 	
 	
 	
-	$ql = "select file_name, user_name, upload_on from files_ok where cod_org = '$cod' order by upload_on limit 1";
+	$ql = "select file_name, user_name, upload_on from files_ok where cod_org = '$cod' order by upload_on desc limit 1";
 	mysqli_select_db('sirhal_web');
 	$resval = mysqli_query($conn,$ql);
 	while($row = mysqli_fetch_array($resval)){
