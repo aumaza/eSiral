@@ -138,7 +138,7 @@
     </div>
         
 <div class="list-group">
-  <a href="upload_lote/lotes.php" class="list-group-item"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Listado de Lotes</a>
+  <a href="upload_lote/lotes.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/svn-commit.png"  class="img-reponsive img-rounded"> Subida de Lotes</a>
   <a href="#" class="list-group-item"><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Proceso y Análisis de Lotes</a>
   <a href="datos_personales/datos_personales.php" class="list-group-item"><span class="pull-center "><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</a>
   </div>
