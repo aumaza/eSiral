@@ -67,7 +67,7 @@
   <!-- END Data Table Script -->
 	
 </head>
-<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: repeat; background-position: center center; background-size: cover; height: 100%">
 <br>
 <!--User and System Information -->
 <div class="container-fluid">
@@ -85,37 +85,102 @@
 <!-- end user and system information -->
 
 
+
+<!-- marco general -->
 <div class="container-fluid">
-
 <div class="row">
-<div class="col-sm-12"><br>
+<div class="col-xs-12"><br>
 
-<!-- Dashboard buttons -->
-<div class="panel panel-primary">
-  <div class="panel-body">
+<!-- Menu principal -->
 
-   <div class="btn-group btn-group-justified">
-    <a href="organismos/organismos.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> Cargar Organismos</a>
-    <a href="#" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/view-expenses-categories.png"  class="img-reponsive img-rounded"> Sumarias</a>
-    <a href="upload_lote/lotes.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Subidos</a>
-    <a href="upload_lote/lotes_ok.php" class="btn btn-default"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados</a>
-    <a href="procesar_lotes/procesar_lote.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes Subidos</a>
-    <a href="liquidadores/liquidadores.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Datos Liquidadores</a>
-    <a href="users/users.php" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Usuarios</a>
-    
+<div class="col-xs-2">
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/actions/dashboard-show.png"  class="img-reponsive img-rounded"> Menú Principal</h2>
+    </div>
+        
+<div class="list-group">
+  <a href="organismos/organismos.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> Cargar Organismos</a>
+  <a href="upload_lote/lotes.php" class="list-group-item"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Subidos</a>
+  <a href="upload_lote/lotes_ok.php" class="list-group-item"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados Manualmente</a>
+  <a href="procesar_lotes/procesar_lote.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Procesar Lotes Subidos</a>
+  <a href="liquidadores/liquidadores.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Datos Liquidadores</a>
+  <a href="users/users.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Usuarios</a>
+  </div>
   
-  </div>
-  </div>
-  </div><hr>
-<!-- end dashboard buttons -->
+   <div class="panel-group">
+  
+   
+   <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse2"><img src="../icons/apps/accessories-dictionary.png"  class="img-reponsive img-rounded"> Documentación</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <a href="doc_download/download_res.php?file_name=res24-2004-sirhu.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24/2004</li></a>
+        <a href="doc_download/download_res.php?file_name=res_conj_26-2019.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Res. Conjunta 26/2019</li></a>
+        <a href="doc_download/download_res.php?file_name=dec_645-1995.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Decreto 645/1995</li></a>
+        <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Manual del Usuario</li></a>
+        </ul>
+     </div>
+   </div>
+   
+   
+   
+</div> 
+  
+</div></div></div>
+<!--En Menu Principal  -->
+
+<!-- menu informacion -->
+<div class="col-xs-10">
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/status/dialog-information.png"  class="img-reponsive img-rounded"> Información</h2>
+    </div>
+     <div class="panel-body">
+      <div class="alert alert-success" role="alert">
+      <p><img src="../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> No olvide que la fecha límite para cargar lotes en el sistema SIRHU es hasta el 10 de cada mes</p>
+     </div><br>
+     <div class="alert alert-success" role="alert">
+      <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
+     </div>
+     </div><hr>
+<!-- end menu informacion -->
+
+<!-- menu informacion -->
+
+<div class="col-xs-14"><br>
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/actions/view-statistics.png"  class="img-reponsive img-rounded"> Informes Estadísticos</h2>
+    </div>
+     <div class="panel-body">
+      <div class="alert alert-success" role="alert">
+      <p><img src="../icons/actions/view-calendar-month.png"  class="img-reponsive img-rounded"> <strong>Ultimo Lote Generado</strong></p><hr>
+      <p><strong>Archivo:</strong> <?php echo $archivo; ?></p>
+      <p><strong>Usuario:</strong> <?php echo $user; ?></p>
+      <p><strong>Fecha:</strong> <?php echo $fecha; ?></p>
+     </div><br>
+     <div class="alert alert-success" role="alert">
+      <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
+     </div>
+     </div>
+     </div>
+     </div>
+     
+     
+<!-- end menu informacion -->
+    
+
 
 </div>
-
-
-
 </div>
-
 </div>
+<!-- End marco general -->
 
 
 </body>
