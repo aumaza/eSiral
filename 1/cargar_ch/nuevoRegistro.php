@@ -244,7 +244,7 @@ function Text(string){//validacion solo letras
   <div class="col-sm-4">
   <div class="input-group">
     <span class="input-group-addon" style="color: blue">Descripción de Concepto</span>
-    <input id="text" type="text" class="form-control" name="desc_concepto" value="" onkeyup="this.value=Text(this.value);" required>
+    <input id="text" type="text" class="form-control" name="desc_concepto" onKeyDown="limitText(this,40);" onKeyUp="limitText(this,40);" required>
   </div>
   </div>
   
