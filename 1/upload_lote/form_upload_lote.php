@@ -1,47 +1,3 @@
-<html><head>
-	<meta charset="utf-8">
-	<title>Subir Lote</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
-	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap-theme.css" >
-	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap-theme.min.css" >
-	<link rel="stylesheet" href="/eSiral/skeleton/css/fontawesome.css">
-	<link rel="stylesheet" href="/eSiral/skeleton/css/fontawesome.min.css" >
-	<link rel="stylesheet" href="/eSiral/skeleton/css/jquery.dataTables.min.css" >
-
-	<script src="/eSiral/skeleton/js/jquery-3.4.1.min.js"></script>
-	<script src="/eSiral/skeleton/js/bootstrap.min.js"></script>
-	
-	
-	<script src="/eSiral/skeleton/js/jquery.dataTables.min.js"></script>
-	<script src="/eSiral/skeleton/js/dataTables.editor.min.js"></script>
-	<script src="/eSiral/js/dataTables.select.min.js"></script>
-	<script src="/eSiral/skeleton/js/dataTables.buttons.min.js"></script>
-
-	<link href="style.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />
-	
-	 <style>
-	    .avatar {
-		vertical-align: middle;
-		horizontal-align: right;
-		width: 60px;
-		height: 60px;
-		border-radius: 60%;
-		    }
-	</style>
-	
-	
-	
-</head>
-<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
-
-<div class="section"><br>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-
 <?php include "../../connection/connection.php";
       include "../../functions/functions.php";
 
@@ -66,7 +22,34 @@
 	echo '<a href="../../index.html"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 	die();
 	}
+?>
+<html><head>
+  <title>Lote Subido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
+	<?php skeleton();?>
 	
+	 <style>
+	    .avatar {
+		vertical-align: middle;
+		horizontal-align: right;
+		width: 60px;
+		height: 60px;
+		border-radius: 60%;
+		    }
+	</style>
+	
+	
+	
+</head>
+<body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
+
+<div class="section"><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+<?php 
 	 
 $statusMsg = '';
 foreach($_FILES["files"]["tmp_name"] as $key => $tmp_name){

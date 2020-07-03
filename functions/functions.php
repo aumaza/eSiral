@@ -1,6 +1,39 @@
 <?php
 
 /*
+** Función que carga la cabecera de con el skeleton de bootstrap
+*/
+
+function skeleton(){
+
+
+        
+  echo '<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap-theme.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/bootstrap-theme.min.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/fontawesome.css">
+	<link rel="stylesheet" href="/eSiral/skeleton/css/fontawesome.min.css" >
+	<link rel="stylesheet" href="/eSiral/skeleton/css/jquery.dataTables.min.css" >
+
+	<script src="/eSiral/skeleton/js/jquery-3.4.1.min.js"></script>
+	<script src="/eSiral/skeleton/js/bootstrap.min.js"></script>
+	
+	<script src="/eSiral/skeleton/js/jquery.dataTables.min.js"></script>
+	<script src="/eSiral/skeleton/js/dataTables.editor.min.js"></script>
+	<script src="/eSiral/skeleton/js/dataTables.select.min.js"></script>
+	<script src="/eSiral/skeleton/js/dataTables.buttons.min.js"></script>
+	<script src="/eSiral/skeleton/Chart.js/Chart.bundle.min.js"></script>
+	<script src="/eSiral/skeleton/Chart.js/Chart.bundle.js"></script>
+	<script src="/eSiral/skeleton/Chart.js/Chart.js"></script>
+	<script src="/eSiral/skeleton/Chart.js/Chart.min.js"></script>
+	 
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet"  type="text/css" media="screen" href="login.css" />';
+
+}
+
+
+/*
 ** Se crea la tabla usuarios, contenedora de los datos para ingreso a la app.-
 */
 
