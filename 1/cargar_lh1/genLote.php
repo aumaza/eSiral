@@ -45,7 +45,7 @@
 	<title>LH1 - Generación de Archivo de Lote</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
-	<?php <keleton();?>
+	<?php skeleton();?>
 	
 	</script>
   
