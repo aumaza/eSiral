@@ -728,7 +728,13 @@ function isString($var){
 
 function genLoteDP($var1,$var2,$var3,$var4,$var5){
 
-    
+	if(strlen($var3) < 3){
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Debe Ingresar mínimo 3 Dígitos';
+	      echo "</div>";
+	      exit();
+	}
+	
            
 	$sql = "SELECT tipo_dni, nro_dni, RPAD(nombreApellido,40,' ') as nombre, DATE_FORMAT(f_nac,'%Y%m%d') as date , cod_sexo, cod_est_civ, cod_inst, f_ing, cod_nac, cod_niv_edu, RPAD(desc_tit,30,' ') as titulo, cuil_cuit, sist_prev, RPAD(cod_sist_prev,3,' ') as prev, RPAD(cod_ob_soc,9,' ') as ob_soc, RPAD(nro_afi,14,' ') as afi, tip_hor FROM tb_dp WHERE nro_lote = $var3 and cod_inst = '$var1'";
             
@@ -782,6 +788,13 @@ function genLoteDP($var1,$var2,$var3,$var4,$var5){
 
 function genLoteCH($var1,$var2,$var3,$var4,$var5){
 
+	if(strlen($var3) < 3){
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Debe Ingresar mínimo 3 Dígitos';
+	      echo "</div>";
+	      exit();
+	}
+
         $sql = "SELECT cod_inst,cod_esc,cod_concepto, RPAD(desc_concepto,40,' ') as concepto,rem_bon,tip_concepto FROM tb_ch WHERE nro_lote = $var3 and cod_inst = '$var1'";
         
    	mysqli_select_db('sirhal_web');
@@ -832,6 +845,13 @@ function genLoteCH($var1,$var2,$var3,$var4,$var5){
 
 
 function genLoteLH1($var1,$var2,$var3,$var4,$var5){
+
+	if(strlen($var3) < 3){
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Debe Ingresar mínimo 3 Dígitos';
+	      echo "</div>";
+	      exit();
+	}
 
     
            
@@ -889,7 +909,12 @@ function genLoteLH1($var1,$var2,$var3,$var4,$var5){
 
 function genLoteLH2($var1,$var2,$var3,$var4,$var5){
 
-    
+	if(strlen($var3) < 3){
+	      echo '<div class="alert alert-danger" role="alert" align="center">';
+	      echo '<span class="pull-center "><img src="../../icons/status/dialog-warning.png"  class="img-reponsive img-rounded"> Debe Ingresar mínimo 3 Dígitos';
+	      echo "</div>";
+	      exit();
+	}
            
 	$sql = "SELECT cod_inst,tipo_doc,nro_doc,cod_esc,cod_concepto,LPAD(importe,15,'0') as importe,tipo_uf,cant_uf,periodo FROM tb_lh2 WHERE nro_lote = $var3 and cod_inst = '$var1'";
             

@@ -67,9 +67,7 @@
           
            alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
             limitField.value = limitField.value.substring(0, limitNum);
-       }
-       
-       if(limitField.value.lenght < limitNum){
+       }else(limitField.value.lenght < limitNum){
 	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
             limitField.value = limitField.value.substring(0, limitNum);
        }
@@ -173,7 +171,7 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
+    <input id="text" type="text" minlenght="3" class="form-control" name="nro_lote" placeholder="Ingrese nro. de Lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
     </div>
     </div>
     </div>
@@ -205,9 +203,9 @@ function Text(string){//validacion solo letras
         <h4 class="modal-title">Lote Número</h4>
       </div>
       <div class="modal-body">
-        <p>Puede ingresar el número de dos maneras.</p>
+        <p>Debe Ingresar el Número de la Siguiente manera</p>
 	<p>Por ejemplo, si el número de lote que desea generar es el 1</p>
-	<p>Puede tipear "1" o "001" para el programa es indistinto</p>
+	<p>Deberá tipear "001".</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>

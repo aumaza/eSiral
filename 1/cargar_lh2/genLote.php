@@ -182,9 +182,9 @@ function Numeros(string){
         <h4 class="modal-title">Lote Número</h4>
       </div>
       <div class="modal-body">
-        <p>Deberá ingresar el número de lote de la siguiente manera.</p>
-	<p>Debe tipear "001" para que el programa pueda encontrar el lote que desea generar</p>
-	<p>Y el Valor no puede ser "000"</p>
+         <p>Debe Ingresar el Número de la Siguiente manera</p>
+	<p>Por ejemplo, si el número de lote que desea generar es el 1</p>
+	<p>Deberá tipear "001".</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>

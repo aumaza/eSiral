@@ -203,9 +203,9 @@ function Text(string){//validacion solo letras
         <h4 class="modal-title">Lote Número</h4>
       </div>
       <div class="modal-body">
-        <p>Puede ingresar el número de dos maneras.</p>
+        <p>Debe Ingresar el Número de la Siguiente manera</p>
 	<p>Por ejemplo, si el número de lote que desea generar es el 1</p>
-	<p>Puede tipear "1" o "001" para el programa es indistinto</p>
+	<p>Deberá tipear "001".</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
