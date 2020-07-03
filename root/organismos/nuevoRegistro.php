@@ -103,7 +103,7 @@ function Numeros(string){
 function Text(string){//validacion solo letras
     var out = '';
     //Se añaden las letras validas
-    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ ]+$"; // Caracteres Válidos
+    var filtro ="^[abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ()- ]+$"; // Caracteres Válidos
   
     for (var i=0; i<string.length; i++){
        if (filtro.indexOf(string.charAt(i)) != -1){ 
@@ -150,7 +150,7 @@ function Text(string){//validacion solo letras
          
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
-    <input id="text" type="text" maxlenght="2" class="form-control" name="cod" placeholder="Codigo de Organismo" value="" onkeyup="this.value=Text(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+    <input id="text" type="text" maxlenght="2" class="form-control" name="cod" placeholder="Codigo de Organismo"  onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
   </div>
   
   <div class="input-group">
