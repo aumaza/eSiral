@@ -16,6 +16,7 @@ create table niveles (id int(11) auto_increment primary key, cod_nivel varchar(2
 create table grados (id int(11) auto_increment primary key, cod_grado varchar(3) not null, descripcion varchar(50) not null)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table uni_org (id int(11) auto_increment primary key, cod_uni int(13) zerofill not null, descripcion varchar(60) not null)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table tb_dp_backup (id (int(11)) auto_increment primary key, cod_arch VARCHAR(3) NOT NULL, nro_lote int(3) ZEROFILL NOT NULL, per_lote int(6) NOT NULL, tipo_dni VARCHAR(3) NOT NULL, nro_dni int(16) ZEROFILL NOT NULL, nombreApellido VARC41) NOT NULL, f_nac date NOT NULL, cod_sexo VARCHAR(4) NOT NULL, cod_est_civ VARCHAR(3) NOT NULL, cod_inst VARCHAR(2) NOT NULL, f_ing int(6) NOT NULL, cod_nac int(2) NOT NULL, cod_niv_edu VARCHAR(2) NOT NULL, desc_tit VARCHAR(30) NOT NULL, cuil_cuit VARCHAR(11) NOT NULL, sist_prev VARCHAR(1) NOT NULL, cod_sist_prev VARCHAR(2) NOT NULL, cod_ob_soc VARCHAR(1) NOT NULL, nro_afi VARCHAR(14) NOT NULL, tip_hor VARCHAR(1) NOT NULL)ENGINE=InnoDB DEFAULT CHARSET=utf8;    
 
 # importar datos a tabla mysql
 load data local infile '/home/augusto/organismos.csv' into table organismos fields terminated by ',' enclosed by '"' lines terminated by '\r\n' (cod_org,saf,descripcion);

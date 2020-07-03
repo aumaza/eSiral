@@ -1,6 +1,7 @@
 <?php include "../../connection/connection.php";
+      include "../../functions/functions.php";
 
-session_start();
+        session_start();
 	$varsession = $_SESSION['user'];
 	
 	if($varsession == null || $varsession = ''){
