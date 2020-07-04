@@ -29,6 +29,21 @@
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<?php skeleton();?>
 	
+	<!-- block mouse left-button   -->
+  <script>
+      $(document).bind("contextmenu",function(e) {
+    e.preventDefault();
+    });
+  </script>
+<!-- block F12 development mode -->
+  <script>
+      $(document).keydown(function(e){
+	if(e.which === 123){
+	  return false;
+	}
+    });
+  </script>
+	
 	 <style>
 	    .avatar {
 		vertical-align: middle;

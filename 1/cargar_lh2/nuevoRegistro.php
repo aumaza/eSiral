@@ -125,6 +125,21 @@ function Text(string){//validacion solo letras
 }
 </script>
 
+<!-- block mouse left-button   -->
+  <script>
+      $(document).bind("contextmenu",function(e) {
+    e.preventDefault();
+    });
+  </script>
+<!-- block F12 development mode -->
+  <script>
+      $(document).keydown(function(e){
+	if(e.which === 123){
+	  return false;
+	}
+    });
+  </script>
+
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
