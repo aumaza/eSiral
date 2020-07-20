@@ -47,11 +47,17 @@
 	<link rel="icon" type="image/png" href="../../icons/actions/im-skype.png" />
 	<?php skeleton();?>
 	
-	<script>
-
-      $(document).ready(function(){
+	<!-- Data Table Script -->
+<script>
+ $(document).ready(function(){
       $('#myTable').DataTable({
       "order": [[1, "asc"]],
+      "responsive": true,
+      "scrollY":        "300px",
+        "scrollX":        true,
+        "scrollCollapse": true,
+        "paging":         true,
+        "fixedColumns": true,
       "language":{
         "lengthMenu": "Mostrar _MENU_ registros por pagina",
         "info": "Mostrando pagina _PAGE_ de _PAGES_",
@@ -69,8 +75,9 @@
     });
 
   });
-
   </script>
+  <!-- END Data Table Script -->
+  
 <!-- block mouse left-button   -->
   <script>
       $(document).bind("contextmenu",function(e) {
@@ -155,7 +162,7 @@ if($conn)
 
    	$count = 0;
 	$i=0;
-            echo "<table class='display compact' id='myTable'>";
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
               echo "<thead>
 
                     <th class='text-nowrap text-center'>ID</th>

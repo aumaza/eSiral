@@ -61,10 +61,15 @@
 	
 	<!-- Data Table Script -->
 <script>
-
-      $(document).ready(function(){
+ $(document).ready(function(){
       $('#myTable').DataTable({
       "order": [[1, "asc"]],
+      "responsive": true,
+      "scrollY":        "300px",
+        "scrollX":        true,
+        "scrollCollapse": true,
+        "paging":         true,
+        "fixedColumns": true,
       "language":{
         "lengthMenu": "Mostrar _MENU_ registros por pagina",
         "info": "Mostrando pagina _PAGE_ de _PAGES_",
@@ -82,7 +87,6 @@
     });
 
   });
-
   </script>
   <!-- END Data Table Script -->
   
