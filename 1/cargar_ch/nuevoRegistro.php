@@ -3,6 +3,8 @@
 
         session_start();
 	$varsession = $_SESSION['user'];
+	$lote = $_SESSION['nro_lote'];
+	$periodo = $_SESSION['periodo'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysqli_select_db('sirhal_web');
@@ -55,9 +57,7 @@
           
            alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
             limitField.value = limitField.value.substring(0, limitNum);
-       }
-       
-       if(limitField.value.lenght < limitNum){
+       }else if(limitField.value.lenght < limitNum){
 	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
             limitField.value = limitField.value.substring(0, limitNum);
        }
@@ -167,7 +167,7 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" placeholder="Ingrese nro. de Lote" required>
+    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="<?php echo $lote;?>" required>
     </div>
     </div>
   
@@ -177,7 +177,7 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" placeholder="AAAAMM" required>
+    <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="<?php echo $periodo;?>" required>
   </div>
   </div>
   </div>
@@ -234,7 +234,25 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Código Concepto</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+    <input id="cod_conc" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onblur="validate();" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+  <script>
+  function validate(){
+  
+              
+		var number = document.getElementById("cod_conc").value;
+		var cantNumbers = number.length;
+		if(cantNumbers < 6){
+		alert("Código de Concepto requiere de 6 Caracteres!!!");
+		
+		}else{
+		  alert("Puede continuar!!");
+		}
+  
+  }
+  
+  
+  </script>
+  
   </div>
   </div>
   </div>

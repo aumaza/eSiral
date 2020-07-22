@@ -3,6 +3,11 @@
 
 	session_start();
 	$varsession = $_SESSION['user'];
+	$_SESSION['nro_lote'] = $_POST['nro_lote'];
+	$_SESSION['periodo'] = $_POST['periodo'];
+	
+	$lote = $_SESSION['nro_lote'];
+	$periodo = $_SESSION['periodo'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysqli_select_db('sirhal_web');
@@ -50,13 +55,19 @@
 	}
 ?>
 
-<html style="height: 100%" lang="es"><head>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>eSiral - Panel Usuario</title>
   <meta charset="utf-8">
-   <title>eSiral - Panel Usuario</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../icons/actions/im-skype.png" />
-	
-	<?php skeleton(); ?>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="../icons/actions/im-skype.png" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <?php skeleton(); ?>
 	
 	
 	<!-- Data Table Script -->
@@ -90,6 +101,12 @@
   </script>
   <!-- END Data Table Script -->
   
+  <script>
+  $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+    });
+  </script>
+  
   <!-- block mouse left-button   -->
   <script>
       $(document).bind("contextmenu",function(e) {
@@ -104,132 +121,169 @@
 	}
     });
   </script>
-	
+  
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
 </head>
-<body  background="../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: repeat; background-position: center center; background-size: cover; height: 100%">
-<br>
-<!--User and System Information -->
-<div class="container-fluid">
-      <div class="row">
-      <div class="col-md-12 text-center">
-	<a href="../logout.php"><button><span class="glyphicon glyphicon-log-out"></span> Salir</button></a>
-	<button><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $nombre ?></button>
-	<button><span class="glyphicon glyphicon-user"></span> Organismo: <?php echo $organismo ?></button>
-	<?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-time"></span> <?php echo "Hora Actual: " . date("H:i"); ?></button>
-	 <?php setlocale(LC_ALL,"es_ES"); ?>
-	<button><span class="glyphicon glyphicon-calendar"></span> <?php echo "Fecha Actual: ". strftime("%d de %b de %Y"); ?> </button>
-	</div>
-	</div>
-	</div><hr>
-<!-- end user and system information -->
+<body>
 
-<!-- marco general -->
-<div class="container-fluid">
-<div class="row">
-<div class="col-xs-12"><br>
-
-<!-- Menu principal -->
-
-<div class="col-xs-2">
-<div class="panel panel-default" >
-  <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/actions/dashboard-show.png"  class="img-reponsive img-rounded"> Menú Principal</h2>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <!-- Trigger the modal button LogIn-->
+      <button class="btn btn-success navbar-btn" data-toggle="modal" data-target="#myModal"><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Iniciar Lotes</button>
+     <!-- End Trigger the modal with a button -->
     </div>
-        
-<div class="list-group">
-  <a href="upload_lote/lotes.php" class="list-group-item"><span class="pull-center "><img src="../icons/actions/svn-commit.png"  class="img-reponsive img-rounded"> Subida de Lotes</a>
-  <a href="#" class="list-group-item"><img src="../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Proceso y Análisis de Lotes</a>
-  <a href="datos_personales/datos_personales.php" class="list-group-item"><span class="pull-center "><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</a>
-  </div>
-  
-   <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1"><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Carga Manual de Lotes</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
-      <ul class="list-group">
-        <a href="cargar_dp/cargar_dp.php" class="list-group-item"><li class="list-group-item"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> DP (Datos de Personas)</li></a>
-        <a href="cargar_ch/cargar_ch.php" class="list-group-item"><li class="list-group-item"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> CH (Concepto de Haberes)</li></a>
-        <a href="cargar_lh1/cargar_lh1.php" class="list-group-item"><li class="list-group-item"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH1 (Cabezal de Haberes)</li></a>
-        <a href="cargar_lh2/cargar_lh2.php" class="list-group-item"><li class="list-group-item"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2 (Detalle de Haberes)</li></a>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <button class="btn btn-default navbar-btn"><img src="../icons/apps/accessories-dictionary.png"  class="img-reponsive img-rounded"> Documentación<img src="../icons/actions/arrow-right.png"  class="img-reponsive img-rounded"></button>
+        <a href="doc_download/download_res.php?file_name=res24-2004-sirhu.pdf"><button class="btn btn-default navbar-btn"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Res. 24/2004</button></a>
+        <a href="doc_download/download_res.php?file_name=res_conj_26-2019.pdf"><button class="btn btn-default navbar-btn"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Res. Conjunta 26/2019</button></a>
+        <a href="doc_download/download_res.php?file_name=dec_645-1995.pdf"><button class="btn btn-default navbar-btn"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Decreto 645/1995</button></a>
       </ul>
-     </div>
-   </div>
-   
-   <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse2"><img src="../icons/apps/accessories-dictionary.png"  class="img-reponsive img-rounded"> Documentación</a>
-      </h4>
+      <ul class="nav navbar-nav navbar-right">
+	<a href="../logout.php"><button class="btn btn-danger navbar-btn"><img src="../icons/actions/go-previous-view.png"  class="img-reponsive img-rounded"> Salir</button></a>
+       
+      </ul>
     </div>
-    <div id="collapse2" class="panel-collapse collapse">
-      <ul class="list-group">
-        <a href="doc_download/download_res.php?file_name=res24-2004-sirhu.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Resolución 24/2004</li></a>
-        <a href="doc_download/download_res.php?file_name=res_conj_26-2019.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Res. Conjunta 26/2019</li></a>
-        <a href="doc_download/download_res.php?file_name=dec_645-1995.pdf" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Decreto 645/1995</li></a>
-        <a href="#" class="list-group-item"><li class="list-group-item"><img src="../icons/apps/acroread.png"  class="img-reponsive img-rounded"> Manual del Usuario</li></a>
-        </ul>
-     </div>
-   </div>
-   
-   
-   
-</div> 
+  </div>
+</nav>
   
-</div></div></div>
-<!--En Menu Principal  -->
-
-<!-- menu informacion -->
-<div class="col-xs-10">
-<div class="panel panel-default" >
-  <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/status/dialog-information.png"  class="img-reponsive img-rounded"> Información</h2>
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="datos_personales/datos_personales.php"><button type="button" class="btn btn-default btn-lg"><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</button></a></p>
+      
+      <?php 
+  
+  if($lote && $periodo != " "){
+     
+   
+   echo '<div class="alert alert-success">
+	  <img src="../icons/actions/arrow-down.png"  class="img-reponsive img-rounded"> <strong>Archivos de Lotes</strong>
+	  </div>
+	<p><a href="cargar_dp/cargar_dp.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Datos de Personas"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> DP1</button></a></p>
+        <p><a href="cargar_ch/cargar_ch.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Concepto de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> CH1</button></a></p>
+        <p><a href="cargar_lh1/cargar_lh1.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Cabezal de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH1</button></a></p>
+        <p><a href="cargar_lh2/cargar_lh2.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Detalle de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2</button></a></p>';
+      
+   }
+   
+   ?>
+     
     </div>
-     <div class="panel-body">
+    
+    <div class="col-sm-8 text-left"> 
+      <h1>Bienvenido/a</h1><hr>
+     <div class="alert alert-success" role="alert">
+      <p><img src="../icons/actions/help-about.png"  class="img-reponsive img-rounded"> Para comenzar a cargar información en sus archivos de lotes, diríjase al botón "Iniciar Lotes" en la barra superior.</p>
+      </div>
+      <hr>
       <div class="alert alert-success" role="alert">
       <p><img src="../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> No olvide que la fecha límite para cargar lotes en el sistema SIRHU es hasta el 10 de cada mes</p>
-     </div><br>
-     <div class="alert alert-success" role="alert">
-      <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
-     </div>
-     </div><hr>
-<!-- end menu informacion -->
-
-<!-- menu informacion -->
-
-<div class="col-xs-14"><br>
-<div class="panel panel-default" >
-  <div class="panel-heading">
-    <h2 class="panel-title text-center text-default "><li class="list-group-item"><img src="../icons/actions/view-statistics.png"  class="img-reponsive img-rounded"> Informes Estadísticos</h2>
-    </div>
-     <div class="panel-body">
+      </div>
+      <hr>
       <div class="alert alert-success" role="alert">
-      <p><img src="../icons/actions/view-calendar-month.png"  class="img-reponsive img-rounded"> <strong>Ultimo Lote Generado</strong></p><hr>
-      <p><strong>Archivo:</strong> <?php echo $archivo; ?></p>
-      <p><strong>Usuario:</strong> <?php echo $user; ?></p>
-      <p><strong>Fecha:</strong> <?php echo $fecha; ?></p>
-     </div><br>
-     <div class="alert alert-success" role="alert">
       <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
      </div>
-     </div>
-     </div>
-     </div>
-     
-     
-<!-- end menu informacion -->
+    </div>
     
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> <strong>Usuario:</strong> <?php echo $nombre ?></p>
+      </div>
+      <div class="well">
+        <p><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> <strong>Organismo:</strong> <?php echo $organismo ?></p>
+      </div>
+      <div class="well">
+        <p><img src="../icons/apps/clock.png"  class="img-reponsive img-rounded"> <strong>Hora Actual:</strong> <?php echo date("H:i"); ?></p>
+      </div>
+      <div class="well">
+        <p><img src="../icons/actions/view-calendar-day.png"  class="img-reponsive img-rounded"> <strong>Fecha Actual:</strong> <?php echo strftime("%d de %b de %Y"); ?></p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<footer class="container-fluid text-center">
+  <p><strong>eSiral</strong> - <strong>Dirección de Presupuesto y Gastos en Personal</strong> - <strong>Ministerio de Economía de la Nación</strong></p>
+</footer>
 
-</div>
-</div>
-</div>
-<!-- End marco general -->
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><strong>Datos del Lote</strong></h4>
+        </div>
+        <div class="modal-body">
+        <div class="loginmodal-container">
+        <p>Antes de comenzar a cargar Lotes, deberá seleccionar el Número de lote y el Período del mismo</p>
+        <form action="main.php" method="POST">
+		
+		  <div class="form-group">
+		    <label for="nro_lote">Lote Nro.:</label>
+		    <input type="text" class="form-control" id="nro_lote" name="nro_lote">
+		  </div>
+		  <div class="form-group">
+		    <label for="periodo">Período:</label>
+		    <input type="text" class="form-control" id="periodo" name="periodo">
+		  </div>
+		<button type="submit" class="btn btn-success" data-submit="modal"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+		<button type="reset" class="btn btn-success" data-submit="modal"><span class="glyphicon glyphicon-erase"></span> Limpiar</button>
+		
+		
+	</form>
+        </div>
+        </div>
+        <div class="modal-footer">
+        
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- End Modal -->
 
 </body>
 </html>

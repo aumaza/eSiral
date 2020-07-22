@@ -267,7 +267,22 @@ function Text(string){//validacion solo letras
 		<span class="input-group-addon" style="color: blue">Código de Concepto</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+		<input id="cod_conc" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onblur="validate();" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+		<script>
+		function validate(){
+                
+		var number = document.getElementById("cod_conc").value;
+		var cantNumbers = number.length;
+		if(cantNumbers < 6){
+		alert("Código de Concepto requiere de 6 Caracteres!!!");
+		
+		}else{
+		  alert("Puede continuar!!");
+		}
+  
+  }
+  </script>
+		
 		</div></div></div></div><hr>
 		
 		<div class="container">

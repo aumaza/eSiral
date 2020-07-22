@@ -3,6 +3,8 @@
 
         session_start();
 	$varsession = $_SESSION['user'];
+	$lote = $_SESSION['nro_lote'];
+	$periodo = $_SESSION['periodo'];
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysqli_select_db('sirhal_web');
