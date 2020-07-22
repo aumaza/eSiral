@@ -197,6 +197,10 @@ if($conn)
 
 			 // Listado normal
 			 echo "<tr>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
 			 echo "<td align=center>".$fila['id']."</td>";
 			 echo "<td align=center>".$fila['cod_arch']."</td>";
 			 echo "<td align=center>".$fila['nro_lote']."</td>";
@@ -218,10 +222,6 @@ if($conn)
 			 echo "<td align=center>".$fila['cod_ob_soc']."</td>";
 			 echo "<td align=center>".$fila['nro_afi']."</td>";
 			 echo "<td align=center>".$fila['tip_hor']."</td>";
-			 echo "<td class='text-nowrap'>";
-			 echo '<a href="editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="#" data-href="eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
-			 echo "</td>";
 			 echo "</tr>";
 				$i++;
 		 		$count++;
