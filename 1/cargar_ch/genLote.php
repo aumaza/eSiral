@@ -183,8 +183,7 @@ function Text(string){//validacion solo letras
   <div class="form-group">
    <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success" name="A"><span class="glyphicon glyphicon-floppy-disk"></span>  Generar</button>
-   <a href="cargar_ch.php"><input type="button" value="Volver" class="btn btn-primary"></a>
-   <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
+  <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
   </div>
   </div>
 </form> 

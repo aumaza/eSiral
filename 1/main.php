@@ -184,12 +184,16 @@
     </div>
   </div>
 </nav>
-  
+ 
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="datos_personales/datos_personales.php"><button type="button" class="btn btn-default btn-lg"><img src="../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Mis Datos</button></a></p>
-      
+    <div class="btn-group-vertical">
+      <form action="main.php" method="POST">
+      <br>
+      <button type="submit" class="btn btn-default btn-sm" name="A"><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Mis Datos</button><hr>
+      </form>
+      </div>
       <?php 
   
   if($lote && $periodo != " "){
@@ -198,11 +202,14 @@
    echo '<div class="alert alert-success">
 	  <img src="../icons/actions/arrow-down.png"  class="img-reponsive img-rounded"> <strong>Archivos de Lotes</strong>
 	  </div>
-	<p><a href="cargar_dp/cargar_dp.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Datos de Personas"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> DP1</button></a></p>
-        <p><a href="cargar_ch/cargar_ch.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Concepto de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> CH1</button></a></p>
-        <p><a href="cargar_lh1/cargar_lh1.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Cabezal de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH1</button></a></p>
-        <p><a href="cargar_lh2/cargar_lh2.php"><button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" title="Detalle de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2</button></a></p>';
-      
+	  <div class="btn-group-vertical">
+	  <form action="main.php" method="POST">
+	<button type="submit" class="btn btn-default btn-lg" name="B" data-toggle="tooltip" title="Datos de Personas"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> DP1</button>
+        <button type="submit" class="btn btn-default btn-lg" name="C" data-toggle="tooltip" title="Concepto de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> CH1</button><hr>
+        <button type="submit" class="btn btn-default btn-lg" name="D" data-toggle="tooltip" title="Cabezal de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH1</button>
+        <button type="submit" class="btn btn-default btn-lg" name="E" data-toggle="tooltip" title="Detalle de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2</button>
+	</form>
+      </div>';
    }
    
    ?>
@@ -210,7 +217,9 @@
     </div>
     
     <div class="col-sm-8 text-left"> 
-      <h1>Bienvenido/a</h1><hr>
+      <h1>Bienvenido/a: <?php echo $nombre;?></h1>
+      <p>En la cartelera de información verá publicada información importante sobre eSiral y normativas.</p>
+      <hr>
      <div class="alert alert-success" role="alert">
       <p><img src="../icons/actions/help-about.png"  class="img-reponsive img-rounded"> Para comenzar a cargar información en sus archivos de lotes, diríjase al botón "Iniciar Lotes" en la barra superior.</p>
       </div>
@@ -222,8 +231,34 @@
       <div class="alert alert-success" role="alert">
       <p><img src="../icons/categories/system-help.png"  class="img-reponsive img-rounded"> Ante cualquier duda consulte el "Manual del Usuario" o la normativa vigente publicada en el apartado "Documentación"</p>
      </div>
-    </div>
+     
+     <?php 
     
+      if($conn){
+	  
+	  if(isset($_POST['A'])){
+	      datosPersonales($conn,$nombre);
+	  }
+	  if(isset($_POST['B'])){
+	      cargarDP($conn,$cod);
+	  }
+	  if(isset($_POST['C'])){
+	      cargarCH($conn,$cod);
+	  }
+	  if(isset($_POST['D'])){
+	      cargarLH1($conn,$cod);
+	  }
+	  if(isset($_POST['E'])){
+	      cargarLH2($conn,$cod);
+	  }     
+      
+      
+      
+      }
+      
+    ?>
+    </div>
+
     <div class="col-sm-2 sidenav">
       <div class="well">
         <p><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> <strong>Usuario:</strong> <?php echo $nombre ?></p>
@@ -238,12 +273,14 @@
         <p><img src="../icons/actions/view-calendar-day.png"  class="img-reponsive img-rounded"> <strong>Fecha Actual:</strong> <?php echo strftime("%d de %b de %Y"); ?></p>
       </div>
     </div>
+        
   </div>
 </div>
 
 <footer class="container-fluid text-center">
   <p><strong>eSiral</strong> - <strong>Dirección de Presupuesto y Gastos en Personal</strong> - <strong>Ministerio de Economía de la Nación</strong></p>
 </footer>
+
 
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -284,6 +321,37 @@
     </div>
   </div>
   <!-- End Modal -->
+  
+  <!-- Modal Delete-->
+		<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Eliminar Registro</h4>
+					</div>
+
+					<div class="modal-body">
+						¿Desea eliminar este registro?
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
+						<a class="btn btn-danger btn-ok"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$('#confirm-delete').on('show.bs.modal', function(e) {
+				$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+
+				$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+			});
+		</script>
+<!-- End Modal Delete -->
 
 </body>
 </html>

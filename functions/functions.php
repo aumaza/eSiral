@@ -1042,7 +1042,463 @@ function genExcel($var1,$var2){
 	    }
 	    
 	   }
-	   }
-	  
+}
+	   
+	   
+function datosPersonales($conn,$nombre){
+
+  $sql = "SELECT * FROM liquidadores where nombreApellido = '$nombre'";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+	    
+	
+	echo '<div class="panel panel-success" >
+	      <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Mis Datos</div></div>';
+   	
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Nombre y Apellido</th>
+                    <th class='text-nowrap text-center'>Sexo</th>
+                    <th class='text-nowrap text-center'>DNI</th>
+                    <th class='text-nowrap text-center'>E-mail</th>
+                    <th class='text-nowrap text-center'>Teléfono</th>
+                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['nombreApellido']."</td>";
+			 echo "<td align=center>".$fila['sexo']."</td>";
+			 echo "<td align=center>".$fila['dni']."</td>";
+			 echo "<td align=center>".$fila['email']."</td>";
+			 echo "<td align=center>".$fila['telefono']."</td>";
+			 echo "<td align=center>".$fila['organismo']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="datos_personales/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="datos_personales/editPassword.php?id='.$fila['id'].'" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-refresh"></span> Cambiar Password</a>';
+			 echo "</td>";
+			 echo "</tr>";
+			
+		}
+
+
+
+		echo "</table>";
+		echo "<br><br><hr>";
+		
+
+		
+
+
+
+}
+
+
+function cargarDP($conn,$cod){
+
+  if($conn)
+{
+	$sql = "SELECT * FROM tb_dp where cod_inst = '$cod'";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+	
+	    echo '<div class="panel panel-success" >
+		  <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar DP</div></div>';
+	      
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Código Archivo</th>
+                    <th class='text-nowrap text-center'>Lote Nro.</th>
+                    <th class='text-nowrap text-center'>Período</th>
+                    <th class='text-nowrap text-center'>Tipo Documento</th>
+                    <th class='text-nowrap text-center'>Nro. Documento</th>
+                    <th class='text-nowrap text-center'>Nombre Apellido</th>
+                    <th class='text-nowrap text-center'>Fecha Nac.</th>
+                    <th class='text-nowrap text-center'>Sexo</th>
+                    <th class='text-nowrap text-center'>Estado Civil</th>
+                    <th class='text-nowrap text-center'>Codigo Institución</th>
+                    <th class='text-nowrap text-center'>Fecha Ing.</th>
+                    <th class='text-nowrap text-center'>Cod. Nacionalidad</th>
+                    <th class='text-nowrap text-center'>Cod. Niv. Educ.</th>
+                    <th class='text-nowrap text-center'>Descripción Estudios</th>
+                    <th class='text-nowrap text-center'>Cuil/Cuit</th>
+                    <th class='text-nowrap text-center'>Sist. Previsional</th>
+                    <th class='text-nowrap text-center'>Cod. Sist. Prev.</th>
+                    <th class='text-nowrap text-center'>Cod. Ob. Soc.</th>
+                    <th class='text-nowrap text-center'>Nro. Afiliado</th>
+                    <th class='text-nowrap text-center'>Tipo de Horario</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="cargar_dp/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="cargar_dp/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['cod_arch']."</td>";
+			 echo "<td align=center>".$fila['nro_lote']."</td>";
+			 echo "<td align=center>".$fila['per_lote']."</td>";
+			 echo "<td align=center>".$fila['tipo_dni']."</td>";
+			 echo "<td align=center>".$fila['nro_dni']."</td>";
+			 echo "<td align=center>".$fila['nombreApellido']."</td>";
+			 echo "<td align=center>".$fila['f_nac']."</td>";
+			 echo "<td align=center>".$fila['cod_sexo']."</td>";
+			 echo "<td align=center>".$fila['cod_est_civ']."</td>";
+			 echo "<td align=center>".$fila['cod_inst']."</td>";
+			 echo "<td align=center>".$fila['f_ing']."</td>";
+			 echo "<td align=center>".$fila['cod_nac']."</td>";
+			 echo "<td align=center>".$fila['cod_niv_edu']."</td>";
+			 echo "<td align=center>".$fila['desc_tit']."</td>";
+			 echo "<td align=center>".$fila['cuil_cuit']."</td>";
+			 echo "<td align=center>".$fila['sist_prev']."</td>";
+			 echo "<td align=center>".$fila['cod_sist_prev']."</td>";
+			 echo "<td align=center>".$fila['cod_ob_soc']."</td>";
+			 echo "<td align=center>".$fila['nro_afi']."</td>";
+			 echo "<td align=center>".$fila['tip_hor']."</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<a href="cargar_dp/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
+		echo '<a href="cargar_dp/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
+		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+		echo "<br><hr>";
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...'.mysqli_error($conn);
+		}
+
+    mysqli_close($conn);
+
+
+}
+
+
+
+
+function cargarCH($conn,$cod){
+
+  if($conn){
+  
+	$sql = "SELECT * FROM tb_ch where cod_inst = '$cod'";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+   	$i=0;
+   	
+	    echo '<div class="panel panel-success" >
+	      <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar CH</div></div>';
+            
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Código Archivo</th>
+                    <th class='text-nowrap text-center'>Lote Nro.</th>
+                    <th class='text-nowrap text-center'>Período</th>
+                    <th class='text-nowrap text-center'>Código Organismo</th>
+                    <th class='text-nowrap text-center'>Código Escalafón</th>
+                    <th class='text-nowrap text-center'>Código de Concepto</th>
+                    <th class='text-nowrap text-center'>Descripción Concepto</th>
+                    <th class='text-nowrap text-center'>Código Remun/Bonificable</th>
+                    <th class='text-nowrap text-center'>Tipo de Concepto</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['cod_arch']."</td>";
+			 echo "<td align=center>".$fila['nro_lote']."</td>";
+			 echo "<td align=center>".$fila['per_lote']."</td>";
+			 echo "<td align=center>".$fila['cod_inst']."</td>";
+			 echo "<td align=center>".$fila['cod_esc']."</td>";
+			 echo "<td align=center>".$fila['cod_concepto']."</td>";
+			 echo "<td align=center>".$fila['desc_concepto']."</td>";
+			 echo "<td align=center>".$fila['rem_bon']."</td>";
+			 echo "<td align=center>".$fila['tip_concepto']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="cargar_ch/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="cargar_ch/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<a href="cargar_ch/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
+		echo '<a href="cargar_ch/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
+		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+		echo "<br><hr>";
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+
+}
+
+
+function cargarLH1($conn,$cod){
+
+
+
+if($conn)
+{
+	$sql = "SELECT * FROM tb_lh1 where cod_inst = '$cod'";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+	    
+	    echo '<div class="panel panel-success" >
+	      <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH1</div></div>';
+	    
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+		    
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Código Archivo</th>
+                    <th class='text-nowrap text-center'>Nro. Lote</th>
+                    <th class='text-nowrap text-center'>Período Lote</th>
+                    <th class='text-nowrap text-center'>Código Organismo</th>
+                    <th class='text-nowrap text-center'>Tipo Doc.</th>
+                    <th class='text-nowrap text-center'>Nro. Doc.</th>
+                    <th class='text-nowrap text-center'>Código Escalafón</th>
+                    <th class='text-nowrap text-center'>Código Agrup.</th>
+                    <th class='text-nowrap text-center'>Código Nivel</th>
+                    <th class='text-nowrap text-center'>Código Grado</th>
+                    <th class='text-nowrap text-center'>Código Unidad</th>
+                    <th class='text-nowrap text-center'>Código Juris.</th>
+                    <th class='text-nowrap text-center'>Código SubJuris.</th>
+                    <th class='text-nowrap text-center'>Código Entidad</th>
+                    <th class='text-nowrap text-center'>Código Programa</th>
+                    <th class='text-nowrap text-center'>Código Sub-Programa</th>
+                    <th class='text-nowrap text-center'>Código Proyecto</th>
+                    <th class='text-nowrap text-center'>Código Actividad</th>
+                    <th class='text-nowrap text-center'>Código Geográfico</th>
+                    <th class='text-nowrap text-center'>Período</th>
+                    <th class='text-nowrap text-center'>Tipo de Planta</th>
+                    <th class='text-nowrap text-center'>Fecha Ing.</th>
+                    <th class='text-nowrap text-center'>Código Financiamiento</th>
+                    <th class='text-nowrap text-center'>Marca de Estado</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="cargar_lh1/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="cargar_lh1/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			
+			 
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['cod_arch']."</td>";
+			 echo "<td align=center>".$fila['nro_lote']."</td>";
+			 echo "<td align=center>".$fila['per_lote']."</td>";
+			 echo "<td align=center>".$fila['cod_inst']."</td>";
+			 echo "<td align=center>".$fila['tipo_doc']."</td>";
+			 echo "<td align=center>".$fila['nro_doc']."</td>";
+			 echo "<td align=center>".$fila['cod_esc']."</td>";
+			 echo "<td align=center>".$fila['cod_agrup']."</td>";
+			 echo "<td align=center>".$fila['cod_nivel']."</td>";
+			 echo "<td align=center>".$fila['cod_grado']."</td>";
+			 echo "<td align=center>".$fila['cod_uni']."</td>";
+			 echo "<td align=center>".$fila['cod_jur']."</td>";
+			 echo "<td align=center>".$fila['cod_subjur']."</td>";
+			 echo "<td align=center>".$fila['cod_entidad']."</td>";
+			 echo "<td align=center>".$fila['cod_prog']."</td>";
+			 echo "<td align=center>".$fila['cod_subprog']."</td>";
+			 echo "<td align=center>".$fila['cod_proy']."</td>";
+			 echo "<td align=center>".$fila['cod_act']."</td>";
+			 echo "<td align=center>".$fila['cod_geo']."</td>";
+			 echo "<td align=center>".$fila['periodo']."</td>";
+			 echo "<td align=center>".$fila['tipo_planta']."</td>";
+			 echo "<td align=center>".$fila['f_ing']."</td>";
+			 echo "<td align=center>".$fila['cod_fin']."</td>";
+			 echo "<td align=center>".$fila['marca_estado']."</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<a href="cargar_lh1/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
+		echo '<a href="cargar_lh1/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
+		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+		echo "<br><hr>";
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+}
+
+
+function cargarLH2($conn,$cod){
+
+if($conn)
+{
+	$sql = "SELECT * FROM tb_lh2 where cod_inst = '$cod'";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+            
+            echo '<div class="panel panel-success" >
+	      <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> Cargar LH2</div></div>';
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Código Archivo</th>
+                    <th class='text-nowrap text-center'>Nro. Lote</th>
+                    <th class='text-nowrap text-center'>Período Lote</th>
+                    <th class='text-nowrap text-center'>Código Organismo</th>
+                    <th class='text-nowrap text-center'>Tipo Doc.</th>
+                    <th class='text-nowrap text-center'>Nro. Doc.</th>
+                    <th class='text-nowrap text-center'>Código Escalafón</th>
+                    <th class='text-nowrap text-center'>Código Concepto</th>
+                    <th class='text-nowrap text-center'>Importe</th>
+                    <th class='text-nowrap text-center'>Tipo Unidad Física</th>
+                    <th class='text-nowrap text-center'>Cant. Uni. Fis.</th>
+                    <th class='text-nowrap text-center'>Período</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['cod_arch']."</td>";
+			 echo "<td align=center>".$fila['nro_lote']."</td>";
+			 echo "<td align=center>".$fila['per_lote']."</td>";
+			 echo "<td align=center>".$fila['cod_inst']."</td>";
+			 echo "<td align=center>".$fila['tipo_doc']."</td>";
+			 echo "<td align=center>".$fila['nro_doc']."</td>";
+			 echo "<td align=center>".$fila['cod_esc']."</td>";
+			 echo "<td align=center>".$fila['cod_concepto']."</td>";
+			 echo "<td align=center>".$fila['importe']."</td>";
+			 echo "<td align=center>".$fila['tipo_uf']."</td>";
+			 echo "<td align=center>".$fila['cant_uf']."</td>";
+			 echo "<td align=center>".$fila['periodo']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="cargar_lh2/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="cargar_lh2/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<a href="cargar_lh2/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
+		echo '<a href="cargar_lh2/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
+		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+		echo "<br><hr>";
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+}
 
 ?>

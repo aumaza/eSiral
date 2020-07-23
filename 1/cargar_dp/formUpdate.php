@@ -145,7 +145,7 @@ else
     echo '<div class="alert alert-success" role="alert">';
     echo "Registro Actualizado Exitosamente!!";
     echo "</div>";
-    echo '<hr> <a href="cargar_dp.php"><input type="button" value="Volver a Cargar DP" class="btn btn-primary"></a>';
+    echo '<hr> <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>';
 }
 }
 

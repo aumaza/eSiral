@@ -627,7 +627,6 @@ function Text(string){//validacion solo letras
   <div class="form-group">
    <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>  Agregar</button>
-   <a href="cargar_lh1.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
   </div>
   </div>

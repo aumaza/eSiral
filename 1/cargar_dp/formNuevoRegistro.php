@@ -121,12 +121,12 @@
  			echo '<div class="alert alert-danger" role="alert">';
 			echo 'Could not enter data: ' . mysqli_error($conn);
 			echo "</div>";
-			echo '<hr> <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>'; 
+			echo '<hr> <a href="../main.php"><input type="button" value="Volver" class="btn btn-primary"></a>'; 
 			}else{
  			      echo '<div class="alert alert-success" role="alert">';
 			      echo "Registro Guardado Exitosamente!!";
 			      echo "</div>";
-			      echo '<hr> <a href="cargar_dp.php"><input type="button" value="Volver" class="btn btn-primary"></a>';
+			      echo '<hr> <a href="../main.php"><input type="button" value="Volver" class="btn btn-primary"></a>';
 			      } 
 			      }else{
 			  echo '<div class="alert alert-danger" role="alert">';

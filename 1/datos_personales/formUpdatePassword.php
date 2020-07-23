@@ -102,7 +102,7 @@
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<hr> <a href="datos_personales.php"><input type="button" value="Volver" class="btn btn-primary"></a>
+<hr> <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
 </div>
 </div>
 </div>

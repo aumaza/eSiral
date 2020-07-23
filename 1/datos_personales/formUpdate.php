@@ -118,7 +118,7 @@ else
     echo '<div class="alert alert-success" role="alert">';
     echo "Registro Actualizado Exitosamente!!";
     echo "</div>";
-    echo '<hr> <a href="datos_personales.php"><input type="button" value="Volver a Mis Datos" class="btn btn-primary"></a>';
+    echo '<hr> <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>';
 }
 }
 
