@@ -1125,7 +1125,7 @@ function cargarDP($conn,$cod){
 	      
             echo "<table class='display compact' style='width:100%' id='myTable'>";
               echo "<thead>
-
+		    
                     <th class='text-nowrap text-center'>ID</th>
                     <th class='text-nowrap text-center'>Código Archivo</th>
                     <th class='text-nowrap text-center'>Lote Nro.</th>
@@ -1157,10 +1157,6 @@ function cargarDP($conn,$cod){
 
 			 // Listado normal
 			 echo "<tr>";
-			 echo "<td class='text-nowrap'>";
-			 echo '<a href="cargar_dp/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="#" data-href="cargar_dp/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
-			 echo "</td>";
 			 echo "<td align=center>".$fila['id']."</td>";
 			 echo "<td align=center>".$fila['cod_arch']."</td>";
 			 echo "<td align=center>".$fila['nro_lote']."</td>";
@@ -1182,6 +1178,10 @@ function cargarDP($conn,$cod){
 			 echo "<td align=center>".$fila['cod_ob_soc']."</td>";
 			 echo "<td align=center>".$fila['nro_afi']."</td>";
 			 echo "<td align=center>".$fila['tip_hor']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="cargar_dp/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="cargar_dp/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
 			 echo "</tr>";
 				$i++;
 		 		$count++;
@@ -1355,11 +1355,6 @@ if($conn)
 
 			 // Listado normal
 			 echo "<tr>";
-			 echo "<td class='text-nowrap'>";
-			 echo '<a href="cargar_lh1/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
-			 echo '<a href="#" data-href="cargar_lh1/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
-			
-			 
 			 echo "<td align=center>".$fila['id']."</td>";
 			 echo "<td align=center>".$fila['cod_arch']."</td>";
 			 echo "<td align=center>".$fila['nro_lote']."</td>";
@@ -1385,6 +1380,9 @@ if($conn)
 			 echo "<td align=center>".$fila['f_ing']."</td>";
 			 echo "<td align=center>".$fila['cod_fin']."</td>";
 			 echo "<td align=center>".$fila['marca_estado']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="cargar_lh1/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="cargar_lh1/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
 			 echo "</tr>";
 				$i++;
 		 		$count++;
