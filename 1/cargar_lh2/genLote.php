@@ -4,6 +4,21 @@
         session_start();
 	$varsession = $_SESSION['user'];
 	
+	if(isset($_POST['nro_lote'], $_POST['periodo'])){
+	$_SESSION['nro_lote'] = $_POST['nro_lote'];
+	$_SESSION['periodo'] = $_POST['periodo'];
+	}
+	
+	$_COOKIE['nro_lote'] = $_SESSION['nro_lote'];
+	$_COOKIE['periodo'] = $_SESSION['periodo'];
+	
+	if(isset($_COOKIE['nro_lote'], $_COOKIE['periodo'])){
+	setcookie("lote", $_COOKIE['nro_lote'], time()+0);
+	setcookie("periodo", $_COOKIE['periodo'], time()+0);
+	$lote = $_COOKIE['nro_lote'];
+	$periodo = $_COOKIE['periodo'];
+	}
+	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysqli_select_db('sirhal_web');
         $retval = mysqli_query($conn,$sql);

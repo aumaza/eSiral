@@ -113,7 +113,7 @@
 			      echo '<div class="alert alert-success" role="alert">';
 			      echo "Registro Guardado Exitosamente!!";
 			      echo "</div>";
-			      echo '<hr> <a href="cargar_ch.php"><input type="button" value="Volver" class="btn btn-primary"></a>';
+			      echo '<hr> <a href="nuevoRegistro.php"><input type="button" value="Volver" class="btn btn-primary"></a>';
 			      } 
 		    
 		

@@ -3,11 +3,22 @@
 
 	session_start();
 	$varsession = $_SESSION['user'];
+	
+	if(isset($_POST['nro_lote'], $_POST['periodo'])){
 	$_SESSION['nro_lote'] = $_POST['nro_lote'];
 	$_SESSION['periodo'] = $_POST['periodo'];
+	}
+	$_COOKIE['nro_lote'] = $_SESSION['nro_lote'];
+	$_COOKIE['periodo'] = $_SESSION['periodo'];
 	
-	$lote = $_SESSION['nro_lote'];
-	$periodo = $_SESSION['periodo'];
+	if(isset($_COOKIE['nro_lote'], $_COOKIE['periodo'])){
+	setcookie("lote", $_COOKIE['nro_lote'], time()+3600);
+	setcookie("periodo", $_COOKIE['periodo'], time()+3600);
+	$lote = $_COOKIE['nro_lote'];
+	$periodo = $_COOKIE['periodo'];
+	}
+
+	
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysqli_select_db('sirhal_web');
@@ -122,6 +133,41 @@
     });
   </script>
   
+  <script >
+	function limitText(limitField, limitNum) {
+       if (limitField.value.length > limitNum) {
+          
+           alert("Ha ingresado más caracteres de los requeridos, deben ser: \n" + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }else if(limitField.value.lenght < limitNum){
+	  alert("Ha ingresado menos caracteres de los requeridos, deben ser:  \n"  + limitNum);
+            limitField.value = limitField.value.substring(0, limitNum);
+       }
+}
+</script>
+
+<script>
+function Numeros(string){
+//Solo numeros
+    var out = '';
+    var filtro = '1234567890';//Caracteres validos
+	
+    //Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+    for (var i=0; i<string.length; i++){
+       if (filtro.indexOf(string.charAt(i)) != -1){ 
+             //Se añaden a la salida los caracteres validos
+              out += string.charAt(i);
+	     }else{
+		alert("ATENCION - Sólo se permiten Números");
+	     }
+	     }
+	
+    //Retornar valor filtrado
+    return out;
+} 
+</script>
+
+  
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -195,10 +241,10 @@
       </form>
       </div>
       <?php 
-  
-  if($lote && $periodo != " "){
-     
-   
+      
+       
+  if(isset($lote, $periodo)){
+       
    echo '<div class="alert alert-success">
 	  <img src="../icons/actions/arrow-down.png"  class="img-reponsive img-rounded"> <strong>Archivos de Lotes</strong>
 	  </div>
@@ -234,8 +280,10 @@
      
      <?php 
     
+    
       if($conn){
-	  
+      
+	 
 	  if(isset($_POST['A'])){
 	      datosPersonales($conn,$nombre);
 	  }
@@ -294,17 +342,20 @@
         </div>
         <div class="modal-body">
         <div class="loginmodal-container">
-        <p>Antes de comenzar a cargar Lotes, deberá seleccionar el Número de lote y el Período del mismo</p>
+        <p>Antes de comenzar a cargar Lotes, deberá seleccionar el Número de lote y el Período del mismo</p><hr>
+        <p><strong>Nro de Lote requiere que se ingresen 3 cifras. Ejemplo 001, 099. </strong></p>
+        <p><strong>Período requiere que se ingresen 6 cifras. Ejemplo: 202001, 202012.</strong></p><hr>
         <form action="main.php" method="POST">
 		
 		  <div class="form-group">
 		    <label for="nro_lote">Lote Nro.:</label>
-		    <input type="text" class="form-control" id="nro_lote" name="nro_lote">
-		  </div>
+		    <input type="text" class="form-control" id="nro_lote" name="nro_lote" value=""  onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
+		    </div>
 		  <div class="form-group">
 		    <label for="periodo">Período:</label>
-		    <input type="text" class="form-control" id="periodo" name="periodo">
-		  </div>
+		    <input type="text" class="form-control" id="periodo" name="periodo" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+		    </div>
+		  
 		<button type="submit" class="btn btn-success" data-submit="modal"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
 		<button type="reset" class="btn btn-success" data-submit="modal"><span class="glyphicon glyphicon-erase"></span> Limpiar</button>
 		

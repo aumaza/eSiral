@@ -3,8 +3,21 @@
 
         session_start();
 	$varsession = $_SESSION['user'];
-	$lote = $_SESSION['nro_lote'];
-	$periodo = $_SESSION['periodo'];
+	
+	if(isset($_POST['nro_lote'], $_POST['periodo'])){
+	$_SESSION['nro_lote'] = $_POST['nro_lote'];
+	$_SESSION['periodo'] = $_POST['periodo'];
+	}
+	
+	$_COOKIE['nro_lote'] = $_SESSION['nro_lote'];
+	$_COOKIE['periodo'] = $_SESSION['periodo'];
+	
+	if(isset($_COOKIE['nro_lote'], $_COOKIE['periodo'])){
+	setcookie("lote", $_COOKIE['nro_lote'], time()+0);
+	setcookie("periodo", $_COOKIE['periodo'], time()+0);
+	$lote = $_COOKIE['nro_lote'];
+	$periodo = $_COOKIE['periodo'];
+	}
 	
 	$sql = "SELECT nombre FROM usuarios where user = '$varsession'";
 	mysqli_select_db('sirhal_web');
@@ -117,6 +130,8 @@ function Text(string){//validacion solo letras
 	}
     });
   </script>
+  
+  
 
 	
 </head>
@@ -167,7 +182,7 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Lote Número</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#NroLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="<?php echo $lote;?>" required>
+    <input id="text" type="text" maxlenght="3" class="form-control" name="nro_lote" value="<?php echo $lote;?>" required readonly>
     </div>
     </div>
   
@@ -177,7 +192,7 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Período Lote</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#PerLote"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="<?php echo $periodo;?>" required>
+    <input id="text" type="text" maxlenght="6" class="form-control" name="per_lote" value="<?php echo $periodo;?>" required readonly>
   </div>
   </div>
   </div>
