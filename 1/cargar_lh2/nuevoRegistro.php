@@ -318,7 +318,7 @@ function Text(string){//validacion solo letras
 		<select class="browser-default custom-select" name="tipo_uf" required>
 		<option value="" disabled selected>Seleccionar</option>
 		<option value="01">Horas Cátedra</option>
-		<option value="99">Cargos</option>
+		<option value="99" selected>Cargos</option>
 		</select>
 		</div></div>
 		
@@ -327,7 +327,7 @@ function Text(string){//validacion solo letras
 		<span class="input-group-addon" style="color: blue">Cantidad Unidad Física</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#UniFisica"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input type="number" class="form-control" name="cant_uf" required>
+		<input type="text" class="form-control" name="cant_uf" value="1" required readonly>
 		</div></div></div></div><hr>
 		
 		<div class="container">

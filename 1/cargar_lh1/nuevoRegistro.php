@@ -445,7 +445,7 @@ function Text(string){//validacion solo letras
 		<span class="input-group-addon" style="color: blue">Subjurisdicción</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#SubJur"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_subjur" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_subjur" value="00" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required readonly>
 	      </div></div></div></div><hr>
                 
                <div class="container">
@@ -455,7 +455,7 @@ function Text(string){//validacion solo letras
 		<span class="input-group-addon" style="color: blue">Entidades</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Entidad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="3" class="form-control" name="cod_entidad" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required>
+		<input id="text" type="text" maxlenght="3" class="form-control" name="cod_entidad" value="000" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,3);" onKeyUp="limitText(this,3);" required readonly>
 	      </div></div>
                 
                 
@@ -464,7 +464,7 @@ function Text(string){//validacion solo letras
 		<span class="input-group-addon" style="color: blue">Programa</span>
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Programa"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_prog" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+		<input id="text" type="text" maxlenght="2" class="form-control" name="cod_prog" value="00" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required readonly>
 	      </div></div>
                
               <div class="col-sm-4"> 
@@ -472,7 +472,7 @@ function Text(string){//validacion solo letras
 	      <span class="input-group-addon" style="color: blue">Subprograma</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Subprograma"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_subprog" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_subprog" value="00" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required readonly>
 	    </div></div></div></div><hr>
                 
              <div class="container">
@@ -482,7 +482,7 @@ function Text(string){//validacion solo letras
 	      <span class="input-group-addon" style="color: blue">Proyecto</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Proyecto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_proy" value="00" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required readonly>
 	    </div></div>
                 
              <div class="col-sm-4">   
@@ -490,7 +490,7 @@ function Text(string){//validacion solo letras
 	      <span class="input-group-addon" style="color: blue">Actividad</span>
 	      <!-- Trigger the modal with a button -->
 	      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Actividad"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_act" value="" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required>
+	      <input id="text" type="text" maxlenght="2" class="form-control" name="cod_act" value="00" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,2);" onKeyUp="limitText(this,2);" required readonly>
 	    </div></div>
                 
                 <div class="col-sm-4">

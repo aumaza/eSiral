@@ -364,7 +364,7 @@ function Text(string){//validacion solo letras
   <span class="input-group-addon" style="color: blue">Sistema Previsional</span>
   <select class="browser-default custom-select" name="sist_prev" required>
   <option value="" disabled selected>Seleccionar</option>
-  <option value="R">Reparto</option>
+  <option value="R" selected>Reparto</option>
   <option value="C">Capitalización</option>
   </select>
 </div>
@@ -391,7 +391,7 @@ function Text(string){//validacion solo letras
   <option value="40">AFJP - Pro-Renta</option>
   <option value="41">AFJP - MET</option>
   <option value="42">AFJP - Unidos</option>
-  <option value="90">Otra Caja o AFJP</option>
+  <option value="90" selected>Otra Caja o AFJP</option>
   </select>
 </div>
 </div>
