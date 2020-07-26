@@ -1499,4 +1499,287 @@ if($conn)
 
 }
 
+
+function usuarios($conn){
+
+if($conn)
+{
+	$sql = "SELECT * FROM usuarios";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+	    echo '<div class="panel panel-success" >
+		  <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Usuarios</div></div>';
+	      
+	      echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Nombre</th>
+                    <th class='text-nowrap text-center'>User Name</th>
+                    <th class='text-nowrap text-center'>Permisos</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['nombre']."</td>";
+			 echo "<td align=center>".$fila['user']."</td>";
+			 echo "<td align=center>".$fila['permisos']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="users/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="users/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+	    echo "<br>";
+	    echo '<a href="users/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a><hr>';
+	    echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button><hr>';
+
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+
+
+}
+
+
+function organismos($conn){
+
+
+if($conn)
+{
+	$sql = "SELECT * FROM organismos";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+            echo '<div class="panel panel-success" >
+		  <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/view-bank.png"  class="img-reponsive img-rounded"> Organismos</div></div>';
+	      
+	      echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Codigo Organismo</th>
+                    <th class='text-nowrap text-center'>SAF</th>
+                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['cod_org']."</td>";
+			 echo "<td align=center>".$fila['saf']."</td>";
+			 echo "<td align=center>".$fila['descripcion']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="organismos/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="organismos/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<a href="organismos/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button><hr>';
+
+	    }
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+}
+
+
+function liquidadores($conn){
+
+
+if($conn)
+{
+	$sql = "SELECT * FROM liquidadores";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+            echo '<div class="panel panel-success" >
+		  <div class="panel-heading"><span class="pull-center "><img src="../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Liquidadores</div></div>';
+	      
+	      echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Nombre y Apellido</th>
+                    <th class='text-nowrap text-center'>Sexo</th>
+                    <th class='text-nowrap text-center'>DNI</th>
+                    <th class='text-nowrap text-center'>E-mail</th>
+                    <th class='text-nowrap text-center'>Teléfono</th>
+                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['nombreApellido']."</td>";
+			 echo "<td align=center>".$fila['sexo']."</td>";
+			 echo "<td align=center>".$fila['dni']."</td>";
+			 echo "<td align=center>".$fila['email']."</td>";
+			 echo "<td align=center>".$fila['telefono']."</td>";
+			 echo "<td align=center>".$fila['organismo']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="liquidadores/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
+			 echo '<a href="#" data-href="liquidadores/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<a href="liquidadores/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button><hr>';
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+
+}
+
+
+function lotesOk($conn){
+
+
+if($conn)
+{
+	$sql = "SELECT * FROM files_ok";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+            echo '<div class="panel panel-success" >
+		  <div class="panel-heading"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados</div></div>';
+	      
+	      echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Archivo</th>
+                    <th class='text-nowrap text-center'>Usuario</th>
+                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th class='text-nowrap text-center'>Subido</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['file_name']."</td>";
+			 echo "<td align=center>".$fila['user_name']."</td>";
+			 echo "<td align=center>".$fila['cod_org']."</td>";
+			 echo "<td align=center>".$fila['upload_on']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="upload_lote/download_lote.php?file_name='.$fila['file_name'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-save"></span> Descargar</a>';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br><br><hr>";
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+}
+
 ?>

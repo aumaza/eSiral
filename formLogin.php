@@ -76,7 +76,7 @@
 				echo "<strong> Aguarde un Instante...</strong>";
 				echo "<br>";
 				echo "</div>";
-  				echo '<meta http-equiv="refresh" content="10;URL=http:root/main.php "/>';
+  				echo '<meta http-equiv="refresh" content="5;URL=http:root/main.php "/>';
 				//echo '<a href="root/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';		
 			}else{
 				echo '<div class="alert alert-success" role="alert">';

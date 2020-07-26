@@ -70,8 +70,7 @@ session_start();
 
     <div class="container-fluid">
     <div class="main">
-    <h2>Edición Organismo</h2>
-    
+       
     <?php
     
     if($conn){
@@ -97,9 +96,10 @@ if(!$q)
 else
   {
     echo '<div class="alert alert-success" role="alert">';
-    echo "Registro Actualizado Exitosamente!!";
+    echo "Registro Actualizado Exitosamente!! Aguarde que será redirigido";
     echo "</div>";
-    echo '<hr> <a href="organismos.php"><input type="button" value="Volver a Organismos" class="btn btn-primary"></a>';
+    echo '<meta http-equiv="refresh" content="5;URL=http:../main.php "/>';
+   // echo '<hr> <a href="organismos.php"><input type="button" value="Volver a Organismos" class="btn btn-primary"></a>';
 }
 }
 

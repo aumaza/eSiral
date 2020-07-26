@@ -95,14 +95,16 @@ if(!$q)
 	 echo '<div class="alert alert-danger" role="alert">';
          echo 'Could not enter data: ' . mysqli_error($conn);
          echo "</div>";
+         echo '<meta http-equiv="refresh" content="5;URL=http:../main.php "/>';
 }
 
 else
   {
     echo '<div class="alert alert-success" role="alert">';
-    echo "Registro Actualizado Exitosamente!!";
+    echo "Registro Actualizado Exitosamente!! Espere que será redirigido";
     echo "</div>";
-    echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
+    echo '<meta http-equiv="refresh" content="5;URL=http:../main.php "/>';
+    //echo '<hr> <a href="liquidadores.php"><input type="button" value="Volver a Liquidadores" class="btn btn-primary"></a>';
 }
 }
 

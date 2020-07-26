@@ -111,10 +111,10 @@ else
 {
    
     echo '<div class="alert alert-success" role="alert">';
-    echo "Registro Guardado Exitosamente!!";
+    echo "Registro Guardado Exitosamente!! Aguarde que será redirigido";
     echo "</div>";
     echo "<br><br><br><br>";
-    echo '<hr> <a href="organismos.php"><input type="button" value="Volver a Organismos" class="btn btn-primary"></a>';
+    echo '<meta http-equiv="refresh" content="5;URL=http:../main.php "/>';
 }
 
 
