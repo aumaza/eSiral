@@ -266,10 +266,19 @@ function Numeros(string){
       <h1>Bienvenido/a: <?php echo $nombre;?></h1>
       <p>En la cartelera de información verá publicada información importante sobre eSiral y normativas.</p>
       <hr>
-     <div class="alert alert-success" role="alert">
-      <p><img src="../icons/actions/help-about.png"  class="img-reponsive img-rounded"> Para comenzar a cargar información en sus archivos de lotes, diríjase al botón "Iniciar Lotes" en la barra superior.</p>
+      <?php 
+      if(!isset($lote, $periodo)){
+      echo '<div class="alert alert-danger" role="alert">
+      <p><img src="../icons/status/security-low.png"  class="img-reponsive img-rounded"> Aún no ha inicialado el Nro. de Lote y el Período. Debe hacerlo para poder comenzar a cargar información. Dirijase al botón "Iniciar Lotes" e ingrese Nro. de Lote y Período</p>
       </div>
-      <hr>
+      <hr>';
+      }else{
+      echo '<div class="alert alert-success" role="alert">
+      <p><img src="../icons/actions/dialog-ok-apply.png"  class="img-reponsive img-rounded"> Ha seleccionado el Nro. de Lote: '.$lote. ' y Período: '.$periodo.'</p>
+      </div>
+      <hr>';
+      }
+      ?>
       <div class="alert alert-success" role="alert">
       <p><img src="../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> No olvide que la fecha límite para cargar lotes en el sistema SIRHU es hasta el 10 de cada mes</p>
       </div>
@@ -324,9 +333,9 @@ function Numeros(string){
         
   </div>
 </div>
-
+<br><br><br><br>
 <footer class="container-fluid text-center">
-  <p><strong>eSiral</strong> - <strong>Dirección de Presupuesto y Gastos en Personal</strong> - <strong>Ministerio de Economía de la Nación</strong></p>
+  <p><strong>eSiral</strong> - <strong>Dirección de Presupuesto y Evaluación de Gastos en Personal</strong> - <strong>Ministerio de Economía de la Nación</strong></p>
 </footer>
 
 

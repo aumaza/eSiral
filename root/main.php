@@ -287,9 +287,9 @@ function Numeros(string){
         
   </div>
 </div>
-
+<br><br>
 <footer class="container-fluid text-center">
-  <p><strong>eSiral</strong> - <strong>Dirección de Presupuesto y Gastos en Personal</strong> - <strong>Ministerio de Economía de la Nación</strong></p>
+  <p><strong>eSiral</strong> - <strong>Dirección de Presupuesto y Evaluación de Gastos en Personal</strong> - <strong>Ministerio de Economía de la Nación</strong></p>
 </footer>
 
 
