@@ -238,7 +238,27 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Código de Concepto</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto"  value="<?php echo $fila['cod_concepto']; ?>" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+    <input id="text" type="text" maxlenght="6" class="form-control" name="cod_concepto"  value="<?php echo $fila['cod_concepto']; ?>" onblur="this.value=validate(this.value);" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+  <script>
+  function validate(string){
+  
+		var out = '';
+		
+		  if (string.length < 6){ 
+			//Se añaden a la salida los caracteres validos
+			  alert("Código de Concepto requiere de 6 Caracteres!!!");
+			  out = '000000';
+			}else{
+			    alert("Puede continuar!!");
+			    out = string;
+			}
+		
+		return out;
+  
+  }
+  
+  
+  </script>
   </div>
   </div>
   </div>
@@ -290,7 +310,6 @@ function Text(string){//validacion solo letras
   <div class="form-group">
    <div class="col-sm-12" align="center">
    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span>  Editar</button>
-   <a href="cargar_ch.php"><input type="button" value="Volver" class="btn btn-primary"></a>
    <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>
   </div>
   </div>

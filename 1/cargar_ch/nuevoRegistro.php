@@ -254,9 +254,6 @@ function Text(string){//validacion solo letras
   function validate(string){
   
 		var out = '';
-		//var filtro = '1234567890';//Caracteres validos
-	
-		//Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
 		
 		  if (string.length < 6){ 
 			//Se añaden a la salida los caracteres validos
@@ -267,19 +264,6 @@ function Text(string){//validacion solo letras
 			    out = string;
 			}
 			
-		/*    
-		//Retornar valor filtrado
-		return out;
-		var number = document.getElementById("cod_conc").value;
-		var cantNumbers = number.length;
-		if(cantNumbers < 6){
-		alert("Código de Concepto requiere de 6 Caracteres!!!");
-		number = 000000;
-		
-		}else{
-		  alert("Puede continuar!!");
-		}*/
-		
 		return out;
   
   }
