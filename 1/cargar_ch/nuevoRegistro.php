@@ -249,19 +249,38 @@ function Text(string){//validacion solo letras
     <span class="input-group-addon" style="color: blue">Código Concepto</span>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#CodConcepto"><span class="glyphicon glyphicon-info-sign"></span> Información</button>
-    <input id="cod_conc" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onblur="validate();" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
+    <input id="cod_conc" type="text" maxlenght="6" class="form-control" name="cod_concepto" value="" onblur="this.value=validate(this.value);" onkeyup="this.value=Numeros(this.value);" onKeyDown="limitText(this,6);" onKeyUp="limitText(this,6);" required>
   <script>
-  function validate(){
+  function validate(string){
   
-              
+		var out = '';
+		//var filtro = '1234567890';//Caracteres validos
+	
+		//Recorrer el texto y verificar si el caracter se encuentra en la lista de validos 
+		
+		  if (string.length < 6){ 
+			//Se añaden a la salida los caracteres validos
+			  alert("Código de Concepto requiere de 6 Caracteres!!!");
+			  out = '000000';
+			}else{
+			    alert("Puede continuar!!");
+			    out = string;
+			}
+			
+		/*    
+		//Retornar valor filtrado
+		return out;
 		var number = document.getElementById("cod_conc").value;
 		var cantNumbers = number.length;
 		if(cantNumbers < 6){
 		alert("Código de Concepto requiere de 6 Caracteres!!!");
+		number = 000000;
 		
 		}else{
 		  alert("Puede continuar!!");
-		}
+		}*/
+		
+		return out;
   
   }
   
