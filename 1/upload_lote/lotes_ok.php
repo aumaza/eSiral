@@ -91,6 +91,8 @@
 	}
     });
   </script>
+  
+	
 	
 </head>
 <body background="../../img/main-img.png" class="img-fluid" alt="Responsive image" style="background-repeat: no-repeat; background-position: center center; background-size: cover; height: 100%">
@@ -159,6 +161,8 @@ if($conn)
 
    	$count = 0;
 	$i=0;
+	
+	    echo '<form action="download.php" method="POST">';
             echo "<table class='display compact' style='width:100%' id='myTable'>";
               echo "<thead>
 
@@ -184,6 +188,7 @@ if($conn)
 			 echo "<td align=center>".$fila['upload_on']."</td>";
 			 echo "<td class='text-nowrap'>";
 			 echo '<a href="download_lote.php?file_name='.$fila['file_name'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-save"></span> Descargar</a>';
+			 echo '<input type="checkbox" name="lote[]" value="'.$fila['file_name'].'" />';
 			 echo "</td>";
 			 echo "</tr>";
 				$i++;
@@ -194,10 +199,12 @@ if($conn)
 
 
 		echo "</table>";
-	    echo "<br><br><hr>";
-	    echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
-
-	      echo '<hr> <a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>';
+		echo "<br>";
+		echo '<button type="submit" class="btn btn-default"><span class="pull-center "><img src="../../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Seleccionados</button><hr>';
+		echo '</form>';
+		
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button><hr>';
+		echo '<a href="../main.php"><input type="button" value="Volver al Menú Principal" class="btn btn-primary"></a>';
 		}
 
 
@@ -247,6 +254,8 @@ if($conn)
 				$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 			});
 		</script>
+		
+		
 
 </body>
 </html>

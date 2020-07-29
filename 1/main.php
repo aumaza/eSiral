@@ -253,7 +253,8 @@ function Numeros(string){
 	<button type="submit" class="btn btn-default btn-lg" name="B" data-toggle="tooltip" title="Datos de Personas"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> DP1</button>
         <button type="submit" class="btn btn-default btn-lg" name="C" data-toggle="tooltip" title="Concepto de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> CH1</button><hr>
         <button type="submit" class="btn btn-default btn-lg" name="D" data-toggle="tooltip" title="Cabezal de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH1</button>
-        <button type="submit" class="btn btn-default btn-lg" name="E" data-toggle="tooltip" title="Detalle de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2</button>
+        <button type="submit" class="btn btn-default btn-lg" name="E" data-toggle="tooltip" title="Detalle de Haberes"><img src="../icons/actions/address-book-new.png"  class="img-reponsive img-rounded"> LH2</button><hr>
+	<button type="submit" class="btn btn-warning btn-lg" name="F" data-toggle="tooltip" title="Lotes Generados"><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Descargar Lotes</button>
 	</form>
       </div>';
    }
@@ -307,9 +308,11 @@ function Numeros(string){
 	  }
 	  if(isset($_POST['E'])){
 	      cargarLH2($conn,$cod);
-	  }     
-      
-      
+	  }
+	  if(isset($_POST['F'])){
+	      lote_ok_user($conn,$cod);
+	  }
+           
       
       }
       

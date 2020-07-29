@@ -1193,8 +1193,8 @@ function cargarDP($conn,$cod){
 		echo "</table>";
 		echo "<br>";
 		echo '<a href="cargar_dp/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
-		echo '<a href="cargar_dp/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
-		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<a href="cargar_dp/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a><hr>';
+		//echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
 		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
 		echo "<br><hr>";
 		}
@@ -1279,8 +1279,8 @@ function cargarCH($conn,$cod){
 		echo "</table>";
 		echo "<br>";
 		echo '<a href="cargar_ch/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
-		echo '<a href="cargar_ch/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
-		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<a href="cargar_ch/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a><hr>';
+		//echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
 		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
 		echo "<br><hr>";
 		}
@@ -1394,8 +1394,8 @@ if($conn)
 		echo "</table>";
 		echo "<br>";
 		echo '<a href="cargar_lh1/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
-		echo '<a href="cargar_lh1/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
-		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<a href="cargar_lh1/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a><hr>';
+		//echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
 		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
 		echo "<br><hr>";
 		}
@@ -1482,8 +1482,8 @@ if($conn)
 		echo "</table>";
 		echo "<br>";
 		echo '<a href="cargar_lh2/nuevoRegistro.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/list-add.png"  class="img-reponsive img-rounded"> Nuevo Registro</button></a>';
-		echo '<a href="cargar_lh2/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a>';
-		echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
+		echo '<a href="cargar_lh2/genLote.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Generar Archivo de Lote</button></a><hr>';
+		//echo '<a href="upload_lote/lotes_ok.php"><button type="button" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Lote Generado</button></a><br><hr>';
 		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
 		echo "<br><hr>";
 		}
@@ -1729,7 +1729,7 @@ if($conn)
    	$count = 0;
 	$i=0;
             echo '<div class="panel panel-success" >
-		  <div class="panel-heading"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados</div></div>';
+		  <div class="panel-heading"><span class="pull-center "><img src="../../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados</div></div>';
 	      
 	      echo "<table class='display compact' style='width:100%' id='myTable'>";
               echo "<thead>
@@ -1779,6 +1779,81 @@ if($conn)
 		}
 
     mysqli_close($conn);
+
+}
+
+
+function lote_ok_user($conn,$cod){
+
+
+if($conn)
+{
+	$sql = "SELECT * FROM files_ok where cod_org = '$cod'";
+    	mysqli_select_db('sirhal_web');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+
+	echo '<br><br>';
+
+   	$count = 0;
+	$i=0;
+	
+	    echo '<div class="panel panel-success" >
+		  <div class="panel-heading"><span class="pull-center "><img src="../icons/places/server-database.png"  class="img-reponsive img-rounded"> Lotes Generados</div></div>';
+	    echo '<form action="upload_lote/download.php" method="POST">';
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+
+                    <th class='text-nowrap text-center'>ID</th>
+                    <th class='text-nowrap text-center'>Archivo</th>
+                    <th class='text-nowrap text-center'>Usuario</th>
+                    <th class='text-nowrap text-center'>Organismo</th>
+                    <th class='text-nowrap text-center'>Subido</th>
+                    <th>&nbsp;</th>
+                    </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado))
+	{
+
+
+			 // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['file_name']."</td>";
+			 echo "<td align=center>".$fila['user_name']."</td>";
+			 echo "<td align=center>".$fila['cod_org']."</td>";
+			 echo "<td align=center>".$fila['upload_on']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 echo '<a href="upload_lote/download_lote.php?file_name='.$fila['file_name'].'" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-save"></span> Descargar</a>';
+			 echo '<input type="checkbox" name="lote[]" value="'.$fila['file_name'].'" />';
+			 echo "</td>";
+			 echo "</tr>";
+				$i++;
+		 		$count++;
+
+		}
+
+
+
+		echo "</table>";
+		echo "<br>";
+		echo '<button type="submit" class="btn btn-default"><span class="pull-center "><img src="../icons/actions/svn-update.png"  class="img-reponsive img-rounded"> Descargar Seleccionados</button><hr>';
+		echo '</form>';
+		echo '<a href="upload_lote/gen_excel.php"><button class="btn btn-default"><span class="pull-center "><img src="../icons/mimetypes/application-x-gnumeric.png"  class="img-reponsive img-rounded"> Bajar a Excel </button></a><hr>';
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button><hr>';
+		
+		}
+
+
+
+	 else
+		{
+			echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
 
 }
 
