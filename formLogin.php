@@ -1,4 +1,5 @@
 <?php include "connection/connection.php";
+      include "functions/functions.php";
 
 	$user = mysqli_real_escape_string($conn,$_POST["user"]);
 	$pass1 = mysqli_real_escape_string($conn,$_POST["pass"]);
@@ -68,7 +69,7 @@
 			else if($user = mysqli_fetch_assoc($q)){
 
 				if(strcmp($_SESSION["user"], 'root') == 0){
-
+				logs($_SESSION["user"]);
 				echo "<br>";
 				echo '<div class="alert alert-success" role="alert">';
 				echo '<span class="pull-center "><img src="img/tenor.gif" class="img-reponsive img-rounded" weight="5%" height="5%">';
@@ -79,6 +80,7 @@
   				echo '<meta http-equiv="refresh" content="5;URL=http:root/main.php "/>';
 				//echo '<a href="root/main.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a><br>';		
 			}else{
+				logs($_SESSION["user"]);
 				echo '<div class="alert alert-success" role="alert">';
 				echo '<span class="pull-center "><img src="img/tenor.gif" class="img-reponsive img-rounded"  weight="5%" height="5%">';
 				echo "<strong> Bienvenido!  </strong>" .$_SESSION["user"];

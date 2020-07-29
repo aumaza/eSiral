@@ -1857,4 +1857,29 @@ if($conn)
 
 }
 
+function logs($var){
+      
+      $fileName = "logs/$var.log.txt"; 
+      $date = date("d/m/Y H:i:s");
+      $message = 'Ultimo ingreso: '.$date;
+       
+  if (file_exists($fileName)){
+  
+  //echo "Archivo Existente...";
+  //echo "Se actualizaran los datos...";
+  $file = fopen($fileName, 'a') or die("Se produjo un error al crear el archivo");
+  fwrite($file, "\n".$date) or die("No se pudo escribir en el archivo");
+  fclose($file);
+  chmod($file, 0777);
+  
+  }else{
+      $file = fopen($fileName, 'w') or die("Se produjo un error al crear el archivo");
+      fwrite($file, $message) or die("No se pudo escribir en el archivo");
+      fclose($file);
+      chmod($file, 0777);
+      }
+  
+}
+
+
 ?>

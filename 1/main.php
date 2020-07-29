@@ -4,6 +4,7 @@
 	session_start();
 	$varsession = $_SESSION['user'];
 	
+	
 	if(isset($_POST['nro_lote'], $_POST['periodo'])){
 	$_SESSION['nro_lote'] = $_POST['nro_lote'];
 	$_SESSION['periodo'] = $_POST['periodo'];
@@ -28,6 +29,7 @@
 	  $nombre = $fila['nombre'];
 	  
 	  }
+	  
 	  
 	$sqla = "SELECT organismo FROM liquidadores where nombreApellido = '$nombre'";
 	mysqli_select_db('sirhal_web');
@@ -64,6 +66,7 @@
 	echo '<a href="../logout.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 	die();
 	}
+	
 ?>
 
 
